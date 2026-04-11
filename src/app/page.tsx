@@ -4,36 +4,16 @@ import { useState } from "react";
 const BRAND = "Austin Mobile Repair";
 
 function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const h = size === "sm" ? 28 : size === "lg" ? 48 : 36;
-  const textSize = size === "sm" ? "14px" : size === "lg" ? "22px" : "17px";
-  const subSize = size === "sm" ? "8px" : size === "lg" ? "12px" : "9px";
+  const textSize = size === "sm" ? "16px" : size === "lg" ? "28px" : "20px";
+  const subSize = size === "sm" ? "9px" : size === "lg" ? "14px" : "11px";
   return (
-    <div className="flex items-center gap-2">
-      <svg width={h} height={h} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48">
-            <stop offset="0%" stopColor="#0071e3" />
-            <stop offset="100%" stopColor="#40a9ff" />
-          </linearGradient>
-        </defs>
-        <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#logoGrad)" />
-        {/* Phone icon */}
-        <rect x="17" y="8" width="14" height="24" rx="3" fill="white" fillOpacity="0.95" />
-        <rect x="21" y="28" width="6" height="1.5" rx="0.75" fill="#0071e3" fillOpacity="0.5" />
-        {/* Lightning bolt */}
-        <path d="M22 16L19 22H23L20 28L27 20H23L26 16H22Z" fill="#0071e3" />
-        {/* Signal waves */}
-        <path d="M34 14C36 16 37 19 37 22" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6" />
-        <path d="M31 16C32.5 17.5 33.5 19.5 33.5 22" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.4" />
-      </svg>
-      <div className="flex flex-col leading-none">
-        <span style={{ fontSize: textSize, fontWeight: 700, letterSpacing: "-0.02em", background: "linear-gradient(90deg, #0071e3, #40a9ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-          Austin Mobile
-        </span>
-        <span style={{ fontSize: subSize, fontWeight: 500, letterSpacing: "0.08em", color: "#86868b", textTransform: "uppercase" as const, marginTop: "2px" }}>
-          Repair
-        </span>
-      </div>
+    <div className="flex flex-col leading-none">
+      <span style={{ fontSize: textSize, fontWeight: 700, letterSpacing: "-0.02em", background: "linear-gradient(90deg, #0071e3, #40a9ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        Austin Mobile
+      </span>
+      <span style={{ fontSize: subSize, fontWeight: 500, letterSpacing: "0.08em", color: "#86868b", textTransform: "uppercase" as const, marginTop: "2px" }}>
+        Repair
+      </span>
     </div>
   );
 }
