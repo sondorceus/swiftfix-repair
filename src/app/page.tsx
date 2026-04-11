@@ -146,8 +146,8 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08] mb-6">
             We Fix Your iPhone<br />Wherever You Are
           </h1>
-          <p className="text-lg md:text-xl text-[#86868b] max-w-xl mx-auto mb-4 leading-relaxed">
-            On-demand mobile repair across Austin. We come to your home, office, or anywhere you need — same-day service available.
+          <p className="text-lg md:text-xl text-[#86868b] max-w-2xl mx-auto mb-4 leading-relaxed">
+            No stores, no waiting — a certified technician comes directly to you and repairs your device on the spot, often within 30 minutes. Fast, reliable, same-day service across Austin.
           </p>
           <p className="text-[#34c759] text-sm font-medium mb-10">● Available today in Austin</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="mb-4"><Logo size="sm" /></div>
-              <p className="text-sm leading-relaxed">Premium mobile repair. We come to you — fast, reliable, affordable.</p>
+              <p className="text-sm leading-relaxed">We bring fast, same-day iPhone repair to you — wherever you are. Book instantly and get your phone fixed in minutes.</p>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Services</h4>
