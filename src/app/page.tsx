@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const BRAND = "SwiftFix";
+const BRAND = "Austin Mobile Repair";
 const TAGLINE = "We Fix Your iPhone Wherever You Are";
 const PHONE = "(555) 123-4567";
 
@@ -219,7 +219,7 @@ export default function Home() {
               <h4 className="text-white font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm">
                 <li>{PHONE}</li>
-                <li>info@swiftfix.repair</li>
+                <li>info@austinmobilerepair.com</li>
                 <li>Mon-Sat: 8AM-8PM</li>
                 <li>Sun: 10AM-6PM</li>
               </ul>
