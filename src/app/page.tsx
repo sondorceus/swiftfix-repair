@@ -430,7 +430,7 @@ export default function Home() {
                       {/* iPhone render */}
                       <div className="relative w-[52px] h-[100px] mb-3 group-hover:scale-105 transition-transform duration-300">
                         {s.image ? (
-                          <img src={s.image} alt={s.label} className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]" />
+                          <img src={s.image} alt={s.label} className="w-full h-full object-cover rounded-[13px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]" />
                         ) : (
                           <>
                             <div className="absolute inset-0 rounded-[13px] shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
