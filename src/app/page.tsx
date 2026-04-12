@@ -21,13 +21,48 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 
 type Step = "select" | "issue" | "time" | "confirm";
 
-const IPHONE_MODELS = [
-  { id: "iphone16", label: "iPhone 16", sub: "& 16 Pro", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic" },
-  { id: "iphone15", label: "iPhone 15", sub: "& 15 Pro", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic" },
-  { id: "iphone14", label: "iPhone 14", sub: "& 14 Pro", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic" },
-  { id: "iphone13", label: "iPhone 13", sub: "& 13 Pro", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic" },
-  { id: "iphone12", label: "iPhone 12", sub: "& 12 Pro", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic" },
-  { id: "iphone11", label: "iPhone 11", sub: "& 11 Pro", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic" },
+const IPHONE_SERIES = [
+  { id: "16", label: "iPhone 16", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic",
+    variants: [
+      { id: "iphone16", label: "iPhone 16", size: '6.1"' },
+      { id: "iphone16plus", label: "iPhone 16 Plus", size: '6.7"' },
+      { id: "iphone16pro", label: "iPhone 16 Pro", size: '6.3"' },
+      { id: "iphone16promax", label: "iPhone 16 Pro Max", size: '6.9"' },
+    ]},
+  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic",
+    variants: [
+      { id: "iphone15", label: "iPhone 15", size: '6.1"' },
+      { id: "iphone15plus", label: "iPhone 15 Plus", size: '6.7"' },
+      { id: "iphone15pro", label: "iPhone 15 Pro", size: '6.1"' },
+      { id: "iphone15promax", label: "iPhone 15 Pro Max", size: '6.7"' },
+    ]},
+  { id: "14", label: "iPhone 14", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic",
+    variants: [
+      { id: "iphone14", label: "iPhone 14", size: '6.1"' },
+      { id: "iphone14plus", label: "iPhone 14 Plus", size: '6.7"' },
+      { id: "iphone14pro", label: "iPhone 14 Pro", size: '6.1"' },
+      { id: "iphone14promax", label: "iPhone 14 Pro Max", size: '6.7"' },
+    ]},
+  { id: "13", label: "iPhone 13", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic",
+    variants: [
+      { id: "iphone13mini", label: "iPhone 13 Mini", size: '5.4"' },
+      { id: "iphone13", label: "iPhone 13", size: '6.1"' },
+      { id: "iphone13pro", label: "iPhone 13 Pro", size: '6.1"' },
+      { id: "iphone13promax", label: "iPhone 13 Pro Max", size: '6.7"' },
+    ]},
+  { id: "12", label: "iPhone 12", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic",
+    variants: [
+      { id: "iphone12mini", label: "iPhone 12 Mini", size: '5.4"' },
+      { id: "iphone12", label: "iPhone 12", size: '6.1"' },
+      { id: "iphone12pro", label: "iPhone 12 Pro", size: '6.1"' },
+      { id: "iphone12promax", label: "iPhone 12 Pro Max", size: '6.7"' },
+    ]},
+  { id: "11", label: "iPhone 11", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic",
+    variants: [
+      { id: "iphone11", label: "iPhone 11", size: '6.1"' },
+      { id: "iphone11pro", label: "iPhone 11 Pro", size: '5.8"' },
+      { id: "iphone11promax", label: "iPhone 11 Pro Max", size: '6.5"' },
+    ]},
 ];
 
 const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
@@ -158,18 +193,28 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
+  const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
+
+  // Map variant IDs back to their series repair key
+  const getRepairKey = (model: string | null) => {
+    if (!model) return null;
+    // Strip variant suffixes to get base series key
+    const base = model.replace(/plus|pro|promax|mini/g, "");
+    return IPHONE_REPAIRS[base] ? base : model;
+  };
 
   const currentRepairs = deviceType === "iphone" && iphoneModel
-    ? IPHONE_REPAIRS[iphoneModel] || []
+    ? IPHONE_REPAIRS[getRepairKey(iphoneModel) || ""] || []
     : deviceType === "macbook" ? MACBOOK_REPAIRS : [];
 
   const deviceLabel = deviceType === "iphone" && iphoneModel
-    ? IPHONE_MODELS.find(m => m.id === iphoneModel)?.label || "iPhone"
+    ? IPHONE_SERIES.flatMap(s => s.variants).find(v => v.id === iphoneModel)?.label || "iPhone"
     : deviceType === "macbook" ? "MacBook" : "Android";
 
   const handleDeviceSelect = (d: "iphone" | "macbook" | "android") => {
     setDeviceType(d);
     setIphoneModel(null);
+    setSelectedSeries(null);
     setRepair(null);
     setTimeChoice(null);
     setSpecificSlot(null);
@@ -180,9 +225,14 @@ export default function Home() {
     }
   };
 
-  const handleModelSelect = (id: string) => {
-    setIphoneModel(id);
+  const handleSeriesSelect = (seriesId: string) => {
+    setSelectedSeries(seriesId);
+  };
+
+  const handleVariantSelect = (variantId: string) => {
+    setIphoneModel(variantId);
     setShowModelPicker(false);
+    setSelectedSeries(null);
     setStep("issue");
   };
 
@@ -230,6 +280,7 @@ export default function Home() {
     setPhone("");
     setSubmitted(false);
     setShowModelPicker(false);
+    setSelectedSeries(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -349,72 +400,94 @@ export default function Home() {
         </section>
       )}
 
-      {/* iPHONE MODEL PICKER — interactive image cards */}
+      {/* iPHONE MODEL PICKER — two-step: Series → Variant */}
       {showModelPicker && (
         <section className="bg-gradient-to-b from-[#0a0a0a] to-[#1d1d1f] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={() => { setShowModelPicker(false); setDeviceType(null); }} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
+            <button onClick={() => { if (selectedSeries) { setSelectedSeries(null); } else { setShowModelPicker(false); setDeviceType(null); } }} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
-            <h2 className="text-2xl font-bold tracking-tight mb-1">Select your iPhone</h2>
-            <p className="text-[#86868b] text-sm mb-6">Tap your model for instant repair pricing</p>
-            <div className="grid grid-cols-2 gap-3">
-              {IPHONE_MODELS.map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => handleModelSelect(m.id)}
-                  className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.97] transition-all duration-200 cursor-pointer"
-                >
-                  {/* Photorealistic iPhone render */}
-                  <div className="relative w-[56px] h-[108px] mb-3 group-hover:scale-105 transition-transform duration-300">
-                    {/* Frame */}
-                    <div className="absolute inset-0 rounded-[14px] shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]" style={{ background: `linear-gradient(145deg, ${m.frame}, ${m.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                      {/* Side buttons */}
-                      <div className="absolute -left-[2px] top-[22px] w-[2px] h-[10px] rounded-l-sm" style={{ background: m.frame }} />
-                      <div className="absolute -left-[2px] top-[36px] w-[2px] h-[16px] rounded-l-sm" style={{ background: m.frame }} />
-                      <div className="absolute -left-[2px] top-[54px] w-[2px] h-[16px] rounded-l-sm" style={{ background: m.frame }} />
-                      <div className="absolute -right-[2px] top-[32px] w-[2px] h-[18px] rounded-r-sm" style={{ background: m.frame }} />
-                    </div>
-                    {/* Screen */}
-                    <div className="absolute top-[3px] left-[3px] right-[3px] bottom-[3px] rounded-[11px] overflow-hidden bg-black">
-                      {/* Dynamic Island / Notch */}
-                      {m.notch === "dynamic" ? (
-                        <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-full z-10" />
-                      ) : (
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[24px] h-[8px] bg-black rounded-b-lg z-10" />
-                      )}
-                      {/* Screen content — wallpaper gradient */}
-                      <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${m.accent}40, #000 40%, ${m.accent}20, #000)` }}>
-                        {/* Time */}
-                        <p className="text-white/70 text-[8px] font-semibold text-center mt-[12px]">9:41</p>
-                        {/* App grid dots */}
-                        <div className="grid grid-cols-4 gap-[3px] px-[5px] mt-[8px]">
-                          {Array.from({ length: 12 }).map((_, i) => (
-                            <div key={i} className="w-[7px] h-[7px] rounded-[2px]" style={{ background: `${m.accent}${50 + i * 4}` }} />
-                          ))}
+
+            {!selectedSeries ? (
+              <>
+                <h2 className="text-2xl font-bold tracking-tight mb-1">Select your iPhone</h2>
+                <p className="text-[#86868b] text-sm mb-6">Choose your series, then pick your exact model</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {IPHONE_SERIES.map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => handleSeriesSelect(s.id)}
+                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.97] transition-all duration-200 cursor-pointer"
+                    >
+                      {/* iPhone render */}
+                      <div className="relative w-[52px] h-[100px] mb-3 group-hover:scale-105 transition-transform duration-300">
+                        <div className="absolute inset-0 rounded-[13px] shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
+                          <div className="absolute -left-[2px] top-[20px] w-[2px] h-[9px] rounded-l-sm" style={{ background: s.frame }} />
+                          <div className="absolute -left-[2px] top-[33px] w-[2px] h-[14px] rounded-l-sm" style={{ background: s.frame }} />
+                          <div className="absolute -right-[2px] top-[30px] w-[2px] h-[16px] rounded-r-sm" style={{ background: s.frame }} />
+                        </div>
+                        <div className="absolute top-[3px] left-[3px] right-[3px] bottom-[3px] rounded-[10px] overflow-hidden bg-black">
+                          {s.notch === "dynamic" ? (
+                            <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[20px] h-[6px] bg-black rounded-full z-10" />
+                          ) : (
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-b-lg z-10" />
+                          )}
+                          <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
+                            <p className="text-white/60 text-[7px] font-semibold text-center mt-[10px]">9:41</p>
+                            <div className="grid grid-cols-4 gap-[2px] px-[4px] mt-[6px]">
+                              {Array.from({ length: 8 }).map((_, i) => (
+                                <div key={i} className="w-[6px] h-[6px] rounded-[2px]" style={{ background: `${s.accent}${50 + i * 5}` }} />
+                              ))}
+                            </div>
+                          </div>
+                          <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[14px] h-[2px] bg-white/30 rounded-full" />
                         </div>
                       </div>
-                      {/* Home indicator */}
-                      <div className="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[16px] h-[2px] bg-white/30 rounded-full" />
-                    </div>
-                    {/* Camera bump (back glass detail) */}
-                    <div className="absolute top-[6px] left-[5px] w-[16px] h-[16px] rounded-[5px] border border-white/10" style={{ background: `${m.frame}cc` }}>
-                      <div className="absolute top-[3px] left-[3px] w-[4px] h-[4px] rounded-full bg-[#1a1a2e] border border-white/20" />
-                      <div className="absolute bottom-[3px] right-[3px] w-[3px] h-[3px] rounded-full bg-[#1a1a2e] border border-white/10" />
+                      <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{s.label}</p>
+                      <p className="text-[#86868b] text-[11px]">{s.year} · {s.variants.length} models</p>
+                      <svg className="w-4 h-4 text-[#86868b] mt-1 group-hover:text-[#0071e3] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Variant submenu */}
+                {(() => { const series = IPHONE_SERIES.find(s => s.id === selectedSeries); if (!series) return null; return (
+                  <div className="animate-[fadeIn_0.2s_ease-out]">
+                    <h2 className="text-2xl font-bold tracking-tight mb-1">{series.label} Series</h2>
+                    <p className="text-[#86868b] text-sm mb-6">Pick your exact model</p>
+                    <div className="space-y-2">
+                      {series.variants.map((v) => (
+                        <button
+                          key={v.id}
+                          onClick={() => handleVariantSelect(v.id)}
+                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.98] transition-all duration-200 cursor-pointer text-left"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-14 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.1)' }}>
+                              <div className="w-6 h-11 rounded-md bg-black overflow-hidden">
+                                <div className="w-full h-full opacity-80" style={{ background: `linear-gradient(160deg, ${series.accent}40, #000 50%)` }} />
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-semibold text-white">{v.label}</p>
+                              <p className="text-[#86868b] text-xs">{v.size} display</p>
+                            </div>
+                          </div>
+                          <svg className="w-5 h-5 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      ))}
                     </div>
                   </div>
-                  <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{m.label}</p>
-                  <p className="text-[#86868b] text-[11px]">{m.sub} · {m.year}</p>
-                  {/* Selection indicator */}
-                  <div className="absolute top-2 right-2 w-5 h-5 rounded-full border border-white/20 group-hover:border-[#0071e3] group-hover:bg-[#0071e3]/20 transition-all flex items-center justify-center">
-                    <svg className="w-3 h-3 text-[#0071e3] opacity-0 group-hover:opacity-100 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </button>
-              ))}
-            </div>
+                ); })()}
+              </>
+            )}
             <p className="text-[#86868b] text-[10px] text-center mt-4">All models include same-day service and 90-day warranty</p>
           </div>
         </section>
