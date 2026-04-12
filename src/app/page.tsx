@@ -270,9 +270,24 @@ export default function Home() {
     if (step === "confirm") setStep("time");
     else if (step === "time") setStep("issue");
     else if (step === "issue") {
-      setStep("select");
+      if (deviceType === "iphone") {
+        // Go back to model picker instead of device selection
+        setShowModelPicker(true);
+        setSelectedSeries(null);
+        setIphoneModel(null);
+        setRepair(null);
+      } else {
+        setStep("select");
+        setDeviceType(null);
+        setIphoneModel(null);
+      }
+    } else if (step === "select" && showModelPicker && selectedSeries) {
+      // Back from variant submenu to series list
+      setSelectedSeries(null);
+    } else if (step === "select" && showModelPicker) {
+      // Back from series list to device selection
+      setShowModelPicker(false);
       setDeviceType(null);
-      setIphoneModel(null);
     }
   };
 
@@ -432,7 +447,7 @@ export default function Home() {
       {showModelPicker && (
         <section className="bg-gradient-to-b from-[#0a0a0a] to-[#1d1d1f] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={() => { if (selectedSeries) { setSelectedSeries(null); } else { setShowModelPicker(false); setDeviceType(null); } }} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
+            <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
