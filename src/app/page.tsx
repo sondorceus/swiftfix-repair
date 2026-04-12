@@ -756,9 +756,9 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold mb-2">Technician is on the way!</h2>
+            <h2 className="text-2xl font-bold mb-2">Booking Confirmed!</h2>
             <p className="text-[#86868b] text-sm mb-8">
-              {name ? `${name}, we'll` : "We'll"} text you at {phone || "your number"} with live updates.
+              {name ? `${name}, you'll` : "You'll"} receive a confirmation email and be contacted by a technician shortly.
             </p>
 
             {/* Fake tracking card */}
