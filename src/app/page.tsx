@@ -22,12 +22,12 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 type Step = "select" | "issue" | "time" | "confirm";
 
 const IPHONE_MODELS = [
-  { id: "iphone16", label: "iPhone 16", sub: "& 16 Pro", year: "2024", color: "#1d1d1f" },
-  { id: "iphone15", label: "iPhone 15", sub: "& 15 Pro", year: "2023", color: "#2d2d2f" },
-  { id: "iphone14", label: "iPhone 14", sub: "& 14 Pro", year: "2022", color: "#3a3a3c" },
-  { id: "iphone13", label: "iPhone 13", sub: "& 13 Pro", year: "2021", color: "#48484a" },
-  { id: "iphone12", label: "iPhone 12", sub: "& 12 Pro", year: "2020", color: "#545456" },
-  { id: "iphone11", label: "iPhone 11", sub: "& 11 Pro", year: "2019", color: "#636366" },
+  { id: "iphone16", label: "iPhone 16", sub: "& 16 Pro", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic" },
+  { id: "iphone15", label: "iPhone 15", sub: "& 15 Pro", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic" },
+  { id: "iphone14", label: "iPhone 14", sub: "& 14 Pro", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic" },
+  { id: "iphone13", label: "iPhone 13", sub: "& 13 Pro", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic" },
+  { id: "iphone12", label: "iPhone 12", sub: "& 12 Pro", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic" },
+  { id: "iphone11", label: "iPhone 11", sub: "& 11 Pro", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic" },
 ];
 
 const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
@@ -366,18 +366,43 @@ export default function Home() {
                   onClick={() => handleModelSelect(m.id)}
                   className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.97] transition-all duration-200 cursor-pointer"
                 >
-                  {/* iPhone device illustration */}
-                  <div className="relative w-16 h-28 mb-3">
-                    <svg viewBox="0 0 60 110" fill="none" className="w-full h-full drop-shadow-lg group-hover:drop-shadow-[0_0_12px_rgba(0,113,227,0.3)] transition-all duration-300">
-                      <rect x="2" y="2" width="56" height="106" rx="12" fill={m.color} stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
-                      <rect x="6" y="14" width="48" height="82" rx="2" fill="#000" opacity="0.9"/>
-                      <rect x="7" y="15" width="46" height="80" rx="1.5" fill="url(#screen)" opacity="0.6"/>
-                      <circle cx="30" cy="8" r="3" fill="#000" opacity="0.5"/>
-                      <rect x="22" y="100" width="16" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-                      <defs><linearGradient id="screen" x1="7" y1="15" x2="53" y2="95"><stop stopColor="#1a1a2e"/><stop offset="1" stopColor="#0a0a1a"/></linearGradient></defs>
-                    </svg>
-                    {/* Model number overlay on screen */}
-                    <span className="absolute inset-0 flex items-center justify-center text-white/40 text-lg font-bold mt-2">{m.id.replace("iphone", "")}</span>
+                  {/* Photorealistic iPhone render */}
+                  <div className="relative w-[56px] h-[108px] mb-3 group-hover:scale-105 transition-transform duration-300">
+                    {/* Frame */}
+                    <div className="absolute inset-0 rounded-[14px] shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]" style={{ background: `linear-gradient(145deg, ${m.frame}, ${m.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
+                      {/* Side buttons */}
+                      <div className="absolute -left-[2px] top-[22px] w-[2px] h-[10px] rounded-l-sm" style={{ background: m.frame }} />
+                      <div className="absolute -left-[2px] top-[36px] w-[2px] h-[16px] rounded-l-sm" style={{ background: m.frame }} />
+                      <div className="absolute -left-[2px] top-[54px] w-[2px] h-[16px] rounded-l-sm" style={{ background: m.frame }} />
+                      <div className="absolute -right-[2px] top-[32px] w-[2px] h-[18px] rounded-r-sm" style={{ background: m.frame }} />
+                    </div>
+                    {/* Screen */}
+                    <div className="absolute top-[3px] left-[3px] right-[3px] bottom-[3px] rounded-[11px] overflow-hidden bg-black">
+                      {/* Dynamic Island / Notch */}
+                      {m.notch === "dynamic" ? (
+                        <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-full z-10" />
+                      ) : (
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[24px] h-[8px] bg-black rounded-b-lg z-10" />
+                      )}
+                      {/* Screen content — wallpaper gradient */}
+                      <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${m.accent}40, #000 40%, ${m.accent}20, #000)` }}>
+                        {/* Time */}
+                        <p className="text-white/70 text-[8px] font-semibold text-center mt-[12px]">9:41</p>
+                        {/* App grid dots */}
+                        <div className="grid grid-cols-4 gap-[3px] px-[5px] mt-[8px]">
+                          {Array.from({ length: 12 }).map((_, i) => (
+                            <div key={i} className="w-[7px] h-[7px] rounded-[2px]" style={{ background: `${m.accent}${50 + i * 4}` }} />
+                          ))}
+                        </div>
+                      </div>
+                      {/* Home indicator */}
+                      <div className="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[16px] h-[2px] bg-white/30 rounded-full" />
+                    </div>
+                    {/* Camera bump (back glass detail) */}
+                    <div className="absolute top-[6px] left-[5px] w-[16px] h-[16px] rounded-[5px] border border-white/10" style={{ background: `${m.frame}cc` }}>
+                      <div className="absolute top-[3px] left-[3px] w-[4px] h-[4px] rounded-full bg-[#1a1a2e] border border-white/20" />
+                      <div className="absolute bottom-[3px] right-[3px] w-[3px] h-[3px] rounded-full bg-[#1a1a2e] border border-white/10" />
+                    </div>
                   </div>
                   <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{m.label}</p>
                   <p className="text-[#86868b] text-[11px]">{m.sub} · {m.year}</p>
