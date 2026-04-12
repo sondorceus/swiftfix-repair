@@ -263,9 +263,24 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    try {
+      await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name, phone, address,
+          device: deviceLabel,
+          repair: repair?.name,
+          time: timeChoice,
+          slot: specificSlot,
+        }),
+      });
+    } catch {
+      // Booking notification failed silently — customer still sees confirmation
+    }
   };
 
   const resetAll = () => {
@@ -347,16 +362,16 @@ export default function Home() {
                 <button
                   key={d.id}
                   onClick={() => d.id === "android" ? window.location.href = `tel:${PHONE}` : handleDeviceSelect(d.id)}
-                  className={`w-full flex items-center gap-4 p-4 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
+                  className={`w-full flex items-center gap-4 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
                     d.hot
-                      ? "bg-white/10 border border-white/20 hover:bg-white/15"
-                      : "bg-white/5 border border-white/10 hover:bg-white/10"
+                      ? "p-5 bg-white/10 border-2 border-[#0071e3]/40 hover:bg-white/15 hover:border-[#0071e3]/70"
+                      : "p-4 bg-white/5 border border-white/10 hover:bg-white/10"
                   }`}
                 >
-                  <span className="text-2xl">{d.icon}</span>
+                  <span className={d.hot ? "text-4xl" : "text-2xl"}>{d.icon}</span>
                   <div className="flex-1">
-                    <p className="font-semibold text-white">{d.label}</p>
-                    <p className="text-[#86868b] text-xs">{d.sub}</p>
+                    <p className={`font-semibold text-white ${d.hot ? "text-lg" : ""}`}>{d.label}</p>
+                    <p className={`text-[#86868b] ${d.hot ? "text-sm" : "text-xs"}`}>{d.sub}</p>
                   </div>
                   <svg className="w-5 h-5 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
