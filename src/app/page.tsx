@@ -22,12 +22,12 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 type Step = "select" | "issue" | "time" | "confirm";
 
 const IPHONE_MODELS = [
-  { id: "iphone16", label: "iPhone 16 / 16 Pro", year: "2024", img: "16" },
-  { id: "iphone15", label: "iPhone 15 / 15 Pro", year: "2023", img: "15" },
-  { id: "iphone14", label: "iPhone 14 / 14 Pro", year: "2022", img: "14" },
-  { id: "iphone13", label: "iPhone 13 / 13 Pro", year: "2021", img: "13" },
-  { id: "iphone12", label: "iPhone 12 / 12 Pro", year: "2020", img: "12" },
-  { id: "iphone11", label: "iPhone 11 / 11 Pro", year: "2019", img: "11" },
+  { id: "iphone16", label: "iPhone 16", sub: "& 16 Pro", year: "2024", color: "#1d1d1f" },
+  { id: "iphone15", label: "iPhone 15", sub: "& 15 Pro", year: "2023", color: "#2d2d2f" },
+  { id: "iphone14", label: "iPhone 14", sub: "& 14 Pro", year: "2022", color: "#3a3a3c" },
+  { id: "iphone13", label: "iPhone 13", sub: "& 13 Pro", year: "2021", color: "#48484a" },
+  { id: "iphone12", label: "iPhone 12", sub: "& 12 Pro", year: "2020", color: "#545456" },
+  { id: "iphone11", label: "iPhone 11", sub: "& 11 Pro", year: "2019", color: "#636366" },
 ];
 
 const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
@@ -349,7 +349,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* iPHONE MODEL PICKER — bottom sheet style */}
+      {/* iPHONE MODEL PICKER — interactive image cards */}
       {showModelPicker && (
         <section className="bg-gradient-to-b from-[#0a0a0a] to-[#1d1d1f] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
@@ -357,25 +357,40 @@ export default function Home() {
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
-            <h2 className="text-2xl font-bold tracking-tight mb-1">Which iPhone?</h2>
-            <p className="text-[#86868b] text-sm mb-6">Select your model for instant pricing</p>
-            <div className="space-y-2">
+            <h2 className="text-2xl font-bold tracking-tight mb-1">Select your iPhone</h2>
+            <p className="text-[#86868b] text-sm mb-6">Tap your model for instant repair pricing</p>
+            <div className="grid grid-cols-2 gap-3">
               {IPHONE_MODELS.map((m) => (
                 <button
                   key={m.id}
                   onClick={() => handleModelSelect(m.id)}
-                  className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition cursor-pointer text-left"
+                  className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.97] transition-all duration-200 cursor-pointer"
                 >
-                  <div>
-                    <p className="font-semibold text-white">{m.label}</p>
-                    <p className="text-[#86868b] text-xs">{m.year}</p>
+                  {/* iPhone device illustration */}
+                  <div className="relative w-16 h-28 mb-3">
+                    <svg viewBox="0 0 60 110" fill="none" className="w-full h-full drop-shadow-lg group-hover:drop-shadow-[0_0_12px_rgba(0,113,227,0.3)] transition-all duration-300">
+                      <rect x="2" y="2" width="56" height="106" rx="12" fill={m.color} stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
+                      <rect x="6" y="14" width="48" height="82" rx="2" fill="#000" opacity="0.9"/>
+                      <rect x="7" y="15" width="46" height="80" rx="1.5" fill="url(#screen)" opacity="0.6"/>
+                      <circle cx="30" cy="8" r="3" fill="#000" opacity="0.5"/>
+                      <rect x="22" y="100" width="16" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                      <defs><linearGradient id="screen" x1="7" y1="15" x2="53" y2="95"><stop stopColor="#1a1a2e"/><stop offset="1" stopColor="#0a0a1a"/></linearGradient></defs>
+                    </svg>
+                    {/* Model number overlay on screen */}
+                    <span className="absolute inset-0 flex items-center justify-center text-white/40 text-lg font-bold mt-2">{m.id.replace("iphone", "")}</span>
                   </div>
-                  <svg className="w-5 h-5 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{m.label}</p>
+                  <p className="text-[#86868b] text-[11px]">{m.sub} · {m.year}</p>
+                  {/* Selection indicator */}
+                  <div className="absolute top-2 right-2 w-5 h-5 rounded-full border border-white/20 group-hover:border-[#0071e3] group-hover:bg-[#0071e3]/20 transition-all flex items-center justify-center">
+                    <svg className="w-3 h-3 text-[#0071e3] opacity-0 group-hover:opacity-100 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
                 </button>
               ))}
             </div>
+            <p className="text-[#86868b] text-[10px] text-center mt-4">All models include same-day service and 90-day warranty</p>
           </div>
         </section>
       )}
