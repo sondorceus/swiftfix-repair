@@ -661,6 +661,43 @@ export default function Home() {
             </div>
           </section>
 
+          {/* REVIEW MARQUEE — auto-scrolling, infinite loop */}
+          <section className="py-12 overflow-hidden">
+            <h2 className="text-2xl font-bold tracking-tight text-center mb-2">What our customers say</h2>
+            <p className="text-[#86868b] text-sm text-center mb-8">4.9★ from 2,400+ verified reviews</p>
+            <div className="relative">
+              <div className="flex animate-[marquee_30s_linear_infinite] gap-4 w-max">
+                {[
+                  { name: "Sarah K.", text: "He came to my office and fixed my screen in 25 minutes. Incredible service.", stars: 5, repair: "Screen Repair" },
+                  { name: "Marcus T.", text: "Fastest repair I've ever experienced. Technician was at my door in 20 min.", stars: 5, repair: "Battery Replace" },
+                  { name: "Jessica L.", text: "No store visit, no waiting. They came to my house and it was done before lunch.", stars: 5, repair: "Charging Port" },
+                  { name: "David R.", text: "Professional, fast, and the price was exactly what they quoted. Will use again.", stars: 5, repair: "Screen Repair" },
+                  { name: "Amanda P.", text: "My MacBook keyboard was fixed same day. The warranty gave me peace of mind.", stars: 5, repair: "Keyboard Repair" },
+                  { name: "Chris M.", text: "Showed up on time, fixed my camera in 20 minutes, and cleaned my phone too.", stars: 5, repair: "Camera Repair" },
+                  { name: "Emily W.", text: "I was skeptical about mobile repair but this was better than any Apple Store trip.", stars: 5, repair: "Back Glass" },
+                  { name: "James H.", text: "Battery was dying by noon every day. Fixed in 15 minutes at my coffee shop.", stars: 5, repair: "Battery Replace" },
+                  { name: "Sarah K.", text: "He came to my office and fixed my screen in 25 minutes. Incredible service.", stars: 5, repair: "Screen Repair" },
+                  { name: "Marcus T.", text: "Fastest repair I've ever experienced. Technician was at my door in 20 min.", stars: 5, repair: "Battery Replace" },
+                  { name: "Jessica L.", text: "No store visit, no waiting. They came to my house and it was done before lunch.", stars: 5, repair: "Charging Port" },
+                  { name: "David R.", text: "Professional, fast, and the price was exactly what they quoted. Will use again.", stars: 5, repair: "Screen Repair" },
+                  { name: "Amanda P.", text: "My MacBook keyboard was fixed same day. The warranty gave me peace of mind.", stars: 5, repair: "Keyboard Repair" },
+                  { name: "Chris M.", text: "Showed up on time, fixed my camera in 20 minutes, and cleaned my phone too.", stars: 5, repair: "Camera Repair" },
+                  { name: "Emily W.", text: "I was skeptical about mobile repair but this was better than any Apple Store trip.", stars: 5, repair: "Back Glass" },
+                  { name: "James H.", text: "Battery was dying by noon every day. Fixed in 15 minutes at my coffee shop.", stars: 5, repair: "Battery Replace" },
+                ].map((r, i) => (
+                  <div key={i} className="flex-shrink-0 w-[280px] bg-[#f5f5f7] rounded-2xl p-5 border border-[#e8e8ed]">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[#fbbf24] text-xs">{"★".repeat(r.stars)}</span>
+                      <span className="text-[10px] text-[#86868b] bg-white rounded-full px-2 py-0.5">{r.repair}</span>
+                    </div>
+                    <p className="text-sm text-[#1d1d1f] leading-relaxed mb-3">&ldquo;{r.text}&rdquo;</p>
+                    <p className="text-xs font-semibold text-[#86868b]">{r.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* TRUST SECTION */}
           <section className="py-16">
             <div className="max-w-lg mx-auto px-4">
@@ -733,6 +770,7 @@ export default function Home() {
 
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
     </main>
   );
