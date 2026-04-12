@@ -22,42 +22,42 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 type Step = "select" | "issue" | "time" | "confirm";
 
 const IPHONE_SERIES = [
-  { id: "16", label: "iPhone 16", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic",
+  { id: "16", label: "iPhone 16", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic", cameras: 3, edges: "round",
     variants: [
       { id: "iphone16", label: "iPhone 16", size: '6.1"' },
       { id: "iphone16plus", label: "iPhone 16 Plus", size: '6.7"' },
       { id: "iphone16pro", label: "iPhone 16 Pro", size: '6.3"' },
       { id: "iphone16promax", label: "iPhone 16 Pro Max", size: '6.9"' },
     ]},
-  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic",
+  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic", cameras: 3, edges: "round",
     variants: [
       { id: "iphone15", label: "iPhone 15", size: '6.1"' },
       { id: "iphone15plus", label: "iPhone 15 Plus", size: '6.7"' },
       { id: "iphone15pro", label: "iPhone 15 Pro", size: '6.1"' },
       { id: "iphone15promax", label: "iPhone 15 Pro Max", size: '6.7"' },
     ]},
-  { id: "14", label: "iPhone 14", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic",
+  { id: "14", label: "iPhone 14", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic", cameras: 2, edges: "flat",
     variants: [
       { id: "iphone14", label: "iPhone 14", size: '6.1"' },
       { id: "iphone14plus", label: "iPhone 14 Plus", size: '6.7"' },
       { id: "iphone14pro", label: "iPhone 14 Pro", size: '6.1"' },
       { id: "iphone14promax", label: "iPhone 14 Pro Max", size: '6.7"' },
     ]},
-  { id: "13", label: "iPhone 13", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic",
+  { id: "13", label: "iPhone 13", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic", cameras: 2, edges: "flat",
     variants: [
       { id: "iphone13mini", label: "iPhone 13 Mini", size: '5.4"' },
       { id: "iphone13", label: "iPhone 13", size: '6.1"' },
       { id: "iphone13pro", label: "iPhone 13 Pro", size: '6.1"' },
       { id: "iphone13promax", label: "iPhone 13 Pro Max", size: '6.7"' },
     ]},
-  { id: "12", label: "iPhone 12", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic",
+  { id: "12", label: "iPhone 12", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic", cameras: 2, edges: "flat",
     variants: [
       { id: "iphone12mini", label: "iPhone 12 Mini", size: '5.4"' },
       { id: "iphone12", label: "iPhone 12", size: '6.1"' },
       { id: "iphone12pro", label: "iPhone 12 Pro", size: '6.1"' },
       { id: "iphone12promax", label: "iPhone 12 Pro Max", size: '6.7"' },
     ]},
-  { id: "11", label: "iPhone 11", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic", image: "/iphone-render.jpeg",
+  { id: "11", label: "iPhone 11", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic", cameras: 2, edges: "round",
     variants: [
       { id: "iphone11", label: "iPhone 11", size: '6.1"' },
       { id: "iphone11pro", label: "iPhone 11 Pro", size: '5.8"' },
@@ -315,19 +315,12 @@ export default function Home() {
               <span className="text-xs text-[#86868b]">Austin, TX</span>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex-1">
-                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
-                  We come to you.<br />Fixed in 30 minutes.
-                </h1>
-                <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
-                  A certified technician drives to your location and repairs your device on the spot. Same-day service across Austin.
-                </p>
-              </div>
-              <div className="hidden sm:block flex-shrink-0 w-[120px]">
-                <img src="/iphone-render.jpeg" alt="iPhone repair" className="w-full drop-shadow-[0_8px_30px_rgba(0,113,227,0.3)]" />
-              </div>
-            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
+              We come to you.<br />Fixed in 30 minutes.
+            </h1>
+            <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
+              A certified technician drives to your location and repairs your device on the spot. Same-day service across Austin.
+            </p>
 
             {/* Trust badges — compact row */}
             <div className="flex flex-wrap gap-2 mb-8">
@@ -427,35 +420,44 @@ export default function Home() {
                       onClick={() => handleSeriesSelect(s.id)}
                       className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.97] transition-all duration-200 cursor-pointer"
                     >
-                      {/* iPhone render */}
+                      {/* iPhone render — model-specific */}
                       <div className="relative w-[52px] h-[100px] mb-3 group-hover:scale-105 transition-transform duration-300">
-                        {s.image ? (
-                          <img src={s.image} alt={s.label} className="w-full h-full object-cover rounded-[13px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]" />
-                        ) : (
-                          <>
-                            <div className="absolute inset-0 rounded-[13px] shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                              <div className="absolute -left-[2px] top-[20px] w-[2px] h-[9px] rounded-l-sm" style={{ background: s.frame }} />
-                              <div className="absolute -left-[2px] top-[33px] w-[2px] h-[14px] rounded-l-sm" style={{ background: s.frame }} />
-                              <div className="absolute -right-[2px] top-[30px] w-[2px] h-[16px] rounded-r-sm" style={{ background: s.frame }} />
-                            </div>
-                            <div className="absolute top-[3px] left-[3px] right-[3px] bottom-[3px] rounded-[10px] overflow-hidden bg-black">
-                              {s.notch === "dynamic" ? (
-                                <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[20px] h-[6px] bg-black rounded-full z-10" />
-                              ) : (
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-b-lg z-10" />
-                              )}
-                              <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
-                                <p className="text-white/60 text-[7px] font-semibold text-center mt-[10px]">9:41</p>
-                                <div className="grid grid-cols-4 gap-[2px] px-[4px] mt-[6px]">
-                                  {Array.from({ length: 8 }).map((_, i) => (
-                                    <div key={i} className="w-[6px] h-[6px] rounded-[2px]" style={{ background: `${s.accent}${50 + i * 5}` }} />
-                                  ))}
-                                </div>
+                        <div className={`absolute inset-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)] ${s.edges === "flat" ? "rounded-[11px]" : "rounded-[13px]"}`} style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
+                          <div className="absolute -left-[2px] top-[20px] w-[2px] h-[9px] rounded-l-sm" style={{ background: s.frame }} />
+                          <div className="absolute -left-[2px] top-[33px] w-[2px] h-[14px] rounded-l-sm" style={{ background: s.frame }} />
+                          <div className="absolute -right-[2px] top-[30px] w-[2px] h-[16px] rounded-r-sm" style={{ background: s.frame }} />
+                          {/* Camera bump — model specific */}
+                          <div className="absolute -top-[1px] -left-[1px]">
+                            {s.cameras === 3 ? (
+                              <div className="w-[18px] h-[18px] rounded-[5px] bg-[#1a1a1a] border border-white/10 flex flex-wrap items-center justify-center gap-[1px] p-[2px]">
+                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
+                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
+                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
                               </div>
-                              <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[14px] h-[2px] bg-white/30 rounded-full" />
+                            ) : (
+                              <div className="w-[14px] h-[20px] rounded-[4px] bg-[#1a1a1a] border border-white/10 flex flex-col items-center justify-center gap-[2px] p-[2px]">
+                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
+                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <div className={`absolute top-[3px] left-[3px] right-[3px] bottom-[3px] overflow-hidden bg-black ${s.edges === "flat" ? "rounded-[8px]" : "rounded-[10px]"}`}>
+                          {s.notch === "dynamic" ? (
+                            <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[20px] h-[6px] bg-[#1a1a1a] rounded-full z-10 border border-black/50" />
+                          ) : (
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-b-lg z-10 border-x border-b border-white/5" />
+                          )}
+                          <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
+                            <p className="text-white/60 text-[7px] font-semibold text-center mt-[10px]">9:41</p>
+                            <div className="flex flex-col items-center mt-[4px] gap-[3px]">
+                              <div className="w-[20px] h-[20px] rounded-[5px]" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accent}80)` }} />
+                              <div className="w-[28px] h-[1px] bg-white/20 rounded" />
+                              <div className="w-[22px] h-[1px] bg-white/10 rounded" />
                             </div>
-                          </>
-                        )}
+                          </div>
+                          <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[14px] h-[2px] bg-white/30 rounded-full" />
+                        </div>
                       </div>
                       <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{s.label}</p>
                       <p className="text-[#86868b] text-[11px]">{s.year} · {s.variants.length} models</p>
