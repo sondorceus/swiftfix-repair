@@ -57,7 +57,7 @@ const IPHONE_SERIES = [
       { id: "iphone12pro", label: "iPhone 12 Pro", size: '6.1"' },
       { id: "iphone12promax", label: "iPhone 12 Pro Max", size: '6.7"' },
     ]},
-  { id: "11", label: "iPhone 11", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic",
+  { id: "11", label: "iPhone 11", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic", image: "/iphone-render.jpeg",
     variants: [
       { id: "iphone11", label: "iPhone 11", size: '6.1"' },
       { id: "iphone11pro", label: "iPhone 11 Pro", size: '5.8"' },
@@ -429,27 +429,33 @@ export default function Home() {
                     >
                       {/* iPhone render */}
                       <div className="relative w-[52px] h-[100px] mb-3 group-hover:scale-105 transition-transform duration-300">
-                        <div className="absolute inset-0 rounded-[13px] shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                          <div className="absolute -left-[2px] top-[20px] w-[2px] h-[9px] rounded-l-sm" style={{ background: s.frame }} />
-                          <div className="absolute -left-[2px] top-[33px] w-[2px] h-[14px] rounded-l-sm" style={{ background: s.frame }} />
-                          <div className="absolute -right-[2px] top-[30px] w-[2px] h-[16px] rounded-r-sm" style={{ background: s.frame }} />
-                        </div>
-                        <div className="absolute top-[3px] left-[3px] right-[3px] bottom-[3px] rounded-[10px] overflow-hidden bg-black">
-                          {s.notch === "dynamic" ? (
-                            <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[20px] h-[6px] bg-black rounded-full z-10" />
-                          ) : (
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-b-lg z-10" />
-                          )}
-                          <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
-                            <p className="text-white/60 text-[7px] font-semibold text-center mt-[10px]">9:41</p>
-                            <div className="grid grid-cols-4 gap-[2px] px-[4px] mt-[6px]">
-                              {Array.from({ length: 8 }).map((_, i) => (
-                                <div key={i} className="w-[6px] h-[6px] rounded-[2px]" style={{ background: `${s.accent}${50 + i * 5}` }} />
-                              ))}
+                        {s.image ? (
+                          <img src={s.image} alt={s.label} className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]" />
+                        ) : (
+                          <>
+                            <div className="absolute inset-0 rounded-[13px] shadow-[0_4px_20px_rgba(0,0,0,0.5)]" style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
+                              <div className="absolute -left-[2px] top-[20px] w-[2px] h-[9px] rounded-l-sm" style={{ background: s.frame }} />
+                              <div className="absolute -left-[2px] top-[33px] w-[2px] h-[14px] rounded-l-sm" style={{ background: s.frame }} />
+                              <div className="absolute -right-[2px] top-[30px] w-[2px] h-[16px] rounded-r-sm" style={{ background: s.frame }} />
                             </div>
-                          </div>
-                          <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[14px] h-[2px] bg-white/30 rounded-full" />
-                        </div>
+                            <div className="absolute top-[3px] left-[3px] right-[3px] bottom-[3px] rounded-[10px] overflow-hidden bg-black">
+                              {s.notch === "dynamic" ? (
+                                <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[20px] h-[6px] bg-black rounded-full z-10" />
+                              ) : (
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-b-lg z-10" />
+                              )}
+                              <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
+                                <p className="text-white/60 text-[7px] font-semibold text-center mt-[10px]">9:41</p>
+                                <div className="grid grid-cols-4 gap-[2px] px-[4px] mt-[6px]">
+                                  {Array.from({ length: 8 }).map((_, i) => (
+                                    <div key={i} className="w-[6px] h-[6px] rounded-[2px]" style={{ background: `${s.accent}${50 + i * 5}` }} />
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[14px] h-[2px] bg-white/30 rounded-full" />
+                            </div>
+                          </>
+                        )}
                       </div>
                       <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{s.label}</p>
                       <p className="text-[#86868b] text-[11px]">{s.year} · {s.variants.length} models</p>
