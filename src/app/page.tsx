@@ -315,12 +315,19 @@ export default function Home() {
               <span className="text-xs text-[#86868b]">Austin, TX</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
-              We come to you.<br />Fixed in 30 minutes.
-            </h1>
-            <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
-              A certified technician drives to your location and repairs your device on the spot. Same-day service across Austin.
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="flex-1">
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
+                  We come to you.<br />Fixed in 30 minutes.
+                </h1>
+                <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
+                  A certified technician drives to your location and repairs your device on the spot. Same-day service across Austin.
+                </p>
+              </div>
+              <div className="hidden sm:block flex-shrink-0 w-[120px]">
+                <img src="/iphone-render.jpeg" alt="iPhone repair" className="w-full drop-shadow-[0_8px_30px_rgba(0,113,227,0.3)]" />
+              </div>
+            </div>
 
             {/* Trust badges — compact row */}
             <div className="flex flex-wrap gap-2 mb-8">
