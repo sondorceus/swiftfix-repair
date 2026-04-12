@@ -72,6 +72,8 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
     { name: "Charging Port", price: "$89", time: "25 min", icon: "⚡" },
     { name: "Camera Repair", price: "$99", time: "30 min", icon: "📷" },
     { name: "Back Glass", price: "$109", time: "45 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: "$79", time: "25 min", icon: "🔊" },
+    { name: "Water Damage", price: "$99+", time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ],
   iphone15: [
@@ -80,6 +82,8 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
     { name: "Charging Port", price: "$79", time: "25 min", icon: "⚡" },
     { name: "Camera Repair", price: "$89", time: "30 min", icon: "📷" },
     { name: "Back Glass", price: "$99", time: "40 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: "$69", time: "25 min", icon: "🔊" },
+    { name: "Water Damage", price: "$89+", time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ],
   iphone14: [
@@ -88,6 +92,8 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
     { name: "Charging Port", price: "$69", time: "25 min", icon: "⚡" },
     { name: "Camera Repair", price: "$79", time: "30 min", icon: "📷" },
     { name: "Back Glass", price: "$89", time: "40 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: "$59", time: "25 min", icon: "🔊" },
+    { name: "Water Damage", price: "$79+", time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ],
   iphone13: [
@@ -96,6 +102,8 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
     { name: "Charging Port", price: "$59", time: "25 min", icon: "⚡" },
     { name: "Camera Repair", price: "$69", time: "25 min", icon: "📷" },
     { name: "Back Glass", price: "$79", time: "35 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: "$55", time: "20 min", icon: "🔊" },
+    { name: "Water Damage", price: "$69+", time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ],
   iphone12: [
@@ -104,6 +112,8 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
     { name: "Charging Port", price: "$55", time: "20 min", icon: "⚡" },
     { name: "Camera Repair", price: "$65", time: "25 min", icon: "📷" },
     { name: "Back Glass", price: "$69", time: "35 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: "$49", time: "20 min", icon: "🔊" },
+    { name: "Water Damage", price: "$59+", time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ],
   iphone11: [
@@ -111,6 +121,9 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
     { name: "Battery Replacement", price: "$39", time: "15 min", icon: "🔋" },
     { name: "Charging Port", price: "$49", time: "20 min", icon: "⚡" },
     { name: "Camera Repair", price: "$55", time: "25 min", icon: "📷" },
+    { name: "Back Glass", price: "$59", time: "30 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: "$45", time: "20 min", icon: "🔊" },
+    { name: "Water Damage", price: "$49+", time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ],
 };
