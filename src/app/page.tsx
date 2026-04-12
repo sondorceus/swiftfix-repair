@@ -265,15 +265,29 @@ export default function Home() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
-              Get your phone fixed<br />in 30 minutes
+              We come to you.<br />Fixed in 30 minutes.
             </h1>
-            <p className="text-[#86868b] text-sm mb-8 leading-relaxed max-w-sm">
-              A certified technician comes to you — home, office, anywhere. Same-day repairs with a 90-day warranty.
+            <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
+              A certified technician drives to your location and repairs your device on the spot. Same-day service across Austin.
             </p>
+
+            {/* Trust badges — compact row */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[
+                { label: "Same-Day Service", icon: "⚡" },
+                { label: "90-Day Warranty", icon: "🛡" },
+                { label: "Certified Techs", icon: "✓" },
+                { label: "4.9★ Rating", icon: "★" },
+              ].map((b) => (
+                <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[11px] font-medium text-white/80">
+                  <span className="text-[#34c759]">{b.icon}</span> {b.label}
+                </span>
+              ))}
+            </div>
 
             {/* Quick action: What needs fixing? */}
             <div className="space-y-3 mb-8">
-              <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium">What needs fixing?</p>
+              <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium">Fix my device now</p>
               {[
                 { id: "iphone" as const, label: "iPhone", sub: "11 and newer · From $39", icon: "📱", hot: true },
                 { id: "macbook" as const, label: "MacBook", sub: "All models · From $99", icon: "💻", hot: false },
@@ -306,24 +320,30 @@ export default function Home() {
             </div>
 
             {/* Social proof strip */}
-            <div className="flex items-center justify-between bg-white/5 rounded-2xl p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {["JM", "SK", "AL"].map((init, i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-[10px] font-bold border-2 border-[#1d1d1f]">
-                      {init}
+            <div className="bg-white/5 rounded-2xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {["JM", "SK", "AL"].map((init, i) => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-[10px] font-bold border-2 border-[#1d1d1f]">
+                        {init}
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <p className="text-white text-xs font-medium">5,000+ repairs completed</p>
+                    <div className="flex items-center gap-1">
+                      <span className="text-[#fbbf24] text-[10px]">★★★★★</span>
+                      <span className="text-[#86868b] text-[10px]">4.9/5 from 2,400+ reviews</span>
                     </div>
-                  ))}
+                  </div>
                 </div>
-                <div>
-                  <p className="text-white text-xs font-medium">5,000+ repairs done</p>
-                  <p className="text-[#86868b] text-[10px]">4.9★ average rating</p>
+                <div className="text-right">
+                  <p className="text-white text-xs font-bold">90-day</p>
+                  <p className="text-[#86868b] text-[10px]">warranty</p>
                 </div>
               </div>
-              <div className="text-right">
-                <p className="text-white text-xs font-bold">90-day</p>
-                <p className="text-[#86868b] text-[10px]">warranty</p>
-              </div>
+              <p className="text-[#86868b] text-[10px] text-center italic">&quot;He came to my office and fixed my screen in 25 minutes. Incredible service.&quot; — Sarah K.</p>
             </div>
           </div>
         </section>
@@ -370,7 +390,8 @@ export default function Home() {
             </button>
             <StepIndicator current={1} total={3} />
             <h2 className="text-2xl font-bold tracking-tight mb-1">What&apos;s the issue?</h2>
-            <p className="text-[#86868b] text-sm mb-6">{deviceLabel} · Tap to see pricing</p>
+            <p className="text-[#86868b] text-sm mb-2">{deviceLabel} · Tap to see pricing</p>
+            <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
             <div className="space-y-2">
               {currentRepairs.map((r) => (
@@ -557,7 +578,7 @@ export default function Home() {
                 type="submit"
                 className="w-full bg-[#0071e3] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer mt-2"
               >
-                Send Technician →
+                Book My Repair Now
               </button>
 
               <div className="flex items-center justify-center gap-4 text-[#86868b] text-[10px] mt-3">
@@ -618,13 +639,13 @@ export default function Home() {
         <>
           <section className="py-16 bg-[#f5f5f7]">
             <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">How it works</h2>
-              <p className="text-[#86868b] text-sm text-center mb-10">As easy as ordering a ride</p>
+              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">3 steps. That&apos;s it.</h2>
+              <p className="text-[#86868b] text-sm text-center mb-10">Book a repair in under 60 seconds</p>
               <div className="space-y-6">
                 {[
-                  { num: "1", title: "Pick your repair", desc: "Select your device and issue. See the price instantly." },
-                  { num: "2", title: "Choose a time", desc: "ASAP or schedule ahead. A certified tech is dispatched." },
-                  { num: "3", title: "Get it fixed on the spot", desc: "Technician arrives at your location. Most repairs done in 30 min." },
+                  { num: "1", title: "Book your repair", desc: "Pick your device, select the issue, and see your price instantly." },
+                  { num: "2", title: "We come to you", desc: "A certified technician drives to your home, office, or wherever you are." },
+                  { num: "3", title: "Device fixed on the spot", desc: "Most repairs completed in 30 minutes. Pay only after it works." },
                 ].map((s) => (
                   <div key={s.num} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-sm shrink-0">
@@ -643,7 +664,7 @@ export default function Home() {
           {/* TRUST SECTION */}
           <section className="py-16">
             <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-2xl font-bold tracking-tight text-center mb-10">Why Austin trusts us</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-center mb-10">Why 5,000+ Austinites choose us</h2>
               <div className="grid grid-cols-2 gap-4 mb-10">
                 {[
                   { stat: "5,000+", label: "Devices Fixed" },
@@ -684,7 +705,7 @@ export default function Home() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="w-full bg-[#0071e3] text-white py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
             >
-              Get Started — Check Pricing
+              Fix My Phone Now
             </button>
           </div>
 
