@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, address, device, repair, time, slot } = body;
+    const { name, phone, email, address, device, repair, time, slot } = body;
 
     const bookedAt = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
 
@@ -24,7 +24,8 @@ export async function POST(request: Request) {
             <div style="background: #f5f5f7; padding: 20px; border-radius: 0 0 12px 12px;">
               <table style="width: 100%; border-collapse: collapse;">
                 <tr><td style="padding: 8px 0; color: #666;">Customer</td><td style="padding: 8px 0; font-weight: 600;">${name}</td></tr>
-                <tr><td style="padding: 8px 0; color: #666;">Phone</td><td style="padding: 8px 0; font-weight: 600;">${phone}</td></tr>
+                ${phone ? `<tr><td style="padding: 8px 0; color: #666;">Phone</td><td style="padding: 8px 0; font-weight: 600;">${phone}</td></tr>` : ""}
+                ${email ? `<tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; font-weight: 600;">${email}</td></tr>` : ""}
                 <tr><td style="padding: 8px 0; color: #666;">Address</td><td style="padding: 8px 0; font-weight: 600;">${address}</td></tr>
                 <tr><td style="padding: 8px 0; color: #666;">Device</td><td style="padding: 8px 0; font-weight: 600;">${device}</td></tr>
                 <tr><td style="padding: 8px 0; color: #666;">Repair</td><td style="padding: 8px 0; font-weight: 600;">${repair}</td></tr>
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
           from: "swiftfix",
           fromName: "SwiftFix Booking",
           role: "system",
-          body: `🔔 NEW BOOKING!\n\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\nDevice: ${device}\nRepair: ${repair}\nTime: ${time}${slot ? ` — ${slot}` : ""}`,
+          body: `🔔 NEW BOOKING!\n\nCustomer: ${name}${phone ? `\nPhone: ${phone}` : ""}${email ? `\nEmail: ${email}` : ""}\nAddress: ${address}\nDevice: ${device}\nRepair: ${repair}\nTime: ${time}${slot ? ` — ${slot}` : ""}`,
         }),
       });
     } catch {

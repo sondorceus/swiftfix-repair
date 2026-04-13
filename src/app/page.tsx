@@ -204,6 +204,7 @@ export default function Home() {
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
@@ -299,7 +300,7 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name, phone, address,
+          name, phone, email, address,
           device: deviceLabel,
           repair: repair?.name,
           time: timeChoice,
@@ -321,6 +322,7 @@ export default function Home() {
     setAddress("");
     setName("");
     setPhone("");
+    setEmail("");
     setSubmitted(false);
     setShowModelPicker(false);
     setSelectedSeries(null);
@@ -708,7 +710,7 @@ export default function Home() {
             <h2 className="text-xl font-bold tracking-tight mb-1">Almost done</h2>
             <p className="text-[#86868b] text-sm mb-6">Where should we send the technician?</p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={(e) => { e.preventDefault(); if (!phone && !email) { alert("Please provide a phone number or email so we can reach you."); return; } handleSubmit(e); }} className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Location</label>
                 <input
@@ -720,30 +722,40 @@ export default function Home() {
                   className="w-full px-4 py-3.5 border border-[#e8e8ed] rounded-xl text-sm focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
+              <div>
+                <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Name</label>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full px-4 py-3.5 border border-[#e8e8ed] rounded-xl text-sm focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                />
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Name</label>
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full px-4 py-3.5 border border-[#e8e8ed] rounded-xl text-sm focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Phone</label>
+                  <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Phone <span className="normal-case text-[10px]">(optional)</span></label>
                   <input
                     type="tel"
                     placeholder="(512) 555-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    required
+                    className="w-full px-4 py-3.5 border border-[#e8e8ed] rounded-xl text-sm focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Email <span className="normal-case text-[10px]">(optional)</span></label>
+                  <input
+                    type="email"
+                    placeholder="you@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-4 py-3.5 border border-[#e8e8ed] rounded-xl text-sm focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
               </div>
+              <p className="text-[10px] text-[#86868b] -mt-2">Provide at least one so we can reach you</p>
 
               <button
                 type="submit"
