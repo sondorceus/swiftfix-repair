@@ -212,7 +212,7 @@ export default function Home() {
   const getRepairKey = (model: string | null) => {
     if (!model) return null;
     // Strip variant suffixes to get base series key
-    const base = model.replace(/plus|pro|promax|mini/g, "");
+    const base = model.replace(/promax|plus|pro|mini/g, "");
     return IPHONE_REPAIRS[base] ? base : model;
   };
 
