@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     try {
       await resend.emails.send({
         from: "SwiftFix Bookings <onboarding@resend.dev>",
-        to: "grantsales03@gmail.com",
+        to: process.env.RESEND_TO_EMAIL || "sondorceus@gmail.com",
         subject: `New Booking: ${device} — ${repair}`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
