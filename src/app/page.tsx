@@ -194,7 +194,7 @@ function TechCard() {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="flex items-center gap-4 bg-gradient-to-r from-white/5 to-white/10 rounded-2xl p-4 border border-white/15">
+    <div className="flex items-center gap-4 bg-gradient-to-r from-[#1a1a1e] to-[#222] rounded-2xl p-4 border border-white/15">
       <div className="w-12 h-12 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-lg shrink-0">
         JM
       </div>
@@ -444,7 +444,7 @@ export default function Home() {
             </div>
 
             {/* Social proof strip */}
-            <div className="bg-white/5 rounded-2xl p-4 space-y-3">
+            <div className="bg-[#1a1a1e] rounded-2xl p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
@@ -481,7 +481,7 @@ export default function Home() {
 
       {/* PRICING ANCHOR STRIP — early visibility */}
       {step === "select" && !showModelPicker && (
-        <section className="py-6 bg-[#111] border-b border-white/10">
+        <section className="py-6 bg-[#141416] border-b border-white/10">
           <div className="max-w-lg mx-auto px-4">
             <div className="grid grid-cols-3 gap-3 text-center">
               {[
@@ -489,7 +489,7 @@ export default function Home() {
                 { label: "Battery Replace", price: "from $59", icon: "🔋" },
                 { label: "Diagnostics", price: "FREE", icon: "🔍" },
               ].map((p) => (
-                <div key={p.label} className="bg-white/5 border border-white/10 rounded-xl p-3">
+                <div key={p.label} className="bg-[#1a1a1e] border border-white/10 rounded-xl p-3">
                   <span className="text-lg">{p.icon}</span>
                   <p className="text-[#0071e3] font-bold text-sm mt-1">{p.price}</p>
                   <p className="text-[#86868b] text-[10px]">{p.label}</p>
@@ -518,7 +518,7 @@ export default function Home() {
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.97] transition-all duration-200 cursor-pointer"
+                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#1a1a1e] border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/10 active:scale-[0.97] transition-all duration-200 cursor-pointer"
                     >
                       {/* iPhone render — model-specific */}
                       <div className="relative w-[52px] h-[100px] mb-3 group-hover:scale-105 transition-transform duration-300">
@@ -580,7 +580,7 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/8 active:scale-[0.98] transition-all duration-200 cursor-pointer text-left"
+                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#1a1a1e] border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/10 active:scale-[0.98] transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-14 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.1)' }}>
@@ -626,7 +626,7 @@ export default function Home() {
                 <button
                   key={r.name}
                   onClick={() => handleRepairSelect(r)}
-                  className="w-full flex items-center gap-4 p-4 rounded-2xl border border-white/10 hover:border-[#0071e3]/40 hover:bg-white/5 transition-all duration-200 cursor-pointer text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl border border-white/10 hover:border-[#0071e3]/40 hover:bg-[#1a1a1e] transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-2xl w-10 text-center">{r.icon}</span>
                   <div className="flex-1">
@@ -661,7 +661,7 @@ export default function Home() {
             <StepIndicator current={2} total={3} />
 
             {/* Selected repair summary */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
+            <div className="bg-[#1a1a1e] border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
               <div>
                 <p className="text-xs text-[#86868b]">{deviceLabel}</p>
                 <p className="font-semibold">{repair.name}</p>
@@ -762,7 +762,7 @@ export default function Home() {
             <StepIndicator current={3} total={3} />
 
             {/* Order summary — DoorDash checkout style */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 mb-6">
+            <div className="bg-[#1a1a1e] border border-white/10 rounded-2xl p-5 mb-6">
               <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Your repair</p>
               <div className="flex items-center justify-between mb-3">
                 <div>
@@ -792,7 +792,7 @@ export default function Home() {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#1a1a1e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div>
@@ -803,7 +803,7 @@ export default function Home() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#1a1a1e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -814,7 +814,7 @@ export default function Home() {
                     placeholder="(512) 555-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#1a1a1e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
                 <div>
@@ -824,7 +824,7 @@ export default function Home() {
                     placeholder="you@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-white/5 border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#1a1a1e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
               </div>
@@ -864,7 +864,7 @@ export default function Home() {
             </p>
 
             {/* Fake tracking card */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 mb-6 text-left">
+            <div className="bg-[#1a1a1e] border border-white/10 rounded-2xl p-5 mb-6 text-left">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium">Estimated arrival</p>
                 <p className="text-[#0071e3] font-bold">~20 min</p>
@@ -872,7 +872,7 @@ export default function Home() {
               <TechCard />
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 mb-8 text-left">
+            <div className="bg-[#1a1a1e] border border-white/10 rounded-2xl p-5 mb-8 text-left">
               <div className="flex items-center justify-between text-sm">
                 <div>
                   <p className="font-semibold">{repair.name}</p>
@@ -895,7 +895,7 @@ export default function Home() {
       {/* HOW IT WORKS — 3-step visual (only on home screen) */}
       {step === "select" && !showModelPicker && (
         <>
-          <section className="py-16 bg-[#111]">
+          <section className="py-16 bg-[#141416]">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold tracking-tight text-center mb-2">How It Works</h2>
               <p className="text-[#86868b] text-sm text-center mb-10">Book a repair in under 60 seconds</p>
@@ -944,7 +944,7 @@ export default function Home() {
                   { name: "Emily W.", text: "I was skeptical about mobile repair but this was better than any Apple Store trip.", stars: 5, repair: "Back Glass" },
                   { name: "James H.", text: "Battery was dying by noon every day. Fixed in 15 minutes at my coffee shop.", stars: 5, repair: "Battery Replace" },
                 ].map((r, i) => (
-                  <div key={i} className="flex-shrink-0 w-[280px] bg-white/5 rounded-2xl p-5 border border-white/10">
+                  <div key={i} className="flex-shrink-0 w-[280px] bg-[#1a1a1e] rounded-2xl p-5 border border-white/10">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[#fbbf24] text-xs">{"★".repeat(r.stars)}</span>
                       <span className="text-[10px] text-[#86868b] bg-white/10 rounded-full px-2 py-0.5">{r.repair}</span>
@@ -986,7 +986,7 @@ export default function Home() {
                   { stat: "< 30 min", label: "Most Repairs" },
                   { stat: "90 Days", label: "Warranty" },
                 ].map((s) => (
-                  <div key={s.label} className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
+                  <div key={s.label} className="bg-[#1a1a1e] border border-white/10 rounded-2xl p-5 text-center">
                     <p className="text-2xl font-bold tracking-tight mb-1">{s.stat}</p>
                     <p className="text-[#86868b] text-xs">{s.label}</p>
                   </div>
