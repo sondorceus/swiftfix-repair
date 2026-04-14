@@ -126,7 +126,7 @@ export default function AdminPage() {
               key={t.id}
               onClick={() => setTab(t.id)}
               className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition ${
-                tab === t.id ? "bg-[#0071e3] text-white" : "bg-white border border-[#e8e8ed] text-[#1d1d1f]"
+                tab === t.id ? "bg-[#0071e3] text-white" : "bg-white border border-[#e8e8ed] text-[#181818]"
               }`}
             >
               {t.label} {t.count !== undefined && <span className="ml-1 opacity-70">({t.count})</span>}
@@ -218,7 +218,7 @@ export default function AdminPage() {
                           className={`p-2 rounded-xl text-xs font-medium transition cursor-pointer border ${
                             isBlocked
                               ? "bg-red-50 border-red-300 text-red-700"
-                              : "bg-white border-[#e8e8ed] text-[#1d1d1f] hover:border-[#0071e3]/40"
+                              : "bg-white border-[#e8e8ed] text-[#181818] hover:border-[#0071e3]/40"
                           }`}
                         >
                           {slot} {isBlocked ? "X" : ""}
