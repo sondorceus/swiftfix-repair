@@ -377,7 +377,7 @@ export default function Home() {
 
       {/* HERO — Uber-style: tight, action-focused, mobile-first */}
       {step === "select" && !showModelPicker && (
-        <section className="bg-gradient-to-b from-[#0a0a0a] to-[#181818] text-[#e8e8e8]">
+        <section className="bg-[#181818] text-[#e8e8e8]">
           <div className="max-w-lg mx-auto px-4 pt-10 pb-8">
             {/* Live status bar */}
             <div className="flex items-center justify-between mb-8">
@@ -481,7 +481,7 @@ export default function Home() {
 
       {/* PRICING ANCHOR STRIP — early visibility */}
       {step === "select" && !showModelPicker && (
-        <section className="py-6 bg-[#232326] border-b border-white/10">
+        <section className="py-6 bg-[#181818] border-b border-white/10">
           <div className="max-w-lg mx-auto px-4">
             <div className="grid grid-cols-3 gap-3 text-center">
               {[
@@ -502,7 +502,7 @@ export default function Home() {
 
       {/* iPHONE MODEL PICKER — two-step: Series → Variant */}
       {showModelPicker && (
-        <section className="bg-gradient-to-b from-[#0a0a0a] to-[#181818] text-[#e8e8e8] min-h-[60vh]">
+        <section className="bg-[#181818] text-[#e8e8e8] min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
