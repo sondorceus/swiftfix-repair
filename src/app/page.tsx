@@ -360,7 +360,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#181818] text-[#e8e8e8]">
       {/* STICKY NAV — compact, app-like */}
-      <nav className="sticky top-0 z-40 bg-[#181818]/90 backdrop-blur-xl border-b border-white/10">
+      <nav className="sticky top-0 z-40 bg-[#0f0f10]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
           <button onClick={resetAll} className="cursor-pointer"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
@@ -1028,7 +1028,7 @@ export default function Home() {
           </div>
 
           {/* FOOTER */}
-          <footer className="bg-[#181818] text-[#c7c7cc] py-10">
+          <footer className="bg-[#0f0f10] text-[#c7c7cc] py-10 border-t border-black/60">
             <div className="max-w-lg mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <Logo size="sm" />
