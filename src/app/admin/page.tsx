@@ -93,7 +93,7 @@ export default function AdminPage() {
               className="w-full border border-[#e8e8ed] rounded-xl px-4 py-3 mb-4 text-sm"
               autoFocus
             />
-            <button type="submit" className="w-full bg-[#0071e3] text-white py-3 rounded-xl font-semibold cursor-pointer">
+            <button type="submit" className="w-full bg-[#0071e3] text-[#e8e8e8] py-3 rounded-xl font-semibold cursor-pointer">
               Login
             </button>
           </form>
@@ -126,7 +126,7 @@ export default function AdminPage() {
               key={t.id}
               onClick={() => setTab(t.id)}
               className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition ${
-                tab === t.id ? "bg-[#0071e3] text-white" : "bg-white border border-[#e8e8ed] text-[#181818]"
+                tab === t.id ? "bg-[#0071e3] text-[#e8e8e8]" : "bg-white border border-[#e8e8ed] text-[#181818]"
               }`}
             >
               {t.label} {t.count !== undefined && <span className="ml-1 opacity-70">({t.count})</span>}
