@@ -136,16 +136,32 @@ const MACBOOK_REPAIRS = [
   { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
 ];
 
-const TIME_SLOTS = [
-  { label: "ASAP", sub: "Next available", badge: "Fastest" },
-  { label: "Today", sub: "Pick a time slot", badge: null },
-  { label: "Tomorrow", sub: "Schedule ahead", badge: null },
+const BOOKING_OPTIONS = [
+  { label: "ASAP", sub: "A technician will contact you within 30 minutes", badge: "Fastest", icon: "⚡" },
+  { label: "Schedule", sub: "Pick a date and time that works for you", badge: null, icon: "📅" },
 ];
 
-const TODAY_SLOTS = [
-  "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM",
-  "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM",
+const SCHEDULE_SLOTS = [
+  "9:00 - 11:00 AM",
+  "11:00 AM - 1:00 PM",
+  "1:00 - 3:00 PM",
+  "3:00 - 5:00 PM",
+  "5:00 - 7:00 PM",
 ];
+
+function getNext7Days(): { label: string; value: string; day: string }[] {
+  const days = [];
+  const now = new Date();
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(now);
+    d.setDate(d.getDate() + i);
+    const dayName = i === 0 ? "Today" : i === 1 ? "Tomorrow" : d.toLocaleDateString("en-US", { weekday: "short" });
+    const label = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const value = d.toISOString().split("T")[0];
+    days.push({ label: `${dayName}, ${label}`, value, day: dayName });
+  }
+  return days;
+}
 
 function LivePulse() {
   return (
@@ -200,6 +216,7 @@ export default function Home() {
   const [iphoneModel, setIphoneModel] = useState<string | null>(null);
   const [repair, setRepair] = useState<{ name: string; price: string; time: string; icon: string } | null>(null);
   const [timeChoice, setTimeChoice] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [specificSlot, setSpecificSlot] = useState<string | null>(null);
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
@@ -231,6 +248,7 @@ export default function Home() {
     setSelectedSeries(null);
     setRepair(null);
     setTimeChoice(null);
+    setSelectedDate(null);
     setSpecificSlot(null);
     if (d === "iphone") {
       setShowModelPicker(true);
@@ -257,9 +275,16 @@ export default function Home() {
 
   const handleTimeSelect = (choice: string) => {
     setTimeChoice(choice);
+    setSelectedDate(null);
+    setSpecificSlot(null);
     if (choice === "ASAP") {
       setStep("confirm");
     }
+  };
+
+  const handleDateSelect = (date: string) => {
+    setSelectedDate(date);
+    setSpecificSlot(null);
   };
 
   const handleSlotSelect = (slot: string) => {
@@ -304,7 +329,9 @@ export default function Home() {
           device: deviceLabel,
           repair: repair?.name,
           time: timeChoice,
+          date: selectedDate,
           slot: specificSlot,
+          bookingType: timeChoice === "ASAP" ? "asap" : "scheduled",
         }),
       });
     } catch {
@@ -318,6 +345,7 @@ export default function Home() {
     setIphoneModel(null);
     setRepair(null);
     setTimeChoice(null);
+    setSelectedDate(null);
     setSpecificSlot(null);
     setAddress("");
     setName("");
@@ -652,44 +680,62 @@ export default function Home() {
               <TechCard />
             </div>
 
-            {/* Time options */}
-            <div className="space-y-2 mb-6">
-              {TIME_SLOTS.map((slot) => (
+            {/* Booking type: ASAP or Schedule */}
+            <div className="space-y-3 mb-6">
+              {BOOKING_OPTIONS.map((opt) => (
                 <button
-                  key={slot.label}
-                  onClick={() => handleTimeSelect(slot.label)}
-                  className={`w-full flex items-center justify-between p-4 rounded-2xl border transition-all duration-200 cursor-pointer text-left ${
-                    timeChoice === slot.label
+                  key={opt.label}
+                  onClick={() => handleTimeSelect(opt.label)}
+                  className={`w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left ${
+                    timeChoice === opt.label
                       ? "border-[#0071e3] bg-[#0071e3]/5"
                       : "border-[#e8e8ed] hover:border-[#0071e3]/40"
                   }`}
                 >
-                  <div>
-                    <p className="font-semibold">{slot.label}</p>
-                    <p className="text-[#86868b] text-xs">{slot.sub}</p>
+                  <span className="text-2xl">{opt.icon}</span>
+                  <div className="flex-1">
+                    <p className="font-semibold text-lg">{opt.label}</p>
+                    <p className="text-[#86868b] text-xs">{opt.sub}</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    {slot.badge && (
-                      <span className="text-[10px] bg-[#34c759] text-white px-2 py-0.5 rounded-full font-medium">{slot.badge}</span>
-                    )}
-                    <svg className="w-5 h-5 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+                  {opt.badge && (
+                    <span className="text-[10px] bg-[#34c759] text-white px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
+                  )}
                 </button>
               ))}
             </div>
 
-            {/* Specific time slots for Today/Tomorrow */}
-            {timeChoice && timeChoice !== "ASAP" && (
+            {/* Schedule: Date picker */}
+            {timeChoice === "Schedule" && (
+              <div className="animate-[fadeIn_0.2s_ease-out] mb-6">
+                <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Pick a date</p>
+                <div className="flex gap-2 overflow-x-auto pb-2">
+                  {getNext7Days().map((d) => (
+                    <button
+                      key={d.value}
+                      onClick={() => handleDateSelect(d.value)}
+                      className={`flex-shrink-0 px-4 py-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
+                        selectedDate === d.value
+                          ? "border-[#0071e3] bg-[#0071e3] text-white"
+                          : "border-[#e8e8ed] hover:border-[#0071e3]/40"
+                      }`}
+                    >
+                      {d.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Schedule: Time slot picker */}
+            {timeChoice === "Schedule" && selectedDate && (
               <div className="animate-[fadeIn_0.2s_ease-out]">
-                <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Available {timeChoice.toLowerCase()}</p>
-                <div className="grid grid-cols-3 gap-2">
-                  {TODAY_SLOTS.map((slot) => (
+                <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Pick a time</p>
+                <div className="space-y-2">
+                  {SCHEDULE_SLOTS.map((slot) => (
                     <button
                       key={slot}
                       onClick={() => handleSlotSelect(slot)}
-                      className={`p-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
+                      className={`w-full p-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
                         specificSlot === slot
                           ? "border-[#0071e3] bg-[#0071e3] text-white"
                           : "border-[#e8e8ed] hover:border-[#0071e3]/40"
@@ -728,7 +774,7 @@ export default function Home() {
               <div className="border-t border-[#e8e8ed] pt-3 flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-[#34c759]">●</span>
-                  <span>{timeChoice === "ASAP" ? "ASAP — Next available" : `${timeChoice} at ${specificSlot}`}</span>
+                  <span>{timeChoice === "ASAP" ? "ASAP — Next available tech" : `${getNext7Days().find(d => d.value === selectedDate)?.label || selectedDate}, ${specificSlot}`}</span>
                 </div>
                 <span className="text-[#86868b]">~{repair.time}</span>
               </div>
@@ -812,7 +858,9 @@ export default function Home() {
             </div>
             <h2 className="text-2xl font-bold mb-2">Booking Confirmed!</h2>
             <p className="text-[#86868b] text-sm mb-8">
-              {name ? `${name}, you'll` : "You'll"} receive a confirmation email and be contacted by a technician shortly.
+              {timeChoice === "ASAP"
+                ? `${name ? `${name}, a` : "A"} technician will contact you within 30 minutes to confirm your repair.`
+                : `${name ? `${name}, your` : "Your"} repair is scheduled. You'll receive a confirmation and be contacted before your appointment.`}
             </p>
 
             {/* Fake tracking card */}

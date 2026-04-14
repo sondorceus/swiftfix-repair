@@ -1,21 +1,44 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
+import { join } from "path";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+function saveBooking(booking: Record<string, unknown>) {
+  const dir = join(process.cwd(), "data");
+  const file = join(dir, "bookings.json");
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  let data = { bookings: [] as Record<string, unknown>[], blockedSlots: {} };
+  if (existsSync(file)) {
+    try { data = JSON.parse(readFileSync(file, "utf8")); } catch { /* fresh */ }
+  }
+  data.bookings.push(booking);
+  writeFileSync(file, JSON.stringify(data, null, 2));
+}
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, email, address, device, repair, time, slot } = body;
+    const { name, phone, email, address, device, repair, time, date, slot, bookingType } = body;
+    const isASAP = bookingType === "asap";
 
     const bookedAt = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
+
+    // Save booking to local data
+    saveBooking({
+      id: `bk-${Date.now()}`,
+      name, phone, email, address, device, repair,
+      bookingType: isASAP ? "asap" : "scheduled",
+      date, slot, bookedAt,
+    });
 
     // Send confirmation email to Skywalker via Resend
     try {
       await resend.emails.send({
         from: "SwiftFix Bookings <onboarding@resend.dev>",
         to: process.env.RESEND_TO_EMAIL || "sondorceus@gmail.com",
-        subject: `New Booking: ${device} — ${repair}`,
+        subject: `${isASAP ? "🚨 ASAP" : "📅 Scheduled"} Booking: ${device} — ${repair}`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #0071e3, #00c6ff); padding: 20px; border-radius: 12px 12px 0 0;">
@@ -29,7 +52,7 @@ export async function POST(request: Request) {
                 <tr><td style="padding: 8px 0; color: #666;">Address</td><td style="padding: 8px 0; font-weight: 600;">${address}</td></tr>
                 <tr><td style="padding: 8px 0; color: #666;">Device</td><td style="padding: 8px 0; font-weight: 600;">${device}</td></tr>
                 <tr><td style="padding: 8px 0; color: #666;">Repair</td><td style="padding: 8px 0; font-weight: 600;">${repair}</td></tr>
-                <tr><td style="padding: 8px 0; color: #666;">Time</td><td style="padding: 8px 0; font-weight: 600;">${time}${slot ? ` — ${slot}` : ""}</td></tr>
+                <tr><td style="padding: 8px 0; color: #666;">Type</td><td style="padding: 8px 0; font-weight: 600; ${isASAP ? 'color: #e53e3e;' : ''}">${isASAP ? "🚨 ASAP — Contact within 30 min" : `Scheduled: ${date} at ${slot}`}</td></tr>
                 <tr><td style="padding: 8px 0; color: #666;">Booked</td><td style="padding: 8px 0; font-weight: 600;">${bookedAt}</td></tr>
               </table>
             </div>
@@ -52,7 +75,7 @@ export async function POST(request: Request) {
           from: "swiftfix",
           fromName: "SwiftFix Booking",
           role: "system",
-          body: `🔔 NEW BOOKING!\n\nCustomer: ${name}${phone ? `\nPhone: ${phone}` : ""}${email ? `\nEmail: ${email}` : ""}\nAddress: ${address}\nDevice: ${device}\nRepair: ${repair}\nTime: ${time}${slot ? ` — ${slot}` : ""}`,
+          body: `${isASAP ? "🚨 ASAP BOOKING!" : "📅 SCHEDULED BOOKING"}\n\nCustomer: ${name}${phone ? `\nPhone: ${phone}` : ""}${email ? `\nEmail: ${email}` : ""}\nAddress: ${address}\nDevice: ${device}\nRepair: ${repair}\n${isASAP ? "Type: ASAP — Contact within 30 min" : `Date: ${date}\nTime: ${slot}`}`,
         }),
       });
     } catch {
