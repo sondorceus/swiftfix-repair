@@ -520,43 +520,44 @@ export default function Home() {
                       onClick={() => handleSeriesSelect(s.id)}
                       className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#2a2a2e] border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/10 active:scale-[0.97] transition-all duration-200 cursor-pointer"
                     >
-                      {/* iPhone render — model-specific */}
-                      <div className="relative w-[52px] h-[100px] mb-3 group-hover:scale-105 transition-transform duration-300">
+                      {/* iPhone render — model-specific, fills card */}
+                      <div className="relative w-[70px] h-[135px] mb-3 group-hover:scale-105 transition-transform duration-300">
                         <div className={`absolute inset-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)] ${s.edges === "flat" ? "rounded-[11px]" : "rounded-[13px]"}`} style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                          <div className="absolute -left-[2px] top-[20px] w-[2px] h-[9px] rounded-l-sm" style={{ background: s.frame }} />
-                          <div className="absolute -left-[2px] top-[33px] w-[2px] h-[14px] rounded-l-sm" style={{ background: s.frame }} />
-                          <div className="absolute -right-[2px] top-[30px] w-[2px] h-[16px] rounded-r-sm" style={{ background: s.frame }} />
-                          {/* Camera bump — model specific */}
+                          <div className="absolute -left-[2px] top-[26px] w-[2px] h-[12px] rounded-l-sm" style={{ background: s.frame }} />
+                          <div className="absolute -left-[2px] top-[44px] w-[2px] h-[18px] rounded-l-sm" style={{ background: s.frame }} />
+                          <div className="absolute -right-[2px] top-[40px] w-[2px] h-[20px] rounded-r-sm" style={{ background: s.frame }} />
+                          {/* Camera bump — model specific, larger */}
                           <div className="absolute -top-[1px] -left-[1px]">
                             {s.cameras === 3 ? (
-                              <div className="w-[18px] h-[18px] rounded-[5px] bg-[#1a1a1a] border border-white/10 flex flex-wrap items-center justify-center gap-[1px] p-[2px]">
-                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
-                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
-                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
+                              <div className="w-[24px] h-[24px] rounded-[6px] bg-[#1a1a1a] border border-white/10 flex flex-wrap items-center justify-center gap-[2px] p-[3px]">
+                                <div className="w-[7px] h-[7px] rounded-full bg-[#2a2a2e] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
+                                <div className="w-[7px] h-[7px] rounded-full bg-[#2a2a2e] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
+                                <div className="w-[7px] h-[7px] rounded-full bg-[#2a2a2e] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
                               </div>
                             ) : (
-                              <div className="w-[14px] h-[20px] rounded-[4px] bg-[#1a1a1a] border border-white/10 flex flex-col items-center justify-center gap-[2px] p-[2px]">
-                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
-                                <div className="w-[5px] h-[5px] rounded-full bg-[#2a2a2e] border border-white/15" />
+                              <div className="w-[18px] h-[26px] rounded-[5px] bg-[#1a1a1a] border border-white/10 flex flex-col items-center justify-center gap-[3px] p-[3px]">
+                                <div className="w-[7px] h-[7px] rounded-full bg-[#2a2a2e] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
+                                <div className="w-[7px] h-[7px] rounded-full bg-[#2a2a2e] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
                               </div>
                             )}
                           </div>
                         </div>
                         <div className={`absolute top-[3px] left-[3px] right-[3px] bottom-[3px] overflow-hidden bg-black ${s.edges === "flat" ? "rounded-[8px]" : "rounded-[10px]"}`}>
                           {s.notch === "dynamic" ? (
-                            <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[20px] h-[6px] bg-[#1a1a1a] rounded-full z-10 border border-black/50" />
+                            <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[26px] h-[8px] bg-[#1a1a1a] rounded-full z-10 border border-black/50" />
                           ) : (
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[22px] h-[7px] bg-black rounded-b-lg z-10 border-x border-b border-white/5" />
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[28px] h-[9px] bg-black rounded-b-lg z-10 border-x border-b border-white/5" />
                           )}
                           <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
-                            <p className="text-white/60 text-[7px] font-semibold text-center mt-[10px]">9:41</p>
-                            <div className="flex flex-col items-center mt-[4px] gap-[3px]">
-                              <div className="w-[20px] h-[20px] rounded-[5px]" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accent}80)` }} />
-                              <div className="w-[28px] h-[1px] bg-white/20 rounded" />
-                              <div className="w-[22px] h-[1px] bg-white/10 rounded" />
+                            <p className="text-white/60 text-[8px] font-semibold text-center mt-[14px]">9:41</p>
+                            <div className="flex flex-col items-center mt-[6px] gap-[4px]">
+                              <div className="w-[28px] h-[28px] rounded-[7px]" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accent}80)` }} />
+                              <div className="w-[36px] h-[1px] bg-white/20 rounded" />
+                              <div className="w-[30px] h-[1px] bg-white/10 rounded" />
+                              <div className="w-[24px] h-[24px] rounded-[6px] mt-[2px]" style={{ background: `linear-gradient(135deg, ${s.accent}60, ${s.accent}30)` }} />
                             </div>
                           </div>
-                          <div className="absolute bottom-[2px] left-1/2 -translate-x-1/2 w-[14px] h-[2px] bg-white/30 rounded-full" />
+                          <div className="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[18px] h-[2px] bg-white/30 rounded-full" />
                         </div>
                       </div>
                       <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{s.label}</p>
@@ -583,9 +584,11 @@ export default function Home() {
                           className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#2a2a2e] border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/10 active:scale-[0.98] transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-14 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.1)' }}>
-                              <div className="w-6 h-11 rounded-md bg-black overflow-hidden">
-                                <div className="w-full h-full opacity-80" style={{ background: `linear-gradient(160deg, ${series.accent}40, #000 50%)` }} />
+                            <div className="w-10 h-[72px] rounded-xl flex items-center justify-center shadow-lg" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
+                              <div className="w-8 h-[60px] rounded-lg bg-black overflow-hidden">
+                                <div className="w-full h-full opacity-90" style={{ background: `linear-gradient(160deg, ${series.accent}40, #000 40%, ${series.accent}20)` }}>
+                                  <p className="text-white/50 text-[5px] text-center mt-[8px]">9:41</p>
+                                </div>
                               </div>
                             </div>
                             <div>
