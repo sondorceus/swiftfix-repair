@@ -12,7 +12,7 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
       <span style={{ fontSize: textSize, fontWeight: 700, letterSpacing: "-0.02em", background: "linear-gradient(90deg, #0071e3, #40a9ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
         Austin Mobile
       </span>
-      <span style={{ fontSize: subSize, fontWeight: 500, letterSpacing: "0.08em", color: "#86868b", textTransform: "uppercase" as const, marginTop: "2px" }}>
+      <span style={{ fontSize: subSize, fontWeight: 500, letterSpacing: "0.08em", color: "#c7c7cc", textTransform: "uppercase" as const, marginTop: "2px" }}>
         Repair
       </span>
     </div>
@@ -200,11 +200,11 @@ function TechCard() {
       </div>
       <div className="flex-1 min-w-0">
         <p className="font-semibold text-sm">James M.</p>
-        <p className="text-[#86868b] text-xs">Certified Tech · 4.9★ · 1,200+ repairs</p>
+        <p className="text-[#c7c7cc] text-xs">Certified Tech · 4.9★ · 1,200+ repairs</p>
       </div>
       <div className="text-right shrink-0">
         <p className="text-[#0071e3] font-bold text-sm">{eta} min</p>
-        <p className="text-[#86868b] text-[10px]">ETA away</p>
+        <p className="text-[#c7c7cc] text-[10px]">ETA away</p>
       </div>
     </div>
   );
@@ -385,13 +385,13 @@ export default function Home() {
                 <LivePulse />
                 <span className="text-xs font-medium">3 technicians nearby</span>
               </div>
-              <span className="text-xs text-[#86868b]">Austin, TX</span>
+              <span className="text-xs text-[#c7c7cc]">Austin, TX</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
               We Fix Your Phone<br />Wherever You Are
             </h1>
-            <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
+            <p className="text-[#c7c7cc] text-sm mb-4 leading-relaxed max-w-sm">
               Same-day service. Most repairs done in 30 minutes. A certified technician drives to you and fixes it on the spot.
             </p>
 
@@ -403,7 +403,7 @@ export default function Home() {
                 { label: "Certified Techs", icon: "✓" },
                 { label: "4.9★ Rating", icon: "★" },
               ].map((b) => (
-                <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[11px] font-medium text-white/80">
+                <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[11px] font-medium text-white">
                   <span className="text-[#34c759]">{b.icon}</span> {b.label}
                 </span>
               ))}
@@ -411,7 +411,7 @@ export default function Home() {
 
             {/* Quick action: What needs fixing? */}
             <div className="space-y-3 mb-8">
-              <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium">Fix my device now</p>
+              <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium">Fix my device now</p>
               {[
                 { id: "iphone" as const, label: "iPhone", sub: "11 and newer · From $39", icon: "📱", hot: true },
                 { id: "macbook" as const, label: "MacBook", sub: "All models · From $99", icon: "💻", hot: false },
@@ -429,9 +429,9 @@ export default function Home() {
                   <span className={d.hot ? "text-4xl" : "text-2xl"}>{d.icon}</span>
                   <div className="flex-1">
                     <p className={`font-semibold text-white ${d.hot ? "text-lg" : ""}`}>{d.label}</p>
-                    <p className={`text-[#86868b] ${d.hot ? "text-sm" : "text-xs"}`}>{d.sub}</p>
+                    <p className={`text-[#c7c7cc] ${d.hot ? "text-sm" : "text-xs"}`}>{d.sub}</p>
                   </div>
-                  <svg className="w-5 h-5 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                   {d.hot && (
@@ -458,22 +458,22 @@ export default function Home() {
                     <p className="text-white text-xs font-medium">5,000+ repairs completed</p>
                     <div className="flex items-center gap-1">
                       <span className="text-[#fbbf24] text-[10px]">★★★★★</span>
-                      <span className="text-[#86868b] text-[10px]">4.9/5 from 2,400+ reviews</span>
+                      <span className="text-[#c7c7cc] text-[10px]">4.9/5 from 2,400+ reviews</span>
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-white text-xs font-bold">90-day</p>
-                  <p className="text-[#86868b] text-[10px]">warranty</p>
+                  <p className="text-[#c7c7cc] text-[10px]">warranty</p>
                 </div>
               </div>
-              <p className="text-[#86868b] text-[10px] text-center italic">&quot;He came to my office and fixed my screen in 25 minutes. Incredible service.&quot; — Sarah K.</p>
+              <p className="text-[#c7c7cc] text-[10px] text-center italic">&quot;He came to my office and fixed my screen in 25 minutes. Incredible service.&quot; — Sarah K.</p>
             </div>
 
             {/* URGENCY SIGNALS */}
             <div className="mt-6 flex flex-col items-center gap-1.5">
               <p className="text-[#34c759] text-xs font-medium animate-pulse">Limited slots available today</p>
-              <p className="text-[#86868b] text-[10px]">Same-day appointments filling fast</p>
+              <p className="text-[#c7c7cc] text-[10px]">Same-day appointments filling fast</p>
             </div>
           </div>
         </section>
@@ -492,7 +492,7 @@ export default function Home() {
                 <div key={p.label} className="bg-[#2a2a2e] border border-white/10 rounded-xl p-3">
                   <span className="text-lg">{p.icon}</span>
                   <p className="text-[#0071e3] font-bold text-sm mt-1">{p.price}</p>
-                  <p className="text-[#86868b] text-[10px]">{p.label}</p>
+                  <p className="text-[#c7c7cc] text-[10px]">{p.label}</p>
                 </div>
               ))}
             </div>
@@ -512,7 +512,7 @@ export default function Home() {
             {!selectedSeries ? (
               <>
                 <h2 className="text-2xl font-bold tracking-tight mb-1">Select your iPhone</h2>
-                <p className="text-[#86868b] text-sm mb-6">Choose your series, then pick your exact model</p>
+                <p className="text-[#c7c7cc] text-sm mb-6">Choose your series, then pick your exact model</p>
                 <div className="grid grid-cols-2 gap-3">
                   {IPHONE_SERIES.map((s) => (
                     <button
@@ -561,8 +561,8 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="font-semibold text-white text-sm group-hover:text-[#40a9ff] transition">{s.label}</p>
-                      <p className="text-[#86868b] text-[11px]">{s.year} · {s.variants.length} models</p>
-                      <svg className="w-4 h-4 text-[#86868b] mt-1 group-hover:text-[#0071e3] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <p className="text-[#c7c7cc] text-[11px]">{s.year} · {s.variants.length} models</p>
+                      <svg className="w-4 h-4 text-[#c7c7cc] mt-1 group-hover:text-[#0071e3] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
@@ -575,7 +575,7 @@ export default function Home() {
                 {(() => { const series = IPHONE_SERIES.find(s => s.id === selectedSeries); if (!series) return null; return (
                   <div className="animate-[fadeIn_0.2s_ease-out]">
                     <h2 className="text-2xl font-bold tracking-tight mb-1">{series.label} Series</h2>
-                    <p className="text-[#86868b] text-sm mb-6">Pick your exact model</p>
+                    <p className="text-[#c7c7cc] text-sm mb-6">Pick your exact model</p>
                     <div className="space-y-2">
                       {series.variants.map((v) => (
                         <button
@@ -593,10 +593,10 @@ export default function Home() {
                             </div>
                             <div>
                               <p className="font-semibold text-white">{v.label}</p>
-                              <p className="text-[#86868b] text-xs">{v.size} display</p>
+                              <p className="text-[#c7c7cc] text-xs">{v.size} display</p>
                             </div>
                           </div>
-                          <svg className="w-5 h-5 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
@@ -606,7 +606,7 @@ export default function Home() {
                 ); })()}
               </>
             )}
-            <p className="text-[#86868b] text-[10px] text-center mt-4">All models include same-day service and 90-day warranty</p>
+            <p className="text-[#c7c7cc] text-[10px] text-center mt-4">All models include same-day service and 90-day warranty</p>
           </div>
         </section>
       )}
@@ -621,7 +621,7 @@ export default function Home() {
             </button>
             <StepIndicator current={1} total={3} />
             <h2 className="text-2xl font-bold tracking-tight mb-1">What&apos;s the issue?</h2>
-            <p className="text-[#86868b] text-sm mb-2">{deviceLabel} · Tap to see pricing</p>
+            <p className="text-[#c7c7cc] text-sm mb-2">{deviceLabel} · Tap to see pricing</p>
             <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
             <div className="space-y-2">
@@ -634,7 +634,7 @@ export default function Home() {
                   <span className="text-2xl w-10 text-center">{r.icon}</span>
                   <div className="flex-1">
                     <p className="font-semibold">{r.name}</p>
-                    <p className="text-[#86868b] text-xs">~{r.time}</p>
+                    <p className="text-[#c7c7cc] text-xs">~{r.time}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
@@ -644,7 +644,7 @@ export default function Home() {
             </div>
 
             {/* Trust mini-bar */}
-            <div className="flex items-center justify-center gap-6 mt-8 text-[#86868b] text-xs">
+            <div className="flex items-center justify-center gap-6 mt-8 text-[#c7c7cc] text-xs">
               <span>✓ Free diagnostics</span>
               <span>✓ No fix, no fee</span>
               <span>✓ 90-day warranty</span>
@@ -666,17 +666,17 @@ export default function Home() {
             {/* Selected repair summary */}
             <div className="bg-[#2a2a2e] border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
               <div>
-                <p className="text-xs text-[#86868b]">{deviceLabel}</p>
+                <p className="text-xs text-[#c7c7cc]">{deviceLabel}</p>
                 <p className="font-semibold">{repair.name}</p>
               </div>
               <div className="text-right">
                 <p className="text-[#0071e3] font-bold">{repair.price}</p>
-                <p className="text-[#86868b] text-xs">~{repair.time}</p>
+                <p className="text-[#c7c7cc] text-xs">~{repair.time}</p>
               </div>
             </div>
 
             <h2 className="text-2xl font-bold tracking-tight mb-1">When works best?</h2>
-            <p className="text-[#86868b] text-sm mb-6">A technician will come to your location</p>
+            <p className="text-[#c7c7cc] text-sm mb-6">A technician will come to your location</p>
 
             {/* Technician card — Uber-like */}
             <div className="mb-6">
@@ -698,7 +698,7 @@ export default function Home() {
                   <span className="text-2xl">{opt.icon}</span>
                   <div className="flex-1">
                     <p className="font-semibold text-lg">{opt.label}</p>
-                    <p className="text-[#86868b] text-xs">{opt.sub}</p>
+                    <p className="text-[#c7c7cc] text-xs">{opt.sub}</p>
                   </div>
                   {opt.badge && (
                     <span className="text-[10px] bg-[#34c759] text-white px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
@@ -710,7 +710,7 @@ export default function Home() {
             {/* Schedule: Date picker */}
             {timeChoice === "Schedule" && (
               <div className="animate-[fadeIn_0.2s_ease-out] mb-6">
-                <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Pick a date</p>
+                <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium mb-3">Pick a date</p>
                 <div className="flex gap-2 overflow-x-auto pb-2">
                   {getNext7Days().map((d) => (
                     <button
@@ -732,7 +732,7 @@ export default function Home() {
             {/* Schedule: Time slot picker */}
             {timeChoice === "Schedule" && selectedDate && (
               <div className="animate-[fadeIn_0.2s_ease-out]">
-                <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Pick a time</p>
+                <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium mb-3">Pick a time</p>
                 <div className="space-y-2">
                   {SCHEDULE_SLOTS.map((slot) => (
                     <button
@@ -766,11 +766,11 @@ export default function Home() {
 
             {/* Order summary — DoorDash checkout style */}
             <div className="bg-[#2a2a2e] border border-white/10 rounded-2xl p-5 mb-6">
-              <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium mb-3">Your repair</p>
+              <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium mb-3">Your repair</p>
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <p className="font-semibold">{repair.name}</p>
-                  <p className="text-[#86868b] text-xs">{deviceLabel}</p>
+                  <p className="text-[#c7c7cc] text-xs">{deviceLabel}</p>
                 </div>
                 <p className="text-[#0071e3] font-bold text-lg">{repair.price}</p>
               </div>
@@ -779,59 +779,59 @@ export default function Home() {
                   <span className="text-[#34c759]">●</span>
                   <span>{timeChoice === "ASAP" ? "ASAP — Next available tech" : `${getNext7Days().find(d => d.value === selectedDate)?.label || selectedDate}, ${specificSlot}`}</span>
                 </div>
-                <span className="text-[#86868b]">~{repair.time}</span>
+                <span className="text-[#c7c7cc]">~{repair.time}</span>
               </div>
             </div>
 
             <h2 className="text-xl font-bold tracking-tight mb-1">Almost done</h2>
-            <p className="text-[#86868b] text-sm mb-6">Where should we send the technician?</p>
+            <p className="text-[#c7c7cc] text-sm mb-6">Where should we send the technician?</p>
 
             <form onSubmit={(e) => { e.preventDefault(); if (!phone && !email) { alert("Please provide a phone number or email so we can reach you."); return; } handleSubmit(e); }} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Location</label>
+                <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Location</label>
                 <input
                   type="text"
                   placeholder="Your address in Austin, TX"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Name</label>
+                <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Name</label>
                 <input
                   type="text"
                   placeholder="Your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Phone <span className="normal-case text-[10px]">(optional)</span></label>
+                  <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Phone <span className="normal-case text-[10px]">(optional)</span></label>
                   <input
                     type="tel"
                     placeholder="(512) 555-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-[#86868b] mb-1.5 uppercase tracking-wider">Email <span className="normal-case text-[10px]">(optional)</span></label>
+                  <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Email <span className="normal-case text-[10px]">(optional)</span></label>
                   <input
                     type="email"
                     placeholder="you@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#2a2a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
               </div>
-              <p className="text-[10px] text-[#86868b] -mt-2">Provide at least one so we can reach you</p>
+              <p className="text-[10px] text-[#c7c7cc] -mt-2">Provide at least one so we can reach you</p>
 
               <button
                 type="submit"
@@ -840,7 +840,7 @@ export default function Home() {
                 Book My Repair Now
               </button>
 
-              <div className="flex items-center justify-center gap-4 text-[#86868b] text-[10px] mt-3">
+              <div className="flex items-center justify-center gap-4 text-[#c7c7cc] text-[10px] mt-3">
                 <span>✓ Free diagnostics</span>
                 <span>✓ No fix, no fee</span>
                 <span>✓ Pay after repair</span>
@@ -860,7 +860,7 @@ export default function Home() {
               </svg>
             </div>
             <h2 className="text-2xl font-bold mb-2">Booking Confirmed!</h2>
-            <p className="text-[#86868b] text-sm mb-8">
+            <p className="text-[#c7c7cc] text-sm mb-8">
               {timeChoice === "ASAP"
                 ? `${name ? `${name}, a` : "A"} technician will contact you within 30 minutes to confirm your repair.`
                 : `${name ? `${name}, your` : "Your"} repair is scheduled. You'll receive a confirmation and be contacted before your appointment.`}
@@ -869,7 +869,7 @@ export default function Home() {
             {/* Fake tracking card */}
             <div className="bg-[#2a2a2e] border border-white/10 rounded-2xl p-5 mb-6 text-left">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-xs text-[#86868b] uppercase tracking-wider font-medium">Estimated arrival</p>
+                <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium">Estimated arrival</p>
                 <p className="text-[#0071e3] font-bold">~20 min</p>
               </div>
               <TechCard />
@@ -879,7 +879,7 @@ export default function Home() {
               <div className="flex items-center justify-between text-sm">
                 <div>
                   <p className="font-semibold">{repair.name}</p>
-                  <p className="text-[#86868b] text-xs">{deviceLabel}</p>
+                  <p className="text-[#c7c7cc] text-xs">{deviceLabel}</p>
                 </div>
                 <p className="text-[#0071e3] font-bold">{repair.price}</p>
               </div>
@@ -901,7 +901,7 @@ export default function Home() {
           <section className="py-16 bg-[#232326]">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold tracking-tight text-center mb-2">How It Works</h2>
-              <p className="text-[#86868b] text-sm text-center mb-10">Book a repair in under 60 seconds</p>
+              <p className="text-[#c7c7cc] text-sm text-center mb-10">Book a repair in under 60 seconds</p>
               <div className="space-y-6">
                 {[
                   { num: "1", title: "Choose your device", desc: "iPhone, MacBook, or Android — pick yours." },
@@ -915,7 +915,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="font-semibold mb-0.5">{s.title}</p>
-                      <p className="text-[#86868b] text-sm">{s.desc}</p>
+                      <p className="text-[#c7c7cc] text-sm">{s.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -926,7 +926,7 @@ export default function Home() {
           {/* REVIEW MARQUEE — auto-scrolling, infinite loop */}
           <section className="py-12 overflow-hidden">
             <h2 className="text-2xl font-bold tracking-tight text-center mb-2">What our customers say</h2>
-            <p className="text-[#86868b] text-sm text-center mb-8">4.9★ from 2,400+ verified reviews</p>
+            <p className="text-[#c7c7cc] text-sm text-center mb-8">4.9★ from 2,400+ verified reviews</p>
             <div className="relative">
               <div className="flex animate-[marquee_30s_linear_infinite] gap-4 w-max">
                 {[
@@ -950,10 +950,10 @@ export default function Home() {
                   <div key={i} className="flex-shrink-0 w-[280px] bg-[#2a2a2e] rounded-2xl p-5 border border-white/10">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[#fbbf24] text-xs">{"★".repeat(r.stars)}</span>
-                      <span className="text-[10px] text-[#86868b] bg-white/10 rounded-full px-2 py-0.5">{r.repair}</span>
+                      <span className="text-[10px] text-[#c7c7cc] bg-white/10 rounded-full px-2 py-0.5">{r.repair}</span>
                     </div>
                     <p className="text-sm text-white/90 leading-relaxed mb-3">&ldquo;{r.text}&rdquo;</p>
-                    <p className="text-xs font-semibold text-[#86868b]">{r.name}</p>
+                    <p className="text-xs font-semibold text-[#c7c7cc]">{r.name}</p>
                   </div>
                 ))}
               </div>
@@ -971,7 +971,7 @@ export default function Home() {
                 ].map((d) => (
                   <div key={d.bold}>
                     <p className="font-bold text-sm mb-1">{d.bold}</p>
-                    <p className="text-white/70 text-[10px]">{d.sub}</p>
+                    <p className="text-white/95 text-[10px]">{d.sub}</p>
                   </div>
                 ))}
               </div>
@@ -991,7 +991,7 @@ export default function Home() {
                 ].map((s) => (
                   <div key={s.label} className="bg-[#2a2a2e] border border-white/10 rounded-2xl p-5 text-center">
                     <p className="text-2xl font-bold tracking-tight mb-1">{s.stat}</p>
-                    <p className="text-[#86868b] text-xs">{s.label}</p>
+                    <p className="text-[#c7c7cc] text-xs">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -1008,7 +1008,7 @@ export default function Home() {
                     <span className="text-[#0071e3] font-bold mt-0.5">✓</span>
                     <div>
                       <p className="font-semibold text-sm">{s.title}</p>
-                      <p className="text-[#86868b] text-xs">{s.desc}</p>
+                      <p className="text-[#c7c7cc] text-xs">{s.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -1024,11 +1024,11 @@ export default function Home() {
             >
               Book Repair Now
             </button>
-            <p className="text-center text-[10px] text-[#86868b] mt-1.5">Takes less than 10 seconds &middot; Technician arrives today</p>
+            <p className="text-center text-[10px] text-[#c7c7cc] mt-1.5">Takes less than 10 seconds &middot; Technician arrives today</p>
           </div>
 
           {/* FOOTER */}
-          <footer className="bg-[#1d1d1f] text-[#86868b] py-10">
+          <footer className="bg-[#1d1d1f] text-[#c7c7cc] py-10">
             <div className="max-w-lg mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <Logo size="sm" />

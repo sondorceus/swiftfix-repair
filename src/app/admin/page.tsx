@@ -83,7 +83,7 @@ export default function AdminPage() {
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl p-8 max-w-sm w-full">
           <h1 className="text-xl font-bold mb-1">Admin Login</h1>
-          <p className="text-[#86868b] text-sm mb-6">SwiftFix Management</p>
+          <p className="text-[#c7c7cc] text-sm mb-6">SwiftFix Management</p>
           <form onSubmit={(e) => { e.preventDefault(); if (pass === ADMIN_PASS) setAuthed(true); else alert("Wrong password"); }}>
             <input
               type="password"
@@ -110,7 +110,7 @@ export default function AdminPage() {
       <nav className="bg-white border-b border-[#e8e8ed] px-4 py-3">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <h1 className="font-bold text-lg">SwiftFix Admin</h1>
-          <button onClick={() => setAuthed(false)} className="text-sm text-[#86868b] cursor-pointer">Logout</button>
+          <button onClick={() => setAuthed(false)} className="text-sm text-[#c7c7cc] cursor-pointer">Logout</button>
         </div>
       </nav>
 
@@ -139,16 +139,16 @@ export default function AdminPage() {
           <div className="space-y-3">
             {asapBookings.length === 0 ? (
               <div className="bg-white rounded-2xl p-8 text-center">
-                <p className="text-[#86868b]">No ASAP bookings in queue</p>
+                <p className="text-[#c7c7cc]">No ASAP bookings in queue</p>
               </div>
             ) : asapBookings.map((b) => (
               <div key={b.id} className="bg-white rounded-2xl p-4 border-l-4 border-red-500">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-medium">ASAP</span>
-                  <span className="text-[10px] text-[#86868b]">{new Date(b.bookedAt).toLocaleString()}</span>
+                  <span className="text-[10px] text-[#c7c7cc]">{new Date(b.bookedAt).toLocaleString()}</span>
                 </div>
                 <p className="font-semibold">{b.name}</p>
-                <p className="text-sm text-[#86868b]">{b.device} - {b.repair}</p>
+                <p className="text-sm text-[#c7c7cc]">{b.device} - {b.repair}</p>
                 <p className="text-sm">{b.address}</p>
                 <div className="flex gap-3 mt-2 text-xs text-[#0071e3]">
                   {b.phone && <a href={`tel:${b.phone}`}>{b.phone}</a>}
@@ -164,7 +164,7 @@ export default function AdminPage() {
           <div className="space-y-3">
             {scheduledBookings.length === 0 ? (
               <div className="bg-white rounded-2xl p-8 text-center">
-                <p className="text-[#86868b]">No scheduled bookings yet</p>
+                <p className="text-[#c7c7cc]">No scheduled bookings yet</p>
               </div>
             ) : scheduledBookings.map((b) => (
               <div key={b.id} className="bg-white rounded-2xl p-4 border-l-4 border-[#0071e3]">
@@ -172,10 +172,10 @@ export default function AdminPage() {
                   <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">
                     {b.date} at {b.slot}
                   </span>
-                  <span className="text-[10px] text-[#86868b]">{new Date(b.bookedAt).toLocaleString()}</span>
+                  <span className="text-[10px] text-[#c7c7cc]">{new Date(b.bookedAt).toLocaleString()}</span>
                 </div>
                 <p className="font-semibold">{b.name}</p>
-                <p className="text-sm text-[#86868b]">{b.device} - {b.repair}</p>
+                <p className="text-sm text-[#c7c7cc]">{b.device} - {b.repair}</p>
                 <p className="text-sm">{b.address}</p>
                 <div className="flex gap-3 mt-2 text-xs text-[#0071e3]">
                   {b.phone && <a href={`tel:${b.phone}`}>{b.phone}</a>}
@@ -202,7 +202,7 @@ export default function AdminPage() {
                         : blockFullDay(day.value)
                       }
                       className={`text-xs px-3 py-1 rounded-full cursor-pointer ${
-                        allBlocked ? "bg-red-100 text-red-700" : "bg-[#f5f5f7] text-[#86868b]"
+                        allBlocked ? "bg-red-100 text-red-700" : "bg-[#f5f5f7] text-[#c7c7cc]"
                       }`}
                     >
                       {allBlocked ? "Unblock All" : "Block Full Day"}
