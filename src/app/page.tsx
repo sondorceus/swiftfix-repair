@@ -361,10 +361,10 @@ export default function Home() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
-              We come to you.<br />Fixed in 30 minutes.
+              We Fix Your Phone<br />Wherever You Are
             </h1>
             <p className="text-[#86868b] text-sm mb-4 leading-relaxed max-w-sm">
-              A certified technician drives to your location and repairs your device on the spot. Same-day service across Austin.
+              Same-day service. Most repairs done in 30 minutes. A certified technician drives to you and fixes it on the spot.
             </p>
 
             {/* Trust badges — compact row */}
@@ -440,6 +440,33 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-[#86868b] text-[10px] text-center italic">&quot;He came to my office and fixed my screen in 25 minutes. Incredible service.&quot; — Sarah K.</p>
+            </div>
+
+            {/* URGENCY SIGNALS */}
+            <div className="mt-6 flex flex-col items-center gap-1.5">
+              <p className="text-[#34c759] text-xs font-medium animate-pulse">Limited slots available today</p>
+              <p className="text-[#86868b] text-[10px]">Same-day appointments filling fast</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* PRICING ANCHOR STRIP — early visibility */}
+      {step === "select" && !showModelPicker && (
+        <section className="py-6 bg-white border-b border-[#e8e8ed]">
+          <div className="max-w-lg mx-auto px-4">
+            <div className="grid grid-cols-3 gap-3 text-center">
+              {[
+                { label: "Screen Repair", price: "from $89", icon: "📱" },
+                { label: "Battery Replace", price: "from $59", icon: "🔋" },
+                { label: "Diagnostics", price: "FREE", icon: "🔍" },
+              ].map((p) => (
+                <div key={p.label} className="bg-[#f5f5f7] rounded-xl p-3">
+                  <span className="text-lg">{p.icon}</span>
+                  <p className="text-[#0071e3] font-bold text-sm mt-1">{p.price}</p>
+                  <p className="text-[#86868b] text-[10px]">{p.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -822,13 +849,14 @@ export default function Home() {
         <>
           <section className="py-16 bg-[#f5f5f7]">
             <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">3 steps. That&apos;s it.</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">How It Works</h2>
               <p className="text-[#86868b] text-sm text-center mb-10">Book a repair in under 60 seconds</p>
               <div className="space-y-6">
                 {[
-                  { num: "1", title: "Book your repair", desc: "Pick your device, select the issue, and see your price instantly." },
-                  { num: "2", title: "We come to you", desc: "A certified technician drives to your home, office, or wherever you are." },
-                  { num: "3", title: "Device fixed on the spot", desc: "Most repairs completed in 30 minutes. Pay only after it works." },
+                  { num: "1", title: "Choose your device", desc: "iPhone, MacBook, or Android — pick yours." },
+                  { num: "2", title: "Select the issue", desc: "Screen, battery, charging port — tap what needs fixing." },
+                  { num: "3", title: "Get instant price", desc: "See your exact cost before you commit. No surprises." },
+                  { num: "4", title: "Technician comes to you", desc: "A certified tech arrives at your door, same day." },
                 ].map((s) => (
                   <div key={s.num} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-sm shrink-0">
@@ -881,6 +909,24 @@ export default function Home() {
             </div>
           </section>
 
+          {/* DIFFERENTIATION STRIP — Why Us */}
+          <section className="py-10 bg-[#0071e3] text-white">
+            <div className="max-w-lg mx-auto px-4">
+              <div className="grid grid-cols-3 gap-4 text-center">
+                {[
+                  { bold: "We come to you", sub: "Home, work, anywhere" },
+                  { bold: "No store visits", sub: "Skip the wait entirely" },
+                  { bold: "On-demand repair", sub: "Fast, same-day service" },
+                ].map((d) => (
+                  <div key={d.bold}>
+                    <p className="font-bold text-sm mb-1">{d.bold}</p>
+                    <p className="text-white/70 text-[10px]">{d.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* TRUST SECTION */}
           <section className="py-16">
             <div className="max-w-lg mx-auto px-4">
@@ -925,8 +971,9 @@ export default function Home() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="w-full bg-[#0071e3] text-white py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
             >
-              Fix My Phone Now
+              Book Repair Now
             </button>
+            <p className="text-center text-[10px] text-[#86868b] mt-1.5">Takes less than 10 seconds &middot; Technician arrives today</p>
           </div>
 
           {/* FOOTER */}
