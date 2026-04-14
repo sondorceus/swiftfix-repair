@@ -194,7 +194,7 @@ function TechCard() {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="flex items-center gap-4 bg-gradient-to-r from-[#1a1a1e] to-[#222] rounded-2xl p-4 border border-white/15">
+    <div className="flex items-center gap-4 bg-[#232325] rounded-2xl p-4 border border-white/15">
       <div className="w-12 h-12 rounded-full bg-[#0071e3] flex items-center justify-center text-[#e8e8e8] font-bold text-lg shrink-0">
         JM
       </div>
@@ -360,7 +360,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#181818] text-[#e8e8e8]">
       {/* STICKY NAV — compact, app-like */}
-      <nav className="sticky top-0 z-40 bg-[#0f0f10]/95 backdrop-blur-xl border-b border-black/60">
+      <nav className="sticky top-0 z-40 bg-[#181818]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
           <button onClick={resetAll} className="cursor-pointer"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
@@ -898,7 +898,7 @@ export default function Home() {
       {/* HOW IT WORKS — 3-step visual (only on home screen) */}
       {step === "select" && !showModelPicker && (
         <>
-          <section className="py-16 bg-[#232326]">
+          <section className="py-16 bg-[#181818]">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold tracking-tight text-center mb-2">How It Works</h2>
               <p className="text-[#c7c7cc] text-sm text-center mb-10 font-medium leading-relaxed">Book a repair in under 60 seconds</p>
@@ -1028,7 +1028,7 @@ export default function Home() {
           </div>
 
           {/* FOOTER */}
-          <footer className="bg-[#0f0f10] text-[#c7c7cc] py-10 border-t border-black/60">
+          <footer className="bg-[#181818] text-[#c7c7cc] py-10 border-t border-black/60">
             <div className="max-w-lg mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <Logo size="sm" />

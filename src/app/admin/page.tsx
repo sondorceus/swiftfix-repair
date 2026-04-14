@@ -80,7 +80,7 @@ export default function AdminPage() {
 
   if (!authed) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#181818] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl p-8 max-w-sm w-full">
           <h1 className="text-xl font-bold mb-1">Admin Login</h1>
           <p className="text-[#c7c7cc] text-sm mb-6">SwiftFix Management</p>
