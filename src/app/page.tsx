@@ -518,7 +518,7 @@ export default function Home() {
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#f5f5f7] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#f0f4f9] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                     >
                       {/* iPhone render — model-specific, fills card */}
                       <div className="relative w-[70px] h-[135px] mb-3 group-hover:scale-105 transition-transform duration-300">
@@ -581,7 +581,7 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#f5f5f7] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
+                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#f0f4f9] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-[72px] rounded-xl flex items-center justify-center shadow-lg" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
@@ -629,7 +629,7 @@ export default function Home() {
                 <button
                   key={r.name}
                   onClick={() => handleRepairSelect(r)}
-                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[#f5f5f7] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[#f0f4f9] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-2xl w-10 text-center">{r.icon}</span>
                   <div className="flex-1">
@@ -685,26 +685,29 @@ export default function Home() {
 
             {/* Booking type: ASAP or Schedule */}
             <div className="space-y-3 mb-6">
-              {BOOKING_OPTIONS.map((opt) => (
-                <button
-                  key={opt.label}
-                  onClick={() => handleTimeSelect(opt.label)}
-                  className={`w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left ${
-                    timeChoice === opt.label
-                      ? "border-[#0071e3] bg-[#0071e3]/10"
-                      : "border-white/15 hover:border-[#0071e3]/40"
-                  }`}
-                >
-                  <span className="text-2xl">{opt.icon}</span>
-                  <div className="flex-1">
-                    <p className="font-semibold text-lg">{opt.label}</p>
-                    <p className="text-[#c7c7cc] text-xs font-medium">{opt.sub}</p>
-                  </div>
-                  {opt.badge && (
-                    <span className="text-[12px] bg-[#34c759] text-[#e8e8e8] px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
-                  )}
-                </button>
-              ))}
+              {BOOKING_OPTIONS.map((opt) => {
+                const isSelected = timeChoice === opt.label;
+                return (
+                  <button
+                    key={opt.label}
+                    onClick={() => handleTimeSelect(opt.label)}
+                    className={`w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left ${
+                      isSelected
+                        ? "border-[#0071e3] bg-[#0071e3]/10"
+                        : "border-[#e8e8ed] bg-[#f0f4f9] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg"
+                    }`}
+                  >
+                    <span className="text-2xl">{opt.icon}</span>
+                    <div className="flex-1">
+                      <p className={`font-semibold text-lg ${isSelected ? "text-[#e8e8e8]" : "text-[#1a1a1a]"}`}>{opt.label}</p>
+                      <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#6e6e73]"}`}>{opt.sub}</p>
+                    </div>
+                    {opt.badge && (
+                      <span className="text-[12px] bg-[#34c759] text-[#e8e8e8] px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Schedule: Date picker */}
@@ -719,7 +722,7 @@ export default function Home() {
                       className={`flex-shrink-0 px-4 py-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
                         selectedDate === d.value
                           ? "border-[#0071e3] bg-[#0071e3] text-[#e8e8e8]"
-                          : "border-white/15 hover:border-[#0071e3]/40"
+                          : "border-[#e8e8ed] bg-[#f0f4f9] text-[#1a1a1a] hover:border-[#0071e3]/50 hover:bg-white"
                       }`}
                     >
                       {d.label}
@@ -741,7 +744,7 @@ export default function Home() {
                       className={`w-full p-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
                         specificSlot === slot
                           ? "border-[#0071e3] bg-[#0071e3] text-[#e8e8e8]"
-                          : "border-white/15 hover:border-[#0071e3]/40"
+                          : "border-[#e8e8ed] bg-[#f0f4f9] text-[#1a1a1a] hover:border-[#0071e3]/50 hover:bg-white"
                       }`}
                     >
                       {slot}
