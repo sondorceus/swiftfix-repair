@@ -80,7 +80,7 @@ export default function AdminPage() {
 
   if (!authed) {
     return (
-      <div className="min-h-screen bg-[#181818] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#282828] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl p-8 max-w-sm w-full">
           <h1 className="text-xl font-bold mb-1">Admin Login</h1>
           <p className="text-[#c7c7cc] text-sm mb-6">SwiftFix Management</p>
@@ -126,7 +126,7 @@ export default function AdminPage() {
               key={t.id}
               onClick={() => setTab(t.id)}
               className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition ${
-                tab === t.id ? "bg-[#0071e3] text-[#e8e8e8]" : "bg-white border border-[#e8e8ed] text-[#181818]"
+                tab === t.id ? "bg-[#0071e3] text-[#e8e8e8]" : "bg-white border border-[#e8e8ed] text-[#282828]"
               }`}
             >
               {t.label} {t.count !== undefined && <span className="ml-1 opacity-70">({t.count})</span>}
@@ -218,7 +218,7 @@ export default function AdminPage() {
                           className={`p-2 rounded-xl text-xs font-medium transition cursor-pointer border ${
                             isBlocked
                               ? "bg-red-50 border-red-300 text-red-700"
-                              : "bg-white border-[#e8e8ed] text-[#181818] hover:border-[#0071e3]/40"
+                              : "bg-white border-[#e8e8ed] text-[#282828] hover:border-[#0071e3]/40"
                           }`}
                         >
                           {slot} {isBlocked ? "X" : ""}
