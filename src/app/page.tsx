@@ -518,7 +518,7 @@ export default function Home() {
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#f5f5f7] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                     >
                       {/* iPhone render — model-specific, fills card */}
                       <div className="relative w-[70px] h-[135px] mb-3 group-hover:scale-105 transition-transform duration-300">
@@ -581,7 +581,7 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
+                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#f5f5f7] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-[72px] rounded-xl flex items-center justify-center shadow-lg" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
@@ -629,7 +629,7 @@ export default function Home() {
                 <button
                   key={r.name}
                   onClick={() => handleRepairSelect(r)}
-                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[#f5f5f7] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-2xl w-10 text-center">{r.icon}</span>
                   <div className="flex-1">
