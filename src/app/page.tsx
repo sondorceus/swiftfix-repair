@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 const BRAND = "Austin Mobile Repair";
-const PHONE = "(512) 555-0147";
+const PHONE = "(512) 960-9256";
 
 function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const textSize = size === "sm" ? "16px" : size === "lg" ? "28px" : "20px";
@@ -518,7 +518,7 @@ export default function Home() {
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#c8d9ea] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-gradient-to-br from-[#c8d9ea] via-[#b4c8de] to-[#9db8d6] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:from-white hover:via-white hover:to-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                     >
                       {/* iPhone render — model-specific, fills card */}
                       <div className="relative w-[70px] h-[135px] mb-3 group-hover:scale-105 transition-transform duration-300">
@@ -581,7 +581,7 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#c8d9ea] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
+                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-gradient-to-br from-[#c8d9ea] via-[#b4c8de] to-[#9db8d6] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:from-white hover:via-white hover:to-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-[72px] rounded-xl flex items-center justify-center shadow-lg" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
@@ -629,7 +629,7 @@ export default function Home() {
                 <button
                   key={r.name}
                   onClick={() => handleRepairSelect(r)}
-                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[#c8d9ea] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-br from-[#c8d9ea] via-[#b4c8de] to-[#9db8d6] border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:from-white hover:via-white hover:to-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-2xl w-10 text-center">{r.icon}</span>
                   <div className="flex-1">
@@ -694,7 +694,7 @@ export default function Home() {
                     className={`w-full flex items-center gap-4 p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer text-left ${
                       isSelected
                         ? "border-[#0071e3] bg-[#0071e3]/10"
-                        : "border-[#e8e8ed] bg-[#c8d9ea] hover:border-[#0071e3]/50 hover:bg-white hover:shadow-lg"
+                        : "border-[#e8e8ed] bg-gradient-to-br from-[#c8d9ea] via-[#b4c8de] to-[#9db8d6] hover:border-[#0071e3]/50 hover:from-white hover:via-white hover:to-white hover:shadow-lg"
                     }`}
                   >
                     <span className="text-2xl">{opt.icon}</span>
@@ -722,7 +722,7 @@ export default function Home() {
                       className={`flex-shrink-0 px-4 py-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
                         selectedDate === d.value
                           ? "border-[#0071e3] bg-[#0071e3] text-[#e8e8e8]"
-                          : "border-[#e8e8ed] bg-[#c8d9ea] text-[#1a1a1a] hover:border-[#0071e3]/50 hover:bg-white"
+                          : "border-[#e8e8ed] bg-gradient-to-br from-[#c8d9ea] via-[#b4c8de] to-[#9db8d6] text-[#1a1a1a] hover:border-[#0071e3]/50 hover:from-white hover:via-white hover:to-white"
                       }`}
                     >
                       {d.label}
@@ -744,7 +744,7 @@ export default function Home() {
                       className={`w-full p-3 rounded-xl text-center text-sm font-medium transition cursor-pointer border ${
                         specificSlot === slot
                           ? "border-[#0071e3] bg-[#0071e3] text-[#e8e8e8]"
-                          : "border-[#e8e8ed] bg-[#c8d9ea] text-[#1a1a1a] hover:border-[#0071e3]/50 hover:bg-white"
+                          : "border-[#e8e8ed] bg-gradient-to-br from-[#c8d9ea] via-[#b4c8de] to-[#9db8d6] text-[#1a1a1a] hover:border-[#0071e3]/50 hover:from-white hover:via-white hover:to-white"
                       }`}
                     >
                       {slot}
