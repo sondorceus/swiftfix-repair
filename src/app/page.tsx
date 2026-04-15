@@ -518,7 +518,7 @@ export default function Home() {
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-[#333335] border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/10 active:scale-[0.97] transition-all duration-200 cursor-pointer"
+                      className="group relative flex flex-col items-center p-4 pb-5 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                     >
                       {/* iPhone render — model-specific, fills card */}
                       <div className="relative w-[70px] h-[135px] mb-3 group-hover:scale-105 transition-transform duration-300">
@@ -560,9 +560,9 @@ export default function Home() {
                           <div className="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[18px] h-[2px] bg-white/30 rounded-full" />
                         </div>
                       </div>
-                      <p className="font-semibold text-[#e8e8e8] text-sm group-hover:text-[#40a9ff] transition leading-relaxed">{s.label}</p>
-                      <p className="text-[#c7c7cc] text-[12px] font-medium leading-relaxed">{s.year} · {s.variants.length} models</p>
-                      <svg className="w-4 h-4 text-[#c7c7cc] mt-1 group-hover:text-[#0071e3] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <p className="font-semibold text-[#1a1a1a] text-sm group-hover:text-[#0071e3] transition leading-relaxed">{s.label}</p>
+                      <p className="text-[#6e6e73] text-[12px] font-medium leading-relaxed">{s.year} · {s.variants.length} models</p>
+                      <svg className="w-4 h-4 text-[#6e6e73] mt-1 group-hover:text-[#0071e3] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
@@ -581,7 +581,7 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-[#333335] border border-white/10 hover:border-[#0071e3]/60 hover:bg-[#0071e3]/10 active:scale-[0.98] transition-all duration-200 cursor-pointer text-left"
+                          className="w-full flex items-center justify-between p-4 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                         >
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-[72px] rounded-xl flex items-center justify-center shadow-lg" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
@@ -592,11 +592,11 @@ export default function Home() {
                               </div>
                             </div>
                             <div>
-                              <p className="font-semibold text-[#e8e8e8]">{v.label}</p>
-                              <p className="text-[#c7c7cc] text-xs font-medium">{v.size} display</p>
+                              <p className="font-semibold text-[#1a1a1a]">{v.label}</p>
+                              <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
                             </div>
                           </div>
-                          <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
@@ -629,12 +629,12 @@ export default function Home() {
                 <button
                   key={r.name}
                   onClick={() => handleRepairSelect(r)}
-                  className="w-full flex items-center gap-4 p-4 rounded-2xl border border-white/10 hover:border-[#0071e3]/40 hover:bg-[#333335] transition-all duration-200 cursor-pointer text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#0071e3]/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-2xl w-10 text-center">{r.icon}</span>
                   <div className="flex-1">
-                    <p className="font-semibold">{r.name}</p>
-                    <p className="text-[#c7c7cc] text-xs font-medium">~{r.time}</p>
+                    <p className="font-semibold text-[#1a1a1a]">{r.name}</p>
+                    <p className="text-[#6e6e73] text-[12px] font-medium">~{r.time}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
