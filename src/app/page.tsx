@@ -196,7 +196,7 @@ function TechCard() {
   }, []);
   return (
     <div className="flex items-center gap-4 bg-[#333335] rounded-2xl p-4 border border-white/15">
-      <div className="w-12 h-12 rounded-full bg-[#0071e3] flex items-center justify-center text-[#e8e8e8] font-bold text-lg shrink-0">
+      <div className="w-12 h-12 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-lg shrink-0">
         JM
       </div>
       <div className="flex-1 min-w-0">
@@ -383,7 +383,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#282828] text-[#e8e8e8]">
+    <main className="min-h-screen bg-[#282828] text-white">
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="lazyOnload"
@@ -398,7 +398,7 @@ export default function Home() {
               <LivePulse />
               <span className="hidden sm:inline">Techs Available</span>
             </div>
-            <a href={`tel:${PHONE}`} className="tap-spring bg-[#0071e3] text-[#e8e8e8] px-4 py-2 rounded-full text-xs font-medium hover:bg-[#0077ED] transition">
+            <a href={`tel:${PHONE}`} className="tap-spring bg-[#0071e3] text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-[#0077ED] transition">
               Call Us
             </a>
           </div>
@@ -407,7 +407,7 @@ export default function Home() {
 
       {/* HERO — Uber-style: tight, action-focused, mobile-first */}
       {step === "select" && !showModelPicker && (
-        <section className="bg-[#282828] text-[#e8e8e8]">
+        <section className="bg-[#282828] text-white">
           <div className="max-w-lg mx-auto px-4 pt-10 pb-8">
             {/* Live status bar */}
             <div className="flex items-center justify-between mb-8">
@@ -433,7 +433,7 @@ export default function Home() {
                 { label: "Certified Techs", icon: "✓" },
                 { label: "4.9★ Rating", icon: "★" },
               ].map((b) => (
-                <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[12px] font-medium text-[#e8e8e8]">
+                <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[12px] font-medium text-white">
                   <span className="text-[#34c759]">{b.icon}</span> {b.label}
                 </span>
               ))}
@@ -458,14 +458,14 @@ export default function Home() {
                 >
                   <span className={d.hot ? "text-4xl" : "text-2xl"}>{d.icon}</span>
                   <div className="flex-1">
-                    <p className={`font-semibold text-[#e8e8e8] ${d.hot ? "text-lg" : ""}`}>{d.label}</p>
+                    <p className={`font-semibold text-white ${d.hot ? "text-lg" : ""}`}>{d.label}</p>
                     <p className={`text-[#c7c7cc] ${d.hot ? "text-sm" : "text-xs"}`}>{d.sub}</p>
                   </div>
                   <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                   {d.hot && (
-                    <span className="absolute right-16 text-[12px] bg-[#0071e3] text-[#e8e8e8] px-2 py-0.5 rounded-full font-medium" style={{ position: "relative", right: "auto" }}>
+                    <span className="absolute right-16 text-[12px] bg-[#0071e3] text-white px-2 py-0.5 rounded-full font-medium" style={{ position: "relative", right: "auto" }}>
                       Popular
                     </span>
                   )}
@@ -479,13 +479,13 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
                     {["JM", "SK", "AL"].map((init, i) => (
-                      <div key={i} className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-[#e8e8e8] text-[12px] font-bold border-2 border-[#282828]">
+                      <div key={i} className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-[12px] font-bold border-2 border-[#282828]">
                         {init}
                       </div>
                     ))}
                   </div>
                   <div>
-                    <p className="text-[#e8e8e8] text-xs font-medium">5,000+ repairs completed</p>
+                    <p className="text-white text-xs font-medium">5,000+ repairs completed</p>
                     <div className="flex items-center gap-1">
                       <span className="text-[#fbbf24] text-[12px] font-medium">★★★★★</span>
                       <span className="text-[#c7c7cc] text-[12px] font-medium">4.9/5 from 2,400+ reviews</span>
@@ -493,7 +493,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-[#e8e8e8] text-xs font-bold">90-day</p>
+                  <p className="text-white text-xs font-bold">90-day</p>
                   <p className="text-[#c7c7cc] text-[12px] font-medium leading-relaxed">warranty</p>
                 </div>
               </div>
@@ -532,7 +532,7 @@ export default function Home() {
 
       {/* iPHONE MODEL PICKER — two-step: Series → Variant */}
       {showModelPicker && (
-        <section className="bg-[#282828] text-[#e8e8e8] min-h-[60vh]">
+        <section className="bg-[#282828] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -729,11 +729,11 @@ export default function Home() {
                   >
                     <span className="text-2xl">{opt.icon}</span>
                     <div className="flex-1">
-                      <p className={`font-semibold text-lg ${isSelected ? "text-[#e8e8e8]" : "text-[#1a1a1a]"}`}>{opt.label}</p>
+                      <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-[#1a1a1a]"}`}>{opt.label}</p>
                       <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#6e6e73]"}`}>{opt.sub}</p>
                     </div>
                     {opt.badge && (
-                      <span className="text-[12px] bg-[#34c759] text-[#e8e8e8] px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
+                      <span className="text-[12px] bg-[#34c759] text-white px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
                     )}
                   </button>
                 );
@@ -751,7 +751,7 @@ export default function Home() {
                       onClick={() => handleDateSelect(d.value)}
                       className={`flex-shrink-0 px-4 py-3 rounded-xl text-center text-sm font-medium cursor-pointer ${
                         selectedDate === d.value
-                          ? "border border-[#0071e3] bg-[#0071e3] text-[#e8e8e8] transition"
+                          ? "border border-[#0071e3] bg-[#0071e3] text-white transition"
                           : "card-3d text-[#1a1a1a]"
                       }`}
                     >
@@ -773,7 +773,7 @@ export default function Home() {
                       onClick={() => handleSlotSelect(slot)}
                       className={`w-full p-3 rounded-xl text-center text-sm font-medium cursor-pointer ${
                         specificSlot === slot
-                          ? "border border-[#0071e3] bg-[#0071e3] text-[#e8e8e8] transition"
+                          ? "border border-[#0071e3] bg-[#0071e3] text-white transition"
                           : "card-3d text-[#1a1a1a]"
                       }`}
                     >
@@ -830,7 +830,7 @@ export default function Home() {
                   onChange={(e) => setAddress(e.target.value)}
                   required
                   autoComplete="off"
-                  className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-[#e8e8e8] placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div>
@@ -841,7 +841,7 @@ export default function Home() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-[#e8e8e8] placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -852,7 +852,7 @@ export default function Home() {
                     placeholder="(512) 555-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-[#e8e8e8] placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
                 <div>
@@ -862,7 +862,7 @@ export default function Home() {
                     placeholder="you@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-[#e8e8e8] placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
               </div>
@@ -870,7 +870,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="tap-spring w-full bg-[#0071e3] text-[#e8e8e8] py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer mt-2"
+                className="tap-spring w-full bg-[#0071e3] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer mt-2"
               >
                 Book My Repair Now
               </button>
@@ -945,7 +945,7 @@ export default function Home() {
                   { num: "4", title: "Technician comes to you", desc: "A certified tech arrives at your door, same day." },
                 ].map((s) => (
                   <div key={s.num} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#0071e3] flex items-center justify-center text-[#e8e8e8] font-bold text-sm shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-sm shrink-0">
                       {s.num}
                     </div>
                     <div>
@@ -996,7 +996,7 @@ export default function Home() {
           </section>
 
           {/* DIFFERENTIATION STRIP — Why Us */}
-          <section className="py-10 bg-[#0071e3] text-[#e8e8e8]">
+          <section className="py-10 bg-[#0071e3] text-white">
             <div className="max-w-lg mx-auto px-4">
               <div className="grid grid-cols-3 gap-4 text-center">
                 {[
@@ -1055,7 +1055,7 @@ export default function Home() {
           <div className="sticky bottom-0 bg-[#282828]/90 backdrop-blur-xl border-t border-white/10 p-4 md:hidden">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="tap-spring w-full bg-[#0071e3] text-[#e8e8e8] py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
+              className="tap-spring w-full bg-[#0071e3] text-white py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
             >
               Book Repair Now
             </button>
@@ -1067,7 +1067,7 @@ export default function Home() {
             <div className="max-w-lg mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <Logo size="sm" />
-                <a href={`tel:${PHONE}`} className="text-sm hover:text-[#e8e8e8] transition">{PHONE}</a>
+                <a href={`tel:${PHONE}`} className="text-sm hover:text-white transition">{PHONE}</a>
               </div>
               <p className="text-xs leading-relaxed mb-6 font-medium">
                 Fast, same-day iPhone &amp; MacBook repair at your location. Certified technicians, genuine parts, 90-day warranty. Serving all of Austin, TX.

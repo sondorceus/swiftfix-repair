@@ -14,6 +14,7 @@ body {
   color: var(--brand-black);
   background: var(--brand-white);
   -webkit-font-smoothing: antialiased;
+  font-weight: 500;
 }
 
 .card-3d {
