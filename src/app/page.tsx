@@ -450,16 +450,16 @@ export default function Home() {
                 <button
                   key={d.id}
                   onClick={() => d.id === "android" ? window.location.href = `tel:${PHONE}` : handleDeviceSelect(d.id)}
-                  className={`tap-spring w-full flex items-center gap-4 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
+                  className={`tap-spring w-full flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
                     d.hot
-                      ? "p-5 bg-white/10 border-2 border-[#0071e3]/40 hover:bg-white/15 hover:border-[#0071e3]/70"
-                      : "p-4 bg-white/5 border border-white/10 hover:bg-white/10"
+                      ? "bg-white/10 border-2 border-[#0071e3]/40 hover:bg-white/15 hover:border-[#0071e3]/70"
+                      : "bg-white/5 border-2 border-white/10 hover:bg-white/10 hover:border-white/20"
                   }`}
                 >
-                  <span className={d.hot ? "text-4xl" : "text-2xl"}>{d.icon}</span>
+                  <span className="text-3xl">{d.icon}</span>
                   <div className="flex-1">
-                    <p className={`font-semibold text-white ${d.hot ? "text-lg" : ""}`}>{d.label}</p>
-                    <p className={`text-[#c7c7cc] ${d.hot ? "text-sm" : "text-xs"}`}>{d.sub}</p>
+                    <p className="font-semibold text-white text-lg">{d.label}</p>
+                    <p className="text-[#c7c7cc] text-sm">{d.sub}</p>
                   </div>
                   <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
