@@ -368,7 +368,7 @@ export default function Home() {
               <LivePulse />
               <span className="hidden sm:inline">Techs Available</span>
             </div>
-            <a href={`tel:${PHONE}`} className="bg-[#0071e3] text-[#e8e8e8] px-4 py-2 rounded-full text-xs font-medium hover:bg-[#0077ED] transition">
+            <a href={`tel:${PHONE}`} className="tap-spring bg-[#0071e3] text-[#e8e8e8] px-4 py-2 rounded-full text-xs font-medium hover:bg-[#0077ED] transition">
               Call Us
             </a>
           </div>
@@ -420,7 +420,7 @@ export default function Home() {
                 <button
                   key={d.id}
                   onClick={() => d.id === "android" ? window.location.href = `tel:${PHONE}` : handleDeviceSelect(d.id)}
-                  className={`w-full flex items-center gap-4 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
+                  className={`tap-spring w-full flex items-center gap-4 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
                     d.hot
                       ? "p-5 bg-white/10 border-2 border-[#0071e3]/40 hover:bg-white/15 hover:border-[#0071e3]/70"
                       : "p-4 bg-white/5 border border-white/10 hover:bg-white/10"
@@ -615,7 +615,7 @@ export default function Home() {
       {step === "issue" && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -657,7 +657,7 @@ export default function Home() {
       {step === "time" && repair && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -761,7 +761,7 @@ export default function Home() {
       {step === "confirm" && !submitted && repair && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -838,7 +838,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="w-full bg-[#0071e3] text-[#e8e8e8] py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer mt-2"
+                className="tap-spring w-full bg-[#0071e3] text-[#e8e8e8] py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer mt-2"
               >
                 Book My Repair Now
               </button>
@@ -1023,7 +1023,7 @@ export default function Home() {
           <div className="sticky bottom-0 bg-[#282828]/90 backdrop-blur-xl border-t border-white/10 p-4 md:hidden">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="w-full bg-[#0071e3] text-[#e8e8e8] py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
+              className="tap-spring w-full bg-[#0071e3] text-[#e8e8e8] py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
             >
               Book Repair Now
             </button>
