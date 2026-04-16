@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import Script from "next/script";
 
 const BRAND = "Austin Mobile Repair";
 const PHONE = "(512) 960-9256";
@@ -225,6 +226,30 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
+  const addressRef = useRef<HTMLInputElement>(null);
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
+
+  const initAutocomplete = useCallback(() => {
+    if (!addressRef.current || autocompleteRef.current || typeof google === "undefined") return;
+    const ac = new google.maps.places.Autocomplete(addressRef.current, {
+      types: ["address"],
+      componentRestrictions: { country: "us" },
+      fields: ["formatted_address"],
+    });
+    ac.setBounds(new google.maps.LatLngBounds(
+      { lat: 30.1, lng: -98.0 },
+      { lat: 30.6, lng: -97.5 }
+    ));
+    ac.addListener("place_changed", () => {
+      const place = ac.getPlace();
+      if (place?.formatted_address) setAddress(place.formatted_address);
+    });
+    autocompleteRef.current = ac;
+  }, []);
+
+  useEffect(() => {
+    if (step === "confirm") initAutocomplete();
+  }, [step, initAutocomplete]);
 
   // Map variant IDs back to their series repair key
   const getRepairKey = (model: string | null) => {
@@ -359,6 +384,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#282828] text-[#e8e8e8]">
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+        strategy="lazyOnload"
+        onLoad={initAutocomplete}
+      />
       {/* STICKY NAV — compact, app-like */}
       <nav className="sticky top-0 z-40 bg-[#282828]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
@@ -793,11 +823,13 @@ export default function Home() {
               <div>
                 <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Location</label>
                 <input
+                  ref={addressRef}
                   type="text"
-                  placeholder="Your address in Austin, TX"
+                  placeholder="Start typing your Austin address…"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
+                  autoComplete="off"
                   className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-[#e8e8e8] placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
