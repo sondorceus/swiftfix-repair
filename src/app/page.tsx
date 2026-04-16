@@ -819,7 +819,7 @@ export default function Home() {
             <h2 className="text-xl font-bold tracking-tight mb-1">Almost done</h2>
             <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Where should we send the technician?</p>
 
-            <form onSubmit={(e) => { e.preventDefault(); if (!phone && !email) { alert("Please provide a phone number or email so we can reach you."); return; } handleSubmit(e); }} className="space-y-4">
+            <form onSubmit={(e) => { e.preventDefault(); handleSubmit(e); }} className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Location</label>
                 <input
@@ -846,12 +846,13 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Phone <span className="normal-case text-[12px] font-medium">(optional)</span></label>
+                  <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Phone</label>
                   <input
                     type="tel"
                     placeholder="(512) 555-0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required
                     className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
