@@ -591,7 +591,7 @@ export default function Home() {
                 </div>
                 {/* Driving van */}
                 <div className="absolute top-[2px] left-[16%] z-20 animate-[driveVan_2.5s_ease-out_0.5s_forwards]" style={{ transform: "translateX(-50%)" }}>
-                  <svg width="24" height="16" viewBox="0 0 24 16" fill="none" style={{ filter: "drop-shadow(0 0 6px rgba(0,113,227,0.5))" }}><path d="M2 8h14l-2-4h-5L7 2H3L1 6v4h1a2 2 0 104 0h6a2 2 0 104 0h3V8H2z" fill="#0071e3"/><circle cx="5" cy="12" r="2" fill="#fff"/><circle cx="17" cy="12" r="2" fill="#fff"/></svg>
+                  <svg width="32" height="18" viewBox="0 0 32 18" fill="none" style={{ filter: "drop-shadow(0 0 8px rgba(0,113,227,0.6))" }}><path d="M4 12V8l2-4h7l4-2h6l3 4h2v4a1 1 0 01-1 1h-1.1a3 3 0 00-5.8 0h-6.2a3 3 0 00-5.8 0H4a1 1 0 01-1-1z" fill="#0071e3"/><path d="M13 4l4-2h6l2.5 3H12.5z" fill="#4da6ff" opacity="0.6"/><path d="M6 4h5v4H5l1-4z" fill="#4da6ff" opacity="0.4"/><line x1="13" y1="4" x2="13" y2="8" stroke="#005bb5" strokeWidth="0.5" opacity="0.4"/><circle cx="8" cy="14" r="2.5" fill="#333" stroke="#555" strokeWidth="0.5"/><circle cx="8" cy="14" r="1" fill="#888"/><circle cx="23" cy="14" r="2.5" fill="#333" stroke="#555" strokeWidth="0.5"/><circle cx="23" cy="14" r="1" fill="#888"/><rect x="27" y="7" width="2" height="1" rx="0.5" fill="#ff4444" opacity="0.8"/><rect x="3" y="7" width="1.5" height="1" rx="0.5" fill="#ffcc00" opacity="0.8"/></svg>
                 </div>
                 {[
                   { num: "1", label: "Pick device" },
