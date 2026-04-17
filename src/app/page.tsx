@@ -576,7 +576,7 @@ export default function Home() {
       {/* STICKY NAV — compact, app-like */}
       <nav className="sticky top-0 z-40 bg-[#3d3d3d]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
-          <button onClick={() => { resetAll(); setFooterPage(null); }} className="cursor-pointer"><Logo size="sm" /></button>
+          <button onClick={() => { resetAll(); setFooterPage(null); }} className="cursor-pointer" aria-label="Go to homepage"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
             <div className="flex items-center text-xs text-[#34c759] font-medium">
               <LivePulse />
@@ -1348,7 +1348,7 @@ export default function Home() {
           <div className="mb-3 w-[300px] bg-[#242424] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
             <div className="bg-[#0071e3] px-4 py-3 flex items-center justify-between">
               <p className="text-white font-semibold text-sm">Austin Mobile Repair</p>
-              <button onClick={() => setChatOpen(false)} className="text-white/80 hover:text-white cursor-pointer text-lg">x</button>
+              <button onClick={() => setChatOpen(false)} aria-label="Close chat" className="text-white/80 hover:text-white cursor-pointer text-lg">x</button>
             </div>
             <div className="p-4">
               {chatMode === "choose" && (
@@ -1391,7 +1391,7 @@ export default function Home() {
             </div>
           </div>
         )}
-        <button onClick={() => setChatOpen(!chatOpen)} className="w-14 h-14 rounded-full bg-[#0071e3] text-white flex items-center justify-center shadow-lg hover:bg-[#0077ed] hover:opacity-100 transition-all duration-300 cursor-pointer active:scale-90 animate-[chatFade_4s_ease-out_forwards]">
+        <button onClick={() => setChatOpen(!chatOpen)} aria-label={chatOpen ? "Close chat" : "Open live chat"} className="w-14 h-14 rounded-full bg-[#0071e3] text-white flex items-center justify-center shadow-lg hover:bg-[#0077ed] hover:opacity-100 transition-all duration-300 cursor-pointer active:scale-90 animate-[chatFade_4s_ease-out_forwards]">
           {chatOpen ? (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           ) : (
