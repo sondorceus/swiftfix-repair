@@ -580,21 +580,28 @@ export default function Home() {
               ))}
             </div>
 
-            {/* How it works — with icons */}
-            <div className="mt-10 grid grid-cols-3 gap-4 text-center">
-              {[
-                { icon: "📱", label: "Pick device", sub: "iPhone, Mac, Samsung" },
-                { icon: "🔧", label: "Choose repair", sub: "See price instantly" },
-                { icon: "📅", label: "Book time", sub: "We come to you" },
-              ].map((s, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <span className="text-3xl mb-2">{s.icon}</span>
-                  <p className="text-white text-xs font-semibold">{s.label}</p>
-                  <p className="text-[#c7c7cc] text-[10px] font-medium mt-0.5">{s.sub}</p>
+            {/* How it works — visual step flow */}
+            <div className="mt-10">
+              <div className="flex items-start justify-between relative">
+                {/* Connecting line */}
+                <div className="absolute top-4 left-[16%] right-[16%] h-[2px] bg-white/10">
+                  <div className="h-full bg-[#0071e3] w-0 animate-[progressLine_2s_ease-out_0.5s_forwards]" />
                 </div>
-              ))}
+                {[
+                  { num: "1", label: "Pick device" },
+                  { num: "2", label: "Choose repair" },
+                  { num: "3", label: "Book time" },
+                ].map((s, i) => (
+                  <div key={i} className="flex flex-col items-center relative z-10 w-1/3">
+                    <div className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-sm font-bold shadow-[0_0_12px_rgba(0,113,227,0.3)]">
+                      {s.num}
+                    </div>
+                    <p className="text-white text-xs font-semibold mt-2">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-center text-[#c7c7cc] text-[11px] mt-5 font-medium">Takes about a minute · Same-day · 30-day warranty</p>
             </div>
-            <p className="text-center text-[#c7c7cc] text-[11px] mt-4 font-medium">Takes about a minute · Same-day · 30-day warranty</p>
           </div>
         </section>
       )}
@@ -1190,6 +1197,7 @@ export default function Home() {
 
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes progressLine { from { width: 0; } to { width: 100%; } }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
     </main>
