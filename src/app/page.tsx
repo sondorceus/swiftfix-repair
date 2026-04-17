@@ -1062,34 +1062,9 @@ export default function Home() {
         </section>
       )}
 
-      {/* HOW IT WORKS — 3-step visual (only on home screen) */}
+      {/* BELOW-FOLD CONTENT (only on home screen) */}
       {step === "select" && !showModelPicker && (
         <>
-          <section className="py-16 bg-[#282828]">
-            <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">How It Works</h2>
-              <p className="text-[#c7c7cc] text-sm text-center mb-10 font-medium leading-relaxed">Book a repair in under 60 seconds</p>
-              <div className="space-y-6">
-                {[
-                  { num: "1", title: "Choose your device", desc: "iPhone, MacBook, or Android — pick yours." },
-                  { num: "2", title: "Select the issue", desc: "Screen, battery, charging port — tap what needs fixing." },
-                  { num: "3", title: "Get instant price", desc: "See your exact cost before you commit. No surprises." },
-                  { num: "4", title: "Technician comes to you", desc: "A certified tech arrives at your door, same day." },
-                ].map((s) => (
-                  <div key={s.num} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-sm shrink-0">
-                      {s.num}
-                    </div>
-                    <div>
-                      <p className="font-semibold mb-0.5">{s.title}</p>
-                      <p className="text-[#c7c7cc] text-sm font-medium leading-relaxed">{s.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
           {/* SOCIAL PROOF — minimal */}
           <section className="py-12 bg-[#282828]">
             <div className="max-w-lg mx-auto px-4 text-center">
