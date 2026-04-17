@@ -129,12 +129,85 @@ const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string
   ],
 };
 
+const MACBOOK_SERIES = [
+  { id: "mbair", label: "MacBook Air", year: "M1–M4", variants: [
+    { id: "mbair-m4", label: "MacBook Air M4", size: '13"/15"' },
+    { id: "mbair-m3", label: "MacBook Air M3", size: '13"/15"' },
+    { id: "mbair-m2", label: "MacBook Air M2", size: '13"/15"' },
+    { id: "mbair-m1", label: "MacBook Air M1", size: '13"' },
+  ]},
+  { id: "mbpro14", label: "MacBook Pro 14\"", year: "M1–M4", variants: [
+    { id: "mbpro14-m4", label: "MacBook Pro 14\" M4", size: '14"' },
+    { id: "mbpro14-m3", label: "MacBook Pro 14\" M3", size: '14"' },
+    { id: "mbpro14-m2", label: "MacBook Pro 14\" M2", size: '14"' },
+    { id: "mbpro14-m1", label: "MacBook Pro 14\" M1", size: '14"' },
+  ]},
+  { id: "mbpro16", label: "MacBook Pro 16\"", year: "M1–M4", variants: [
+    { id: "mbpro16-m4", label: "MacBook Pro 16\" M4", size: '16"' },
+    { id: "mbpro16-m3", label: "MacBook Pro 16\" M3", size: '16"' },
+    { id: "mbpro16-m2", label: "MacBook Pro 16\" M2", size: '16"' },
+    { id: "mbpro16-m1", label: "MacBook Pro 16\" M1", size: '16"' },
+  ]},
+  { id: "mbpro13", label: "MacBook Pro 13\"", year: "M1–M2/Intel", variants: [
+    { id: "mbpro13-m2", label: "MacBook Pro 13\" M2", size: '13"' },
+    { id: "mbpro13-m1", label: "MacBook Pro 13\" M1", size: '13"' },
+    { id: "mbpro13-intel", label: "MacBook Pro 13\" Intel", size: '13"' },
+  ]},
+  { id: "mbolder", label: "Older MacBook", year: "2015–2019", variants: [
+    { id: "mbolder-pro15", label: "MacBook Pro 15\" (2015-2019)", size: '15"' },
+    { id: "mbolder-air13", label: "MacBook Air (2017-2020)", size: '13"' },
+    { id: "mbolder-12", label: "MacBook 12\" Retina", size: '12"' },
+  ]},
+];
+
 const MACBOOK_REPAIRS = [
-  { name: "Screen Repair", price: "$199+", time: "1-2 hrs", icon: "🖥" },
-  { name: "Battery Service", price: "$129", time: "1 hr", icon: "🔋" },
-  { name: "Keyboard Repair", price: "$149", time: "1-2 hrs", icon: "⌨️" },
-  { name: "SSD Upgrade", price: "$99+", time: "45 min", icon: "💾" },
-  { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
+  { name: "Screen Repair", price: "Custom Quote", time: "1-2 hrs", icon: "🖥" },
+  { name: "Battery Service", price: "Custom Quote", time: "1-2 hrs", icon: "🔋" },
+  { name: "Keyboard Repair", price: "Custom Quote", time: "1-2 hrs", icon: "⌨️" },
+  { name: "Trackpad Repair", price: "Custom Quote", time: "1 hr", icon: "🖱" },
+  { name: "Logic Board", price: "Custom Quote", time: "2-3 hrs", icon: "🔧" },
+  { name: "SSD/Storage", price: "Custom Quote", time: "1 hr", icon: "💾" },
+  { name: "Charging Port", price: "Custom Quote", time: "1 hr", icon: "⚡" },
+  { name: "Other Issue", price: "Custom Quote", time: "Varies", icon: "🔧" },
+];
+
+const SAMSUNG_SERIES = [
+  { id: "galaxys", label: "Galaxy S Series", year: "S21–S24", variants: [
+    { id: "gs24ultra", label: "Galaxy S24 Ultra", size: '6.8"' },
+    { id: "gs24plus", label: "Galaxy S24+", size: '6.7"' },
+    { id: "gs24", label: "Galaxy S24", size: '6.2"' },
+    { id: "gs24fe", label: "Galaxy S24 FE", size: '6.7"' },
+    { id: "gs23ultra", label: "Galaxy S23 Ultra", size: '6.8"' },
+    { id: "gs23", label: "Galaxy S23/S23+", size: '6.1"/6.6"' },
+    { id: "gs22", label: "Galaxy S22 Series", size: '6.1"-6.8"' },
+    { id: "gs21", label: "Galaxy S21 Series", size: '6.2"-6.8"' },
+  ]},
+  { id: "galaxyz", label: "Galaxy Z Fold/Flip", year: "Foldables", variants: [
+    { id: "gzfold5", label: "Galaxy Z Fold 5", size: '7.6"' },
+    { id: "gzfold4", label: "Galaxy Z Fold 4", size: '7.6"' },
+    { id: "gzflip5", label: "Galaxy Z Flip 5", size: '6.7"' },
+    { id: "gzflip4", label: "Galaxy Z Flip 4", size: '6.7"' },
+  ]},
+  { id: "galaxya", label: "Galaxy A Series", year: "Budget", variants: [
+    { id: "ga54", label: "Galaxy A54", size: '6.4"' },
+    { id: "ga34", label: "Galaxy A34", size: '6.6"' },
+    { id: "ga15", label: "Galaxy A15", size: '6.5"' },
+    { id: "ga14", label: "Galaxy A14", size: '6.6"' },
+  ]},
+  { id: "galaxynote", label: "Galaxy Note", year: "Note Series", variants: [
+    { id: "gnote20", label: "Galaxy Note 20 / Ultra", size: '6.7"/6.9"' },
+    { id: "gnote10", label: "Galaxy Note 10 / 10+", size: '6.3"/6.8"' },
+  ]},
+];
+
+const SAMSUNG_REPAIRS = [
+  { name: "Screen Repair", price: "Contact for Price", time: "1-2 hrs", icon: "📱" },
+  { name: "Battery Replacement", price: "Contact for Price", time: "1 hr", icon: "🔋" },
+  { name: "Charging Port", price: "Contact for Price", time: "45 min", icon: "⚡" },
+  { name: "Camera Repair", price: "Contact for Price", time: "1 hr", icon: "📷" },
+  { name: "Back Glass", price: "Contact for Price", time: "1 hr", icon: "🔲" },
+  { name: "Water Damage", price: "Contact for Price", time: "1-2 hrs", icon: "💧" },
+  { name: "Other Issue", price: "Contact for Price", time: "Varies", icon: "🔧" },
 ];
 
 const BOOKING_OPTIONS = [
@@ -213,7 +286,11 @@ function TechCard() {
 
 export default function Home() {
   const [step, setStep] = useState<Step>("select");
-  const [deviceType, setDeviceType] = useState<"iphone" | "macbook" | "android" | null>(null);
+  const [deviceType, setDeviceType] = useState<"iphone" | "macbook" | "android" | "other" | null>(null);
+  const [otherDeviceText, setOtherDeviceText] = useState("");
+  const [otherIssueText, setOtherIssueText] = useState("");
+  const [selectedModel, setSelectedModel] = useState<string | null>(null);
+  const [selectedModelSeries, setSelectedModelSeries] = useState<string | null>(null);
   const [iphoneModel, setIphoneModel] = useState<string | null>(null);
   const [repair, setRepair] = useState<{ name: string; price: string; time: string; icon: string } | null>(null);
   const [timeChoice, setTimeChoice] = useState<string | null>(null);
@@ -261,23 +338,33 @@ export default function Home() {
 
   const currentRepairs = deviceType === "iphone" && iphoneModel
     ? IPHONE_REPAIRS[getRepairKey(iphoneModel) || ""] || []
-    : deviceType === "macbook" ? MACBOOK_REPAIRS : [];
+    : deviceType === "macbook" ? MACBOOK_REPAIRS
+    : deviceType === "android" ? SAMSUNG_REPAIRS : [];
 
   const deviceLabel = deviceType === "iphone" && iphoneModel
     ? IPHONE_SERIES.flatMap(s => s.variants).find(v => v.id === iphoneModel)?.label || "iPhone"
-    : deviceType === "macbook" ? "MacBook" : "Android";
+    : deviceType === "macbook" && selectedModel
+    ? MACBOOK_SERIES.flatMap(s => s.variants).find(v => v.id === selectedModel)?.label || "MacBook"
+    : deviceType === "android" && selectedModel
+    ? SAMSUNG_SERIES.flatMap(s => s.variants).find(v => v.id === selectedModel)?.label || "Samsung Galaxy"
+    : deviceType === "other" ? otherDeviceText || "Other Device"
+    : deviceType === "macbook" ? "MacBook" : deviceType === "android" ? "Samsung Galaxy" : "Device";
 
-  const handleDeviceSelect = (d: "iphone" | "macbook" | "android") => {
+  const handleDeviceSelect = (d: "iphone" | "macbook" | "android" | "other") => {
     setDeviceType(d);
     setIphoneModel(null);
     setSelectedSeries(null);
+    setSelectedModel(null);
+    setSelectedModelSeries(null);
     setRepair(null);
     setTimeChoice(null);
     setSelectedDate(null);
     setSpecificSlot(null);
-    if (d === "iphone") {
+    setOtherDeviceText("");
+    setOtherIssueText("");
+    if (d === "iphone" || d === "macbook" || d === "android") {
       setShowModelPicker(true);
-    } else if (d === "macbook") {
+    } else if (d === "other") {
       setStep("issue");
     }
   };
@@ -287,9 +374,14 @@ export default function Home() {
   };
 
   const handleVariantSelect = (variantId: string) => {
-    setIphoneModel(variantId);
+    if (deviceType === "iphone") {
+      setIphoneModel(variantId);
+    } else {
+      setSelectedModel(variantId);
+    }
     setShowModelPicker(false);
     setSelectedSeries(null);
+    setSelectedModelSeries(null);
     setStep("issue");
   };
 
@@ -321,22 +413,21 @@ export default function Home() {
     if (step === "confirm") setStep("time");
     else if (step === "time") setStep("issue");
     else if (step === "issue") {
-      if (deviceType === "iphone") {
-        // Go back to model picker instead of device selection
+      if (deviceType === "iphone" || deviceType === "macbook" || deviceType === "android") {
         setShowModelPicker(true);
         setSelectedSeries(null);
+        setSelectedModelSeries(null);
         setIphoneModel(null);
+        setSelectedModel(null);
         setRepair(null);
       } else {
         setStep("select");
         setDeviceType(null);
-        setIphoneModel(null);
       }
-    } else if (step === "select" && showModelPicker && selectedSeries) {
-      // Back from variant submenu to series list
+    } else if (step === "select" && showModelPicker && (selectedSeries || selectedModelSeries)) {
       setSelectedSeries(null);
+      setSelectedModelSeries(null);
     } else if (step === "select" && showModelPicker) {
-      // Back from series list to device selection
       setShowModelPicker(false);
       setDeviceType(null);
     }
@@ -444,12 +535,13 @@ export default function Home() {
               <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium">Fix my device now</p>
               {[
                 { id: "iphone" as const, label: "iPhone", sub: "11 and newer · From $39", icon: "📱", hot: true },
-                { id: "macbook" as const, label: "MacBook", sub: "All models · From $99", icon: "💻", hot: false },
-                { id: "android" as const, label: "Android", sub: "Custom quote · Call us", icon: "📲", hot: false },
+                { id: "macbook" as const, label: "MacBook", sub: "All models · Custom Quote", icon: "💻", hot: false },
+                { id: "android" as const, label: "Samsung Galaxy", sub: "All models · Contact for Price", icon: "📲", hot: false },
+                { id: "other" as const, label: "Other Device", sub: "Describe your device & issue", icon: "🔧", hot: false },
               ].map((d) => (
                 <button
                   key={d.id}
-                  onClick={() => d.id === "android" ? window.location.href = `tel:${PHONE}` : handleDeviceSelect(d.id)}
+                  onClick={() => handleDeviceSelect(d.id)}
                   className={`tap-spring w-full flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
                     d.hot
                       ? "bg-white/10 border-2 border-[#0071e3]/40 hover:bg-white/15 hover:border-[#0071e3]/70"
@@ -530,16 +622,60 @@ export default function Home() {
         </section>
       )}
 
-      {/* iPHONE MODEL PICKER — two-step: Series → Variant */}
+      {/* MODEL PICKER — two-step: Series → Variant (iPhone / MacBook / Samsung) */}
       {showModelPicker && (
         <section className="bg-[#282828] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
 
-            {!selectedSeries ? (
+            {/* MacBook / Samsung — simple list picker */}
+            {(deviceType === "macbook" || deviceType === "android") && (() => {
+              const seriesData = deviceType === "macbook" ? MACBOOK_SERIES : SAMSUNG_SERIES;
+              const activeSeries = selectedModelSeries ? seriesData.find(s => s.id === selectedModelSeries) : null;
+              const title = deviceType === "macbook" ? "Select your MacBook" : "Select your Samsung";
+
+              if (activeSeries) return (
+                <div className="animate-[fadeIn_0.2s_ease-out]">
+                  <h2 className="text-2xl font-bold tracking-tight mb-1">{activeSeries.label}</h2>
+                  <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Pick your exact model</p>
+                  <div className="space-y-2">
+                    {activeSeries.variants.map((v) => (
+                      <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between p-4 rounded-2xl cursor-pointer text-left">
+                        <div>
+                          <p className="font-semibold text-[#1a1a1a]">{v.label}</p>
+                          <p className="text-[#6e6e73] text-xs font-medium">{v.size}</p>
+                        </div>
+                        <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+
+              return (
+                <>
+                  <h2 className="text-2xl font-bold tracking-tight mb-1">{title}</h2>
+                  <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Choose your series, then pick your model</p>
+                  <div className="space-y-2">
+                    {seriesData.map((s) => (
+                      <button key={s.id} onClick={() => setSelectedModelSeries(s.id)} className="card-3d w-full flex items-center justify-between p-5 rounded-2xl cursor-pointer text-left">
+                        <div>
+                          <p className="font-semibold text-[#1a1a1a] text-lg">{s.label}</p>
+                          <p className="text-[#6e6e73] text-sm font-medium">{s.year} · {s.variants.length} models</p>
+                        </div>
+                        <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              );
+            })()}
+
+            {/* iPhone — series grid with renders */}
+            {deviceType === "iphone" && !selectedSeries && (
               <>
                 <h2 className="text-2xl font-bold tracking-tight mb-1">Select your iPhone</h2>
                 <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Choose your series, then pick your exact model</p>
@@ -599,9 +735,9 @@ export default function Home() {
                   ))}
                 </div>
               </>
-            ) : (
+            )}
+            {deviceType === "iphone" && selectedSeries && (
               <>
-                {/* Variant submenu */}
                 {(() => { const series = IPHONE_SERIES.find(s => s.id === selectedSeries); if (!series) return null; return (
                   <div className="animate-[fadeIn_0.2s_ease-out]">
                     <h2 className="text-2xl font-bold tracking-tight mb-1">{series.label} Series</h2>
@@ -650,28 +786,51 @@ export default function Home() {
               Back
             </button>
             <StepIndicator current={1} total={3} />
-            <h2 className="text-2xl font-bold tracking-tight mb-1">What&apos;s the issue?</h2>
-            <p className="text-[#c7c7cc] text-sm mb-2 font-medium leading-relaxed">{deviceLabel} · Tap to see pricing</p>
-            <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
-            <div className="space-y-2">
-              {currentRepairs.map((r) => (
-                <button
-                  key={r.name}
-                  onClick={() => handleRepairSelect(r)}
-                  className="card-3d w-full flex items-center gap-4 p-4 rounded-2xl cursor-pointer text-left"
-                >
-                  <span className="text-2xl w-10 text-center">{r.icon}</span>
-                  <div className="flex-1">
-                    <p className="font-semibold text-[#1a1a1a]">{r.name}</p>
-                    <p className="text-[#6e6e73] text-[12px] font-medium">~{r.time}</p>
+            {deviceType === "other" ? (
+              <>
+                <h2 className="text-2xl font-bold tracking-tight mb-1">Tell us about your device</h2>
+                <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Describe your device and the issue</p>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Device</label>
+                    <input type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
                   </div>
-                  <div className="text-right">
-                    <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
+                  <div>
+                    <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
+                    <textarea placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition resize-none" />
                   </div>
-                </button>
-              ))}
-            </div>
+                  <button onClick={() => { setRepair({ name: otherIssueText || "Custom Repair", price: "Custom Quote", time: "TBD", icon: "🔧" }); setStep("time"); }} disabled={!otherDeviceText || !otherIssueText} className="tap-spring w-full bg-[#0071e3] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                    Continue to Scheduling
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl font-bold tracking-tight mb-1">What&apos;s the issue?</h2>
+                <p className="text-[#c7c7cc] text-sm mb-2 font-medium leading-relaxed">{deviceLabel} · {deviceType === "iphone" ? "Tap to see pricing" : "All repairs quoted individually"}</p>
+                <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
+
+                <div className="space-y-2">
+                  {currentRepairs.map((r) => (
+                    <button
+                      key={r.name}
+                      onClick={() => handleRepairSelect(r)}
+                      className="card-3d w-full flex items-center gap-4 p-4 rounded-2xl cursor-pointer text-left"
+                    >
+                      <span className="text-2xl w-10 text-center">{r.icon}</span>
+                      <div className="flex-1">
+                        <p className="font-semibold text-[#1a1a1a]">{r.name}</p>
+                        <p className="text-[#6e6e73] text-[12px] font-medium">~{r.time}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
 
             {/* Trust mini-bar */}
             <div className="flex items-center justify-center gap-6 mt-8 text-[#c7c7cc] text-xs">
