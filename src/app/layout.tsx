@@ -29,6 +29,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "ATX Gadget Fix",
+              "description": "Austin's mobile repair service. iPhone, MacBook & Samsung repairs at your location. 30-day warranty. No fix, no pay.",
+              "url": "https://atxgadgetfix.com",
+              "telephone": "(512) 960-9256",
+              "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US" },
+              "areaServed": { "@type": "City", "name": "Austin" },
+              "priceRange": "$$",
+              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "4200" },
+            }),
+          }}
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );
