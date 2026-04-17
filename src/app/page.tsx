@@ -599,9 +599,18 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-3">
               Fix your phone<br />at home.
             </h1>
-            <p className="text-[#c7c7cc] text-lg mb-10 font-medium">
+            <p className="text-[#c7c7cc] text-lg mb-4 font-medium">
               Premium OEM-grade parts. Expert repair at your door.
             </p>
+            <div className="flex items-center gap-2 mb-8">
+              <span className="inline-flex items-center gap-1.5 bg-[#34c759]/15 text-[#34c759] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#34c759]/20">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                No Fix, No Pay
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/5 text-[#c7c7cc] text-xs font-medium px-3 py-1.5 rounded-full border border-white/10">
+                30-Day Warranty
+              </span>
+            </div>
 
             {/* Device selection — immediate action */}
             <div className="space-y-3">
