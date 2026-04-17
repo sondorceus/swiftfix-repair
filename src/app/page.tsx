@@ -72,7 +72,7 @@ function makeRepairs(screen: number, battery: number, speaker: number, frontCam:
   return [
     { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
     { name: "Battery Replacement", price: `$${battery}`, time: "20 min", icon: "🔋" },
-    { name: "Camera Lens Replacement", price: `from $${frontCam}`, time: "25-30 min", icon: "📷", _frontCam: frontCam, _rearCam: rearCam },
+    { name: "Camera Lens", price: `from $${frontCam}`, time: "25-30 min", icon: "📷", _frontCam: frontCam, _rearCam: rearCam },
     { name: "Back Glass", price: `$${backGlass}`, time: "40 min", icon: "🔲" },
     { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
     { name: "Speaker/Mic", price: `$${speaker}`, time: "25 min", icon: "🔊" },
@@ -829,37 +829,31 @@ export default function Home() {
                 <p className="text-[#c7c7cc] text-sm mb-2 font-medium leading-relaxed">{deviceLabel} · {deviceType === "iphone" ? "Tap to see pricing" : "All repairs quoted individually"}</p>
                 <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
-                <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-3">
                   {currentRepairs.map((r) => {
-                    const isCamera = r.name === "Camera Lens Replacement";
+                    const isCamera = r.name === "Camera Lens";
                     const rAny = r as { _frontCam?: number; _rearCam?: number };
                     return (
-                      <div key={r.name}>
+                      <div key={r.name} className={isCamera && showCameraOptions ? "col-span-2" : ""}>
                         <button
                           onClick={() => isCamera ? setShowCameraOptions(!showCameraOptions) : handleRepairSelect(r)}
-                          className="card-3d w-full flex items-center gap-4 p-4 rounded-2xl cursor-pointer text-left"
+                          className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center min-h-[110px]"
                         >
-                          <span className="text-2xl w-10 text-center">{r.icon}</span>
-                          <div className="flex-1">
-                            <p className="font-semibold text-[#1a1a1a]">{r.name}</p>
-                            <p className="text-[#6e6e73] text-[12px] font-medium">~{r.time}</p>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
-                          </div>
-                          {isCamera && (
-                            <svg className={`w-4 h-4 text-[#6e6e73] transition-transform ${showCameraOptions ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                          )}
+                          <span className="text-3xl mb-2">{r.icon}</span>
+                          <p className="font-bold text-[#1a1a1a] text-sm leading-tight">{r.name}</p>
+                          <p className="text-[#0071e3] font-bold text-base mt-1">{r.price}</p>
                         </button>
                         {isCamera && showCameraOptions && rAny._frontCam && rAny._rearCam && (
-                          <div className="ml-14 mt-1 space-y-1 animate-[fadeIn_0.2s_ease-out]">
-                            <button onClick={() => handleRepairSelect({ name: "Front Camera", price: `$${rAny._frontCam}`, time: "25 min", icon: "🤳" })} className="tap-spring w-full flex items-center justify-between p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer text-left">
-                              <span className="text-sm font-medium">Front Camera</span>
-                              <span className="text-[#0071e3] font-bold">${rAny._frontCam}</span>
+                          <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
+                            <button onClick={() => handleRepairSelect({ name: "Front Camera", price: `$${rAny._frontCam}`, time: "25 min", icon: "🤳" })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer">
+                              <span className="text-lg mb-1">🤳</span>
+                              <span className="text-xs font-semibold">Front</span>
+                              <span className="text-[#0071e3] font-bold text-sm">${rAny._frontCam}</span>
                             </button>
-                            <button onClick={() => handleRepairSelect({ name: "Rear Camera (Full Module)", price: `$${rAny._rearCam}`, time: "30 min", icon: "📷" })} className="tap-spring w-full flex items-center justify-between p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer text-left">
-                              <span className="text-sm font-medium">Rear Camera (Full Module)</span>
-                              <span className="text-[#0071e3] font-bold">${rAny._rearCam}</span>
+                            <button onClick={() => handleRepairSelect({ name: "Rear Camera (Full Module)", price: `$${rAny._rearCam}`, time: "30 min", icon: "📷" })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer">
+                              <span className="text-lg mb-1">📷</span>
+                              <span className="text-xs font-semibold">Rear (Full)</span>
+                              <span className="text-[#0071e3] font-bold text-sm">${rAny._rearCam}</span>
                             </button>
                           </div>
                         )}
