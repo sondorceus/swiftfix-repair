@@ -255,7 +255,7 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
   };
 
   return (
-    <div className="bg-[#333335] rounded-2xl overflow-hidden border border-white/10">
+    <div className="bg-[#474749] rounded-2xl overflow-hidden border border-white/10">
       <div className="px-4 pt-4 pb-2 flex items-center gap-2">
         <span className="text-lg">{icon}</span>
         <p className="font-semibold text-sm">{label}</p>
@@ -273,7 +273,7 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
         onClick={(e) => updatePos(e.clientX)}
       >
         {/* Before (full) */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(135deg, ${beforeColor}, #1a1a1a)` }}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(135deg, ${beforeColor}, #242424)` }}>
           <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-3">
             <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           </div>
@@ -281,7 +281,7 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
           <p className="text-[#c7c7cc] text-xs leading-relaxed max-w-[200px]">{before}</p>
         </div>
         {/* After (clipped by slider position) */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(135deg, ${afterColor}, #1a1a1a)`, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(135deg, ${afterColor}, #242424)`, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
           <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-3">
             <svg className="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
           </div>
@@ -291,7 +291,7 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
         {/* Slider handle */}
         <div className="absolute top-0 bottom-0 w-0.5 bg-white/80 z-10" style={{ left: `${pos}%` }}>
           <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center">
-            <svg className="w-4 h-4 text-[#333333]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
+            <svg className="w-4 h-4 text-[#3d3d3d]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
           </div>
         </div>
       </div>
@@ -306,7 +306,7 @@ function TechCard() {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="flex items-center gap-4 bg-[#333335] rounded-2xl p-4 border border-white/15">
+    <div className="flex items-center gap-4 bg-[#474749] rounded-2xl p-4 border border-white/15">
       <div className="w-12 h-12 rounded-full bg-[#0071e3] flex items-center justify-center text-white font-bold text-lg shrink-0">
         JM
       </div>
@@ -567,14 +567,14 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#333333] text-white">
+    <main className="min-h-screen bg-[#3d3d3d] text-white">
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="lazyOnload"
         onLoad={initAutocomplete}
       />
       {/* STICKY NAV — compact, app-like */}
-      <nav className="sticky top-0 z-40 bg-[#333333]/95 backdrop-blur-xl border-b border-black/60">
+      <nav className="sticky top-0 z-40 bg-[#3d3d3d]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
           <button onClick={() => { resetAll(); setFooterPage(null); }} className="cursor-pointer"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
@@ -591,7 +591,7 @@ export default function Home() {
 
       {/* HERO — minimal, app-like */}
       {step === "select" && !showModelPicker && !footerPage && (
-        <section className="bg-[#333333] text-white">
+        <section className="bg-[#3d3d3d] text-white">
           <div className="max-w-lg mx-auto px-4 pt-12 pb-8">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-3">
               Fix your phone<br />at home.
@@ -657,7 +657,7 @@ export default function Home() {
 
       {/* MODEL PICKER — two-step: Series → Variant (iPhone / MacBook / Samsung) */}
       {showModelPicker && !footerPage && (
-        <section className="bg-[#333333] text-white min-h-[60vh]">
+        <section className="bg-[#3d3d3d] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -678,7 +678,7 @@ export default function Home() {
                     {activeSeries.variants.map((v, i) => (
                       <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]" style={{ animationDelay: `${i * 0.06}s` }}>
                         <div>
-                          <p className="font-bold text-[#1a1a1a] text-[15px]">{v.label}</p>
+                          <p className="font-bold text-[#242424] text-[15px]">{v.label}</p>
                           <p className="text-[#6e6e73] text-xs font-medium">{v.size}</p>
                         </div>
                         <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -696,7 +696,7 @@ export default function Home() {
                     {seriesData.map((s) => (
                       <button key={s.id} onClick={() => setSelectedModelSeries(s.id)} className="card-3d w-full flex items-center justify-between p-5 rounded-2xl cursor-pointer text-left">
                         <div>
-                          <p className="font-semibold text-[#1a1a1a] text-lg">{s.label}</p>
+                          <p className="font-semibold text-[#242424] text-lg">{s.label}</p>
                           <p className="text-[#6e6e73] text-sm font-medium">{s.year} · {s.variants.length} models</p>
                         </div>
                         <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -727,7 +727,7 @@ export default function Home() {
                           <span className="text-2xl">📱</span>
                         </div>
                       )}
-                      <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{s.label}</p>
+                      <p className="font-bold text-[#242424] text-[13px] leading-tight">{s.label}</p>
                       <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
                     </button>
                   ))}
@@ -749,7 +749,7 @@ export default function Home() {
                           style={{ animationDelay: `${i * 0.06}s` }}
                         >
                           <div>
-                            <p className="font-bold text-[#1a1a1a] text-[15px]">{v.label}</p>
+                            <p className="font-bold text-[#242424] text-[15px]">{v.label}</p>
                             <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
                           </div>
                           <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -784,11 +784,11 @@ export default function Home() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Device</label>
-                    <input type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
+                    <input type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
                   </div>
                   <div>
                     <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
-                    <textarea placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition resize-none" />
+                    <textarea placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition resize-none" />
                   </div>
                   <button onClick={() => { setRepair({ name: otherIssueText || "Custom Repair", price: "Custom Quote", time: "TBD", icon: "🔧" }); setStep("time"); }} disabled={!otherDeviceText || !otherIssueText} className="tap-spring w-full bg-[#0071e3] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                     Continue to Scheduling
@@ -816,14 +816,14 @@ export default function Home() {
                           <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
                             <span className="text-2xl">{r.icon}</span>
                           </div>
-                          <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
+                          <p className="font-bold text-[#242424] text-[13px] leading-tight">{r.name}</p>
                           <p className="text-[#0071e3] font-extrabold text-base mt-1">{r.price}</p>
                           {hasSub && <svg className={`w-3 h-3 text-[#6e6e73] mt-0.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
                         </button>
                         {isExpanded && subs && (
                           <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
                             {subs.map((sub) => (
-                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer">
+                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#474749] border border-white/10 cursor-pointer">
                                 <span className="text-lg mb-1">{sub.icon}</span>
                                 <span className="text-xs font-semibold">{sub.name}</span>
                                 <span className="text-[#0071e3] font-bold text-sm">{sub.price}</span>
@@ -859,7 +859,7 @@ export default function Home() {
             <StepIndicator current={2} total={3} />
 
             {/* Selected repair summary */}
-            <div className="bg-[#333335] border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
+            <div className="bg-[#474749] border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
               <div>
                 <p className="text-xs text-[#c7c7cc] font-medium">{deviceLabel}</p>
                 <p className="font-semibold">{repair.name}</p>
@@ -894,7 +894,7 @@ export default function Home() {
                   >
                     <span className="text-2xl">{opt.icon}</span>
                     <div className="flex-1">
-                      <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-[#1a1a1a]"}`}>{opt.label}</p>
+                      <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-[#242424]"}`}>{opt.label}</p>
                       <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#6e6e73]"}`}>{opt.sub}</p>
                     </div>
                     {opt.badge && (
@@ -917,7 +917,7 @@ export default function Home() {
                       className={`flex-shrink-0 px-4 py-3 rounded-xl text-center text-sm font-medium cursor-pointer ${
                         selectedDate === d.value
                           ? "border border-[#0071e3] bg-[#0071e3] text-white transition"
-                          : "card-3d text-[#1a1a1a]"
+                          : "card-3d text-[#242424]"
                       }`}
                     >
                       {d.label}
@@ -939,7 +939,7 @@ export default function Home() {
                       className={`w-full p-3 rounded-xl text-center text-sm font-medium cursor-pointer ${
                         specificSlot === slot
                           ? "border border-[#0071e3] bg-[#0071e3] text-white transition"
-                          : "card-3d text-[#1a1a1a]"
+                          : "card-3d text-[#242424]"
                       }`}
                     >
                       {slot}
@@ -963,7 +963,7 @@ export default function Home() {
             <StepIndicator current={3} total={3} />
 
             {/* Order summary — DoorDash checkout style */}
-            <div className="bg-[#333335] border border-white/10 rounded-2xl p-5 mb-6">
+            <div className="bg-[#474749] border border-white/10 rounded-2xl p-5 mb-6">
               <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium mb-3">Your repair</p>
               <div className="flex items-center justify-between mb-3">
                 <div>
@@ -995,7 +995,7 @@ export default function Home() {
                   onChange={(e) => setAddress(e.target.value)}
                   required
                   autoComplete="off"
-                  className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div>
@@ -1006,7 +1006,7 @@ export default function Home() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -1018,7 +1018,7 @@ export default function Home() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
-                    className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
                 <div>
@@ -1028,7 +1028,7 @@ export default function Home() {
                     placeholder="you@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-[#333335] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition"
                   />
                 </div>
               </div>
@@ -1087,7 +1087,7 @@ export default function Home() {
             </p>
 
             {/* Fake tracking card */}
-            <div className="bg-[#333335] border border-white/10 rounded-2xl p-5 mb-6 text-left">
+            <div className="bg-[#474749] border border-white/10 rounded-2xl p-5 mb-6 text-left">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium">Estimated arrival</p>
                 <p className="text-[#0071e3] font-bold">~20 min</p>
@@ -1095,7 +1095,7 @@ export default function Home() {
               <TechCard />
             </div>
 
-            <div className="bg-[#333335] border border-white/10 rounded-2xl p-5 mb-8 text-left">
+            <div className="bg-[#474749] border border-white/10 rounded-2xl p-5 mb-8 text-left">
               <div className="flex items-center justify-between text-sm">
                 <div>
                   <p className="font-semibold">{repair.name}</p>
@@ -1119,7 +1119,7 @@ export default function Home() {
       {step === "select" && !showModelPicker && !footerPage && (
         <>
           {/* REVIEWS MARQUEE */}
-          <section className="py-10 overflow-hidden bg-[#333333]">
+          <section className="py-10 overflow-hidden bg-[#3d3d3d]">
             <p className="text-white font-semibold text-lg text-center mb-6">Done right the first time.</p>
             <div className="relative">
               <div className="flex animate-[marquee_20s_linear_infinite] gap-4 w-max">
@@ -1135,7 +1135,7 @@ export default function Home() {
                   { text: "Professional, fast, and exactly as quoted.", name: "David R." },
                   { text: "MacBook keyboard fixed same day. Great warranty.", name: "Amanda P." },
                 ].map((r, i) => (
-                  <div key={i} className="flex-shrink-0 w-[260px] bg-[#333335] rounded-2xl p-4 border border-white/10">
+                  <div key={i} className="flex-shrink-0 w-[260px] bg-[#474749] rounded-2xl p-4 border border-white/10">
                     <p className="text-sm text-white/85 font-medium mb-2">&ldquo;{r.text}&rdquo;</p>
                     <p className="text-xs text-[#c7c7cc]">— {r.name}</p>
                   </div>
@@ -1145,7 +1145,7 @@ export default function Home() {
           </section>
 
           {/* FOOTER CTA */}
-          <section className="py-16 bg-[#333333] text-center">
+          <section className="py-16 bg-[#3d3d3d] text-center">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold mb-2">Ready when you are.</h2>
               <p className="text-[#c7c7cc] text-sm mb-6 font-medium">Book in under a minute. A tech comes to you — fast.</p>
@@ -1156,7 +1156,7 @@ export default function Home() {
           </section>
 
           {/* FOOTER */}
-          <footer className="bg-[#1a1a1a] text-[#c7c7cc] py-12 border-t border-white/10">
+          <footer className="bg-[#242424] text-[#c7c7cc] py-12 border-t border-white/10">
             <div className="max-w-lg mx-auto px-4">
               <div className="grid grid-cols-3 gap-6 mb-8">
                 <div>
@@ -1188,7 +1188,7 @@ export default function Home() {
           </footer>
 
           {/* STICKY BOTTOM CTA — mobile */}
-          <div className="sticky bottom-0 bg-[#333333]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
+          <div className="sticky bottom-0 bg-[#3d3d3d]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring w-full bg-[#0071e3] text-white py-3 rounded-2xl text-sm font-semibold cursor-pointer">
               Start Repair
             </button>
@@ -1198,7 +1198,7 @@ export default function Home() {
 
       {/* FOOTER PAGES */}
       {footerPage && (
-        <section className="min-h-screen bg-[#333333] text-white">
+        <section className="min-h-screen bg-[#3d3d3d] text-white">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-16">
             <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -1210,15 +1210,15 @@ export default function Home() {
                 <h1 className="text-3xl font-bold mb-4">About Us</h1>
                 <p className="text-[#c7c7cc] mb-6 leading-relaxed">Austin Mobile Repair was founded with a simple mission: bring professional device repair directly to you. No store visits. No long waits. Just fast, quality repairs at your door.</p>
                 <div className="space-y-4 mb-8">
-                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
                     <p className="font-semibold mb-1">Our Mission</p>
                     <p className="text-[#c7c7cc] text-sm">Make device repair as easy as ordering a ride. Premium parts, certified technicians, and a 30-day warranty on every repair.</p>
                   </div>
-                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
                     <p className="font-semibold mb-1">Why We&apos;re Different</p>
                     <p className="text-[#c7c7cc] text-sm">We come to your home, office, or anywhere in Austin. Every part is inspected and tested before installation. If we can&apos;t fix it, you don&apos;t pay.</p>
                   </div>
-                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
                     <p className="font-semibold mb-1">Serving Austin, TX</p>
                     <p className="text-[#c7c7cc] text-sm">We cover all of Austin and surrounding areas. iPhone, MacBook, Samsung — we fix them all.</p>
                   </div>
@@ -1240,7 +1240,7 @@ export default function Home() {
                     { q: "How do I pay?", a: "Pay after the repair is complete. We accept all major payment methods." },
                     { q: "Can I see pricing before I book?", a: "Yes. Our booking flow shows you the exact price for your device and repair type before you confirm." },
                   ].map((item) => (
-                    <div key={item.q} className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                    <div key={item.q} className="bg-[#474749] rounded-2xl p-5 border border-white/10">
                       <p className="font-semibold text-sm mb-1">{item.q}</p>
                       <p className="text-[#c7c7cc] text-sm">{item.a}</p>
                     </div>
@@ -1253,27 +1253,27 @@ export default function Home() {
               <div className="animate-[fadeIn_0.3s_ease-out]">
                 <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
                 <div className="space-y-4 mb-8">
-                  <a href={`tel:${PHONE}`} className="flex items-center gap-4 bg-[#333335] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href={`tel:${PHONE}`} className="flex items-center gap-4 bg-[#474749] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
                     <span className="text-2xl">📞</span>
                     <div>
                       <p className="font-semibold">Call Us</p>
                       <p className="text-[#0071e3] text-sm">{PHONE}</p>
                     </div>
                   </a>
-                  <a href="mailto:support@austinmobilerepair.com" className="flex items-center gap-4 bg-[#333335] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href="mailto:support@austinmobilerepair.com" className="flex items-center gap-4 bg-[#474749] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
                     <span className="text-2xl">✉️</span>
                     <div>
                       <p className="font-semibold">Email</p>
                       <p className="text-[#0071e3] text-sm">support@austinmobilerepair.com</p>
                     </div>
                   </a>
-                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
                     <span className="text-2xl mb-2 block">🕐</span>
                     <p className="font-semibold">Hours</p>
                     <p className="text-[#c7c7cc] text-sm">Monday – Saturday: 8AM – 8PM</p>
                     <p className="text-[#c7c7cc] text-sm">Sunday: Closed</p>
                   </div>
-                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
                     <span className="text-2xl mb-2 block">📍</span>
                     <p className="font-semibold">Service Area</p>
                     <p className="text-[#c7c7cc] text-sm">All of Austin, TX and surrounding areas. We come to you.</p>
@@ -1288,7 +1288,7 @@ export default function Home() {
       {/* CHAT WIDGET */}
       <div className="fixed bottom-20 md:bottom-6 right-4 z-50 group/chat">
         {chatOpen && (
-          <div className="mb-3 w-[300px] bg-[#1a1a1a] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+          <div className="mb-3 w-[300px] bg-[#242424] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
             <div className="bg-[#0071e3] px-4 py-3 flex items-center justify-between">
               <p className="text-white font-semibold text-sm">Austin Mobile Repair</p>
               <button onClick={() => setChatOpen(false)} className="text-white/80 hover:text-white cursor-pointer text-lg">x</button>
