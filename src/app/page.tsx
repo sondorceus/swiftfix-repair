@@ -23,7 +23,7 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 type Step = "select" | "issue" | "time" | "confirm";
 
 const IPHONE_SERIES = [
-  { id: "17", label: "iPhone 17", year: "2025", frame: "#1C1C1E", accent: "#00c853", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone17.png?v=2",
+  { id: "17", label: "iPhone 17", year: "2025", frame: "#1C1C1E", accent: "#00c853", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone17.png?v=3",
     variants: [
       { id: "iphone17", label: "iPhone 17", size: '6.1"' },
       { id: "iphone17plus", label: "iPhone 17 Plus", size: '6.7"' },
