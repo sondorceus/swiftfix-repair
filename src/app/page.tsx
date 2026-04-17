@@ -1067,9 +1067,35 @@ export default function Home() {
         </section>
       )}
 
-      {/* BELOW-FOLD — minimal */}
+      {/* BELOW-FOLD */}
       {step === "select" && !showModelPicker && (
         <>
+          {/* REVIEWS MARQUEE */}
+          <section className="py-10 overflow-hidden bg-[#282828]">
+            <p className="text-white font-semibold text-lg text-center mb-6">Done right the first time.</p>
+            <div className="relative">
+              <div className="flex animate-[marquee_20s_linear_infinite] gap-4 w-max">
+                {[
+                  { text: "Fixed my screen in 25 minutes at my office.", name: "Sarah K." },
+                  { text: "Better than any Apple Store trip I've had.", name: "Emily W." },
+                  { text: "Battery was dying by noon. Fixed in 15 min.", name: "James H." },
+                  { text: "Professional, fast, and exactly as quoted.", name: "David R." },
+                  { text: "MacBook keyboard fixed same day. Great warranty.", name: "Amanda P." },
+                  { text: "Fixed my screen in 25 minutes at my office.", name: "Sarah K." },
+                  { text: "Better than any Apple Store trip I've had.", name: "Emily W." },
+                  { text: "Battery was dying by noon. Fixed in 15 min.", name: "James H." },
+                  { text: "Professional, fast, and exactly as quoted.", name: "David R." },
+                  { text: "MacBook keyboard fixed same day. Great warranty.", name: "Amanda P." },
+                ].map((r, i) => (
+                  <div key={i} className="flex-shrink-0 w-[260px] bg-[#333335] rounded-2xl p-4 border border-white/10">
+                    <p className="text-sm text-white/85 font-medium mb-2">&ldquo;{r.text}&rdquo;</p>
+                    <p className="text-xs text-[#c7c7cc]">— {r.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* FOOTER CTA */}
           <section className="py-16 bg-[#282828] text-center">
             <div className="max-w-lg mx-auto px-4">
