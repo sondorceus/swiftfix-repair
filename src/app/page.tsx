@@ -1286,7 +1286,7 @@ export default function Home() {
       )}
 
       {/* CHAT WIDGET */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-20 md:bottom-6 right-4 z-50 group/chat">
         {chatOpen && (
           <div className="mb-3 w-[300px] bg-[#1a1a1a] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
             <div className="bg-[#0071e3] px-4 py-3 flex items-center justify-between">
@@ -1334,7 +1334,7 @@ export default function Home() {
             </div>
           </div>
         )}
-        <button onClick={() => setChatOpen(!chatOpen)} className="w-14 h-14 rounded-full bg-[#0071e3] text-white flex items-center justify-center shadow-lg hover:bg-[#0077ed] transition cursor-pointer active:scale-90">
+        <button onClick={() => setChatOpen(!chatOpen)} className="w-14 h-14 rounded-full bg-[#0071e3] text-white flex items-center justify-center shadow-lg hover:bg-[#0077ed] hover:opacity-100 transition-all duration-300 cursor-pointer active:scale-90 animate-[chatFade_4s_ease-out_forwards]">
           {chatOpen ? (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           ) : (
@@ -1346,6 +1346,7 @@ export default function Home() {
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes progressLine { from { width: 0; } to { width: 100%; } }
+        @keyframes chatFade { 0% { opacity: 1; } 60% { opacity: 1; } 100% { opacity: 0.35; } }
         @keyframes driveVan { 0% { left: 16%; opacity: 0; } 10% { opacity: 1; } 85% { left: 84%; opacity: 1; } 100% { left: 84%; opacity: 0; } }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
