@@ -591,7 +591,7 @@ export default function Home() {
                 </div>
                 {/* Driving van */}
                 <div className="absolute top-[2px] left-[16%] z-20 animate-[driveVan_2.5s_ease-out_0.5s_forwards]" style={{ transform: "translateX(-50%)" }}>
-                  <span className="text-lg drop-shadow-lg" style={{ display: "inline-block", transform: "scaleX(-1)", filter: "drop-shadow(0 0 6px rgba(0,113,227,0.5))" }}>🚗</span>
+                  <svg width="24" height="16" viewBox="0 0 24 16" fill="none" style={{ filter: "drop-shadow(0 0 6px rgba(0,113,227,0.5))" }}><path d="M2 8h14l-2-4h-5L7 2H3L1 6v4h1a2 2 0 104 0h6a2 2 0 104 0h3V8H2z" fill="#0071e3"/><circle cx="5" cy="12" r="2" fill="#fff"/><circle cx="17" cy="12" r="2" fill="#fff"/></svg>
                 </div>
                 {[
                   { num: "1", label: "Pick device" },
