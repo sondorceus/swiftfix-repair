@@ -668,14 +668,14 @@ export default function Home() {
                 <div className="animate-[fadeIn_0.2s_ease-out]">
                   <h2 className="text-2xl font-bold tracking-tight mb-1">{activeSeries.label}</h2>
                   <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Pick your exact model</p>
-                  <div className="space-y-2">
-                    {activeSeries.variants.map((v) => (
-                      <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between p-4 rounded-2xl cursor-pointer text-left">
+                  <div className="space-y-3">
+                    {activeSeries.variants.map((v, i) => (
+                      <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]" style={{ animationDelay: `${i * 0.06}s` }}>
                         <div>
-                          <p className="font-semibold text-[#1a1a1a]">{v.label}</p>
+                          <p className="font-bold text-[#1a1a1a] text-[15px]">{v.label}</p>
                           <p className="text-[#6e6e73] text-xs font-medium">{v.size}</p>
                         </div>
-                        <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                       </button>
                     ))}
                   </div>
@@ -769,27 +769,26 @@ export default function Home() {
                   <div className="animate-[fadeIn_0.2s_ease-out]">
                     <h2 className="text-2xl font-bold tracking-tight mb-1">{series.label} Series</h2>
                     <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Pick your exact model</p>
-                    <div className="space-y-2">
-                      {series.variants.map((v) => (
+                    <div className="space-y-3">
+                      {series.variants.map((v, i) => (
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="card-3d w-full flex items-center justify-between p-4 rounded-2xl cursor-pointer text-left"
+                          className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[80px]"
+                          style={{ animationDelay: `${i * 0.06}s` }}
                         >
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-[72px] rounded-xl flex items-center justify-center shadow-lg" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                              <div className="w-8 h-[60px] rounded-lg bg-black overflow-hidden">
-                                <div className="w-full h-full opacity-90" style={{ background: `linear-gradient(160deg, ${series.accent}40, #000 40%, ${series.accent}20)` }}>
-                                  <p className="text-white/50 text-[5px] text-center mt-[8px]">9:41</p>
-                                </div>
+                          <div className="flex items-center gap-4">
+                            <div className="w-9 h-[56px] rounded-lg flex items-center justify-center shrink-0" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
+                              <div className="w-7 h-[46px] rounded-md bg-black overflow-hidden">
+                                <div className="w-full h-full opacity-90" style={{ background: `linear-gradient(160deg, ${series.accent}40, #000 40%, ${series.accent}20)` }} />
                               </div>
                             </div>
                             <div>
-                              <p className="font-semibold text-[#1a1a1a]">{v.label}</p>
+                              <p className="font-bold text-[#1a1a1a] text-[15px]">{v.label}</p>
                               <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
                             </div>
                           </div>
-                          <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
