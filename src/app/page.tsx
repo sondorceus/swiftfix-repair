@@ -261,6 +261,63 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
   );
 }
 
+function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon }: { label: string; before: string; after: string; beforeColor: string; afterColor: string; icon: string }) {
+  const [pos, setPos] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dragging = useRef(false);
+
+  const updatePos = (clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    setPos(pct);
+  };
+
+  return (
+    <div className="bg-[#333335] rounded-2xl overflow-hidden border border-white/10">
+      <div className="px-4 pt-4 pb-2 flex items-center gap-2">
+        <span className="text-lg">{icon}</span>
+        <p className="font-semibold text-sm">{label}</p>
+      </div>
+      <div
+        ref={containerRef}
+        className="relative h-48 mx-4 mb-4 rounded-xl overflow-hidden cursor-col-resize select-none"
+        onMouseDown={() => { dragging.current = true; }}
+        onMouseMove={(e) => { if (dragging.current) updatePos(e.clientX); }}
+        onMouseUp={() => { dragging.current = false; }}
+        onMouseLeave={() => { dragging.current = false; }}
+        onTouchStart={() => { dragging.current = true; }}
+        onTouchMove={(e) => { updatePos(e.touches[0].clientX); }}
+        onTouchEnd={() => { dragging.current = false; }}
+        onClick={(e) => updatePos(e.clientX)}
+      >
+        {/* Before (full) */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(135deg, ${beforeColor}, #1a1a1a)` }}>
+          <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-3">
+            <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <p className="text-red-300 text-xs font-bold uppercase tracking-wider mb-1">Before</p>
+          <p className="text-[#c7c7cc] text-xs leading-relaxed max-w-[200px]">{before}</p>
+        </div>
+        {/* After (clipped by slider position) */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center" style={{ background: `linear-gradient(135deg, ${afterColor}, #1a1a1a)`, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+          <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-3">
+            <svg className="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+          </div>
+          <p className="text-green-300 text-xs font-bold uppercase tracking-wider mb-1">After</p>
+          <p className="text-[#c7c7cc] text-xs leading-relaxed max-w-[200px]">{after}</p>
+        </div>
+        {/* Slider handle */}
+        <div className="absolute top-0 bottom-0 w-0.5 bg-white/80 z-10" style={{ left: `${pos}%` }}>
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center">
+            <svg className="w-4 h-4 text-[#282828]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TechCard() {
   const [eta, setEta] = useState(22);
   useEffect(() => {
@@ -1150,6 +1207,23 @@ export default function Home() {
                       <p className="text-[#c7c7cc] text-sm font-medium leading-relaxed">{s.desc}</p>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* BEFORE / AFTER GALLERY — interactive slider */}
+          <section className="py-16 bg-[#282828]">
+            <div className="max-w-lg mx-auto px-4">
+              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">See Our Work</h2>
+              <p className="text-[#c7c7cc] text-sm text-center mb-8 font-medium leading-relaxed">Drag the slider to reveal the repair</p>
+              <div className="space-y-6">
+                {[
+                  { label: "iPhone 15 Pro — Screen Repair", before: "Shattered display with spider-web cracks across the entire face", after: "Crystal-clear OLED display, zero defects, like-new finish", beforeColor: "#1a0a0a", afterColor: "#0a1a0a", icon: "📱" },
+                  { label: "MacBook Pro — Battery Service", before: "Swollen battery, trackpad not clicking, 45 min battery life", after: "New OEM-spec battery, full trackpad restored, 10hr life", beforeColor: "#1a0f0a", afterColor: "#0a0f1a", icon: "💻" },
+                  { label: "Galaxy S24 — Back Glass", before: "Cracked rear panel with exposed internals near camera", after: "Seamless replacement, water resistance restored", beforeColor: "#0a0a1a", afterColor: "#0a1a14", icon: "📲" },
+                ].map((item, idx) => (
+                  <BeforeAfterSlider key={idx} {...item} />
                 ))}
               </div>
             </div>
