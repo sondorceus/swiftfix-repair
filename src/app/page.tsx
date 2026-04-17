@@ -1134,8 +1134,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="border-t border-white/10 pt-6 flex items-center justify-between">
-                <Logo size="sm" />
+              <div className="border-t border-white/10 pt-6 text-center">
                 <p className="text-[11px] text-[#c7c7cc]/60">© 2026 {BRAND}</p>
               </div>
             </div>
