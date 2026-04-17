@@ -1329,11 +1329,11 @@ export default function Home() {
                       <p className="text-[#0071e3] text-sm">{PHONE}</p>
                     </div>
                   </a>
-                  <a href="mailto:support@austinmobilerepair.com" className="flex items-center gap-4 bg-[#474749] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href="mailto:support@atxgadgetfix.com" className="flex items-center gap-4 bg-[#474749] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
                     <span className="text-2xl">✉️</span>
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-[#0071e3] text-sm">support@austinmobilerepair.com</p>
+                      <p className="text-[#0071e3] text-sm">support@atxgadgetfix.com</p>
                     </div>
                   </a>
                   <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">

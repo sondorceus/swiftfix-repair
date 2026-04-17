@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     description: "Same-day iPhone, MacBook & Samsung repairs at your location. 30-day warranty. No fix, no pay.",
     type: "website",
     locale: "en_US",
-    siteName: "Austin Mobile Repair",
-    url: "https://swiftfix-repair.vercel.app",
+    siteName: "ATX Gadget Fix",
+    url: "https://atxgadgetfix.com",
   },
   twitter: {
     card: "summary_large_image",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: "Same-day repairs at your location. 30-day warranty. No fix, no pay.",
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://swiftfix-repair.vercel.app" },
+  alternates: { canonical: "https://atxgadgetfix.com" },
 };
 
 export default function RootLayout({
