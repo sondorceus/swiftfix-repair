@@ -23,6 +23,13 @@ function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 type Step = "select" | "issue" | "time" | "confirm";
 
 const IPHONE_SERIES = [
+  { id: "17", label: "iPhone 17", year: "2025", frame: "#1C1C1E", accent: "#00c853", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone17.webp",
+    variants: [
+      { id: "iphone17", label: "iPhone 17", size: '6.1"' },
+      { id: "iphone17plus", label: "iPhone 17 Plus", size: '6.7"' },
+      { id: "iphone17pro", label: "iPhone 17 Pro", size: '6.3"' },
+      { id: "iphone17promax", label: "iPhone 17 Pro Max", size: '6.9"' },
+    ]},
   { id: "16", label: "iPhone 16", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic", cameras: 3, edges: "round",
     variants: [
       { id: "iphone16", label: "iPhone 16", size: '6.1"' },
@@ -92,6 +99,7 @@ const R = (screen: number, battery: number, speaker: number, frontCam: number, r
 
 const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
   //            screen bat  spk  fCam rCam back
+  iphone17: R(279, 139, 119, 159, 209, 219), iphone17plus: R(289, 139, 119, 159, 209, 229), iphone17pro: R(309, 149, 129, 169, 229, 239), iphone17promax: R(329, 149, 129, 169, 229, 249),
   iphone16: R(249, 119, 99, 139, 179, 189), iphone16plus: R(259, 119, 99, 139, 179, 199), iphone16pro: R(279, 129, 109, 149, 199, 209), iphone16promax: R(299, 129, 109, 149, 199, 219),
   iphone15: R(219, 109, 89, 129, 159, 169), iphone15plus: R(229, 109, 89, 129, 159, 179), iphone15pro: R(249, 119, 99, 139, 179, 189), iphone15promax: R(269, 119, 99, 139, 179, 199),
   iphone14: R(189, 99, 79, 119, 139, 149), iphone14plus: R(199, 99, 79, 119, 139, 159), iphone14pro: R(219, 109, 89, 129, 159, 169), iphone14promax: R(229, 109, 89, 129, 159, 179),
@@ -677,9 +685,13 @@ export default function Home() {
                       className="card-3d group flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px]"
                       style={{ animationDelay: `${idx * 0.06}s` }}
                     >
-                      <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
-                        <span className="text-2xl">📱</span>
-                      </div>
+                      {(s as { image?: string }).image ? (
+                        <img src={(s as { image?: string }).image} alt={s.label} className="w-12 h-12 object-contain mb-2 group-hover:scale-110 transition-transform" />
+                      ) : (
+                        <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
+                          <span className="text-2xl">📱</span>
+                        </div>
+                      )}
                       <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{s.label}</p>
                       <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
                     </button>
