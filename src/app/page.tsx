@@ -335,7 +335,6 @@ export default function Home() {
     reader.readAsDataURL(file);
   };
   const [showModelPicker, setShowModelPicker] = useState(false);
-  const [showCameraOptions, setShowCameraOptions] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
   const addressRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
@@ -834,7 +833,7 @@ export default function Home() {
                     <div key={r.name} style={{ animationDelay: `${idx * 0.06}s` }}>
                       <button
                         onClick={() => handleRepairSelect(r)}
-                        className="card-3d w-full flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer text-center min-h-[120px] group"
+                        className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px] group"
                         style={{ animationDelay: `${idx * 0.06}s` }}
                       >
                         <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
