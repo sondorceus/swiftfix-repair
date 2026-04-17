@@ -315,6 +315,7 @@ function TechCard() {
 
 export default function Home() {
   const [step, setStep] = useState<Step>("select");
+  const [footerPage, setFooterPage] = useState<"about" | "faq" | "contact" | null>(null);
   const [deviceType, setDeviceType] = useState<"iphone" | "macbook" | "android" | "other" | null>(null);
   const [otherDeviceText, setOtherDeviceText] = useState("");
   const [otherIssueText, setOtherIssueText] = useState("");
@@ -532,7 +533,7 @@ export default function Home() {
       {/* STICKY NAV — compact, app-like */}
       <nav className="sticky top-0 z-40 bg-[#282828]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
-          <button onClick={resetAll} className="cursor-pointer"><Logo size="sm" /></button>
+          <button onClick={() => { resetAll(); setFooterPage(null); }} className="cursor-pointer"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
             <div className="flex items-center text-xs text-[#34c759] font-medium">
               <LivePulse />
@@ -546,7 +547,7 @@ export default function Home() {
       </nav>
 
       {/* HERO — minimal, app-like */}
-      {step === "select" && !showModelPicker && (
+      {step === "select" && !showModelPicker && !footerPage && (
         <section className="bg-[#282828] text-white">
           <div className="max-w-lg mx-auto px-4 pt-12 pb-8">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-3">
@@ -612,7 +613,7 @@ export default function Home() {
       )}
 
       {/* MODEL PICKER — two-step: Series → Variant (iPhone / MacBook / Samsung) */}
-      {showModelPicker && (
+      {showModelPicker && !footerPage && (
         <section className="bg-[#282828] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
@@ -720,7 +721,7 @@ export default function Home() {
       )}
 
       {/* STEP: ISSUE SELECTION */}
-      {step === "issue" && (
+      {step === "issue" && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
@@ -801,7 +802,7 @@ export default function Home() {
       )}
 
       {/* STEP: TIME SELECTION */}
-      {step === "time" && repair && (
+      {step === "time" && repair && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
@@ -905,7 +906,7 @@ export default function Home() {
       )}
 
       {/* STEP: CONFIRM BOOKING */}
-      {step === "confirm" && !submitted && repair && (
+      {step === "confirm" && !submitted && repair && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
@@ -1023,7 +1024,7 @@ export default function Home() {
       )}
 
       {/* CONFIRMED — Uber-style tracking feel */}
-      {submitted && repair && (
+      {submitted && repair && !footerPage && (
         <section className="animate-[fadeIn_0.4s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-10 pb-12 text-center">
             <div className="w-20 h-20 rounded-full bg-[#34c759]/10 flex items-center justify-center mx-auto mb-6">
@@ -1068,7 +1069,7 @@ export default function Home() {
       )}
 
       {/* BELOW-FOLD */}
-      {step === "select" && !showModelPicker && (
+      {step === "select" && !showModelPicker && !footerPage && (
         <>
           {/* REVIEWS MARQUEE */}
           <section className="py-10 overflow-hidden bg-[#282828]">
@@ -1108,11 +1109,35 @@ export default function Home() {
           </section>
 
           {/* FOOTER */}
-          <footer className="bg-[#282828] text-[#c7c7cc] py-8 border-t border-white/10">
-            <div className="max-w-lg mx-auto px-4 text-center">
-              <Logo size="sm" />
-              <p className="text-xs mt-3 font-medium">{PHONE} · Austin, TX · Mon-Sat 8AM-8PM</p>
-              <p className="text-[11px] mt-4 text-[#c7c7cc]/60">© 2026 {BRAND}</p>
+          <footer className="bg-[#1a1a1a] text-[#c7c7cc] py-12 border-t border-white/10">
+            <div className="max-w-lg mx-auto px-4">
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                <div>
+                  <p className="text-white font-semibold text-xs uppercase tracking-wider mb-3">Company</p>
+                  <div className="space-y-2">
+                    <button onClick={() => { setFooterPage("about"); window.scrollTo({ top: 0 }); }} className="block text-xs hover:text-white transition cursor-pointer">About Us</button>
+                    <button onClick={() => { setFooterPage("contact"); window.scrollTo({ top: 0 }); }} className="block text-xs hover:text-white transition cursor-pointer">Contact</button>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-xs uppercase tracking-wider mb-3">Support</p>
+                  <div className="space-y-2">
+                    <button onClick={() => { setFooterPage("faq"); window.scrollTo({ top: 0 }); }} className="block text-xs hover:text-white transition cursor-pointer">FAQ</button>
+                    <a href={`tel:${PHONE}`} className="block text-xs hover:text-white transition">{PHONE}</a>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-xs uppercase tracking-wider mb-3">Service</p>
+                  <div className="space-y-2">
+                    <p className="text-xs">Austin, TX</p>
+                    <p className="text-xs">Mon-Sat 8AM-8PM</p>
+                  </div>
+                </div>
+              </div>
+              <div className="border-t border-white/10 pt-6 flex items-center justify-between">
+                <Logo size="sm" />
+                <p className="text-[11px] text-[#c7c7cc]/60">© 2026 {BRAND}</p>
+              </div>
             </div>
           </footer>
 
@@ -1123,6 +1148,95 @@ export default function Home() {
             </button>
           </div>
         </>
+      )}
+
+      {/* FOOTER PAGES */}
+      {footerPage && (
+        <section className="min-h-screen bg-[#282828] text-white">
+          <div className="max-w-lg mx-auto px-4 pt-6 pb-16">
+            <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              Home
+            </button>
+
+            {footerPage === "about" && (
+              <div className="animate-[fadeIn_0.3s_ease-out]">
+                <h1 className="text-3xl font-bold mb-4">About Us</h1>
+                <p className="text-[#c7c7cc] mb-6 leading-relaxed">Austin Mobile Repair was founded with a simple mission: bring professional device repair directly to you. No store visits. No long waits. Just fast, quality repairs at your door.</p>
+                <div className="space-y-4 mb-8">
+                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                    <p className="font-semibold mb-1">Our Mission</p>
+                    <p className="text-[#c7c7cc] text-sm">Make device repair as easy as ordering a ride. Premium parts, certified technicians, and a 30-day warranty on every repair.</p>
+                  </div>
+                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                    <p className="font-semibold mb-1">Why We&apos;re Different</p>
+                    <p className="text-[#c7c7cc] text-sm">We come to your home, office, or anywhere in Austin. Every part is inspected and tested before installation. If we can&apos;t fix it, you don&apos;t pay.</p>
+                  </div>
+                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                    <p className="font-semibold mb-1">Serving Austin, TX</p>
+                    <p className="text-[#c7c7cc] text-sm">We cover all of Austin and surrounding areas. iPhone, MacBook, Samsung — we fix them all.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {footerPage === "faq" && (
+              <div className="animate-[fadeIn_0.3s_ease-out]">
+                <h1 className="text-3xl font-bold mb-6">Frequently Asked Questions</h1>
+                <div className="space-y-3">
+                  {[
+                    { q: "How does the repair work?", a: "Pick your device and issue on our site. A certified technician drives to your location and fixes it on the spot." },
+                    { q: "How long do repairs take?", a: "Most repairs are completed in 20-45 minutes depending on the issue." },
+                    { q: "What if you can't fix it?", a: "If we can't fix your device, you pay nothing. Zero risk." },
+                    { q: "Do you use quality parts?", a: "Yes. Every part is premium-quality, inspected and tested before installation." },
+                    { q: "What's your warranty?", a: "Every repair comes with a 30-day parts warranty." },
+                    { q: "Where do you service?", a: "We cover all of Austin, TX and surrounding areas." },
+                    { q: "How do I pay?", a: "Pay after the repair is complete. We accept all major payment methods." },
+                    { q: "Can I see pricing before I book?", a: "Yes. Our booking flow shows you the exact price for your device and repair type before you confirm." },
+                  ].map((item) => (
+                    <div key={item.q} className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                      <p className="font-semibold text-sm mb-1">{item.q}</p>
+                      <p className="text-[#c7c7cc] text-sm">{item.a}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {footerPage === "contact" && (
+              <div className="animate-[fadeIn_0.3s_ease-out]">
+                <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+                <div className="space-y-4 mb-8">
+                  <a href={`tel:${PHONE}`} className="flex items-center gap-4 bg-[#333335] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                    <span className="text-2xl">📞</span>
+                    <div>
+                      <p className="font-semibold">Call Us</p>
+                      <p className="text-[#0071e3] text-sm">{PHONE}</p>
+                    </div>
+                  </a>
+                  <a href="mailto:support@austinmobilerepair.com" className="flex items-center gap-4 bg-[#333335] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                    <span className="text-2xl">✉️</span>
+                    <div>
+                      <p className="font-semibold">Email</p>
+                      <p className="text-[#0071e3] text-sm">support@austinmobilerepair.com</p>
+                    </div>
+                  </a>
+                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                    <span className="text-2xl mb-2 block">🕐</span>
+                    <p className="font-semibold">Hours</p>
+                    <p className="text-[#c7c7cc] text-sm">Monday – Saturday: 8AM – 8PM</p>
+                    <p className="text-[#c7c7cc] text-sm">Sunday: Closed</p>
+                  </div>
+                  <div className="bg-[#333335] rounded-2xl p-5 border border-white/10">
+                    <span className="text-2xl mb-2 block">📍</span>
+                    <p className="font-semibold">Service Area</p>
+                    <p className="text-[#c7c7cc] text-sm">All of Austin, TX and surrounding areas. We come to you.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
       )}
 
       <style jsx>{`
