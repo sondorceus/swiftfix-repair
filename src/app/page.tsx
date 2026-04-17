@@ -580,7 +580,23 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-[#c7c7cc] text-xs mt-6 font-medium">Same-day service · 30-day warranty · 4.9★ rating</p>
+            {/* How it works — compact, visible without scroll */}
+            <div className="mt-8 flex items-center justify-between gap-2 text-center">
+              {[
+                { step: "1", label: "Pick device" },
+                { step: "2", label: "Choose repair" },
+                { step: "3", label: "Book time" },
+              ].map((s, i) => (
+                <div key={s.step} className="flex items-center gap-2">
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-xs font-bold">{s.step}</div>
+                    <p className="text-[#c7c7cc] text-[11px] font-medium mt-1">{s.label}</p>
+                  </div>
+                  {i < 2 && <div className="w-8 h-[1px] bg-white/15 mt-[-12px]" />}
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-[#c7c7cc] text-[11px] mt-3 font-medium">Takes about a minute · Same-day · 30-day warranty</p>
           </div>
         </section>
       )}
