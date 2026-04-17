@@ -66,7 +66,7 @@ const IPHONE_SERIES = [
     ]},
 ];
 
-function makeRepairs(screen: number, battery: number, speaker: number, camera: number) {
+function makeRepairs(screen: number, battery: number, speaker: number, rearCam: number, frontCam: number) {
   const port = Math.round(screen * 0.35 / 5) * 5;
   const back = Math.round(screen * 0.5 / 5) * 5;
   const water = Math.round(screen * 0.55 / 5) * 5;
@@ -74,8 +74,8 @@ function makeRepairs(screen: number, battery: number, speaker: number, camera: n
     { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
     { name: "Battery Replacement", price: `$${battery}`, time: "20 min", icon: "🔋" },
     { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
-    { name: "Rear Camera (Full Module)", price: `$${camera}`, time: "30 min", icon: "📷" },
-    { name: "Front Camera", price: "Contact for Price", time: "25 min", icon: "🤳" },
+    { name: "Rear Camera (Full Module)", price: `$${rearCam}`, time: "30 min", icon: "📷" },
+    { name: "Front Camera", price: `$${frontCam}`, time: "25 min", icon: "🤳" },
     { name: "Back Glass", price: `$${back}`, time: "40 min", icon: "🔲" },
     { name: "Speaker/Mic", price: `$${speaker}`, time: "25 min", icon: "🔊" },
     { name: "Water Damage", price: `$${water}+`, time: "1-2 hrs", icon: "💧" },
@@ -83,15 +83,15 @@ function makeRepairs(screen: number, battery: number, speaker: number, camera: n
   ];
 }
 
-//                                          screen  bat  spk  cam
+//                                          screen bat  spk  rCam fCam
 const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
-  iphone16: makeRepairs(249, 119, 109, 179), iphone16plus: makeRepairs(259, 119, 109, 179), iphone16pro: makeRepairs(279, 129, 119, 199), iphone16promax: makeRepairs(299, 129, 119, 199),
-  iphone15: makeRepairs(219, 109, 99, 159), iphone15plus: makeRepairs(229, 109, 99, 159), iphone15pro: makeRepairs(249, 119, 109, 179), iphone15promax: makeRepairs(269, 119, 109, 179),
-  iphone14: makeRepairs(189, 99, 89, 139), iphone14plus: makeRepairs(199, 99, 89, 139), iphone14pro: makeRepairs(219, 109, 99, 159), iphone14promax: makeRepairs(229, 109, 99, 159),
-  iphone13: makeRepairs(179, 89, 79, 129), iphone13mini: makeRepairs(169, 89, 79, 119), iphone13pro: makeRepairs(189, 89, 89, 139), iphone13promax: makeRepairs(199, 99, 89, 139),
-  iphone12: makeRepairs(169, 79, 79, 109), iphone12mini: makeRepairs(159, 79, 69, 99), iphone12pro: makeRepairs(179, 79, 79, 119), iphone12promax: makeRepairs(189, 89, 89, 129),
-  iphone11: makeRepairs(149, 69, 69, 99), iphone11pro: makeRepairs(159, 69, 69, 109), iphone11promax: makeRepairs(169, 79, 79, 109),
-  iphonese3: makeRepairs(129, 59, 59, 79), iphonese2: makeRepairs(119, 49, 49, 69),
+  iphone16: makeRepairs(249, 119, 109, 179, 139), iphone16plus: makeRepairs(259, 119, 109, 179, 139), iphone16pro: makeRepairs(279, 129, 119, 199, 149), iphone16promax: makeRepairs(299, 129, 119, 199, 149),
+  iphone15: makeRepairs(219, 109, 99, 159, 129), iphone15plus: makeRepairs(229, 109, 99, 159, 129), iphone15pro: makeRepairs(249, 119, 109, 179, 139), iphone15promax: makeRepairs(269, 119, 109, 179, 139),
+  iphone14: makeRepairs(189, 99, 89, 139, 119), iphone14plus: makeRepairs(199, 99, 89, 139, 119), iphone14pro: makeRepairs(219, 109, 99, 159, 129), iphone14promax: makeRepairs(229, 109, 99, 159, 129),
+  iphone13: makeRepairs(179, 89, 79, 129, 109), iphone13mini: makeRepairs(169, 89, 79, 119, 99), iphone13pro: makeRepairs(189, 89, 89, 139, 119), iphone13promax: makeRepairs(199, 99, 89, 139, 119),
+  iphone12: makeRepairs(169, 79, 79, 109, 99), iphone12mini: makeRepairs(159, 79, 69, 99, 89), iphone12pro: makeRepairs(179, 79, 79, 119, 109), iphone12promax: makeRepairs(189, 89, 89, 129, 109),
+  iphone11: makeRepairs(149, 69, 69, 99, 89), iphone11pro: makeRepairs(159, 69, 69, 109, 99), iphone11promax: makeRepairs(169, 79, 79, 109, 99),
+  iphonese3: makeRepairs(129, 59, 59, 79, 69), iphonese2: makeRepairs(119, 49, 49, 69, 59),
 };
 
 const MACBOOK_SERIES = [
