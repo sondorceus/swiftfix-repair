@@ -544,57 +544,29 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO — Uber-style: tight, action-focused, mobile-first */}
+      {/* HERO — minimal, app-like */}
       {step === "select" && !showModelPicker && (
         <section className="bg-[#282828] text-white">
-          <div className="max-w-lg mx-auto px-4 pt-10 pb-8">
-            {/* Live status bar */}
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5">
-                <LivePulse />
-                <span className="text-xs font-medium">3 technicians nearby</span>
-              </div>
-              <span className="text-xs text-[#c7c7cc] font-medium">Austin, TX</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
-              Premium Repairs.<br />Delivered to You.
+          <div className="max-w-lg mx-auto px-4 pt-12 pb-8">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-3">
+              Fix your phone<br />at home.
             </h1>
-            <p className="text-[#c7c7cc] text-sm mb-4 leading-relaxed max-w-sm font-medium">
-              Premium-quality parts. Certified technicians. Most repairs done in 30 minutes at your location. Every part inspected and tested before install.
+            <p className="text-[#c7c7cc] text-lg mb-10 font-medium">
+              We come to you. Same-day available.
             </p>
 
-            {/* Trust badges — compact row */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            {/* Device selection — immediate action */}
+            <div className="space-y-3">
               {[
-                { label: "Same-Day Service", icon: "⚡" },
-                { label: "30-Day Parts Warranty", icon: "🛡" },
-                { label: "Quality Parts", icon: "✓" },
-                { label: "4.9★ Rating", icon: "★" },
-              ].map((b) => (
-                <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[12px] font-medium text-white">
-                  <span className="text-[#34c759]">{b.icon}</span> {b.label}
-                </span>
-              ))}
-            </div>
-
-            {/* Quick action: What needs fixing? */}
-            <div className="space-y-3 mb-8">
-              <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium">Fix my device now</p>
-              {[
-                { id: "iphone" as const, label: "iPhone", sub: "11 and newer · From $39", icon: "📱", hot: true },
-                { id: "macbook" as const, label: "MacBook", sub: "All models · Custom Quote", icon: "💻", hot: false },
-                { id: "android" as const, label: "Samsung Galaxy", sub: "All models · Contact for Price", icon: "📲", hot: false },
-                { id: "other" as const, label: "Other Device", sub: "Describe your device & issue", icon: "🔧", hot: false },
+                { id: "iphone" as const, label: "iPhone", sub: "From $69", icon: "📱" },
+                { id: "macbook" as const, label: "MacBook", sub: "Custom quote", icon: "💻" },
+                { id: "android" as const, label: "Samsung", sub: "Custom quote", icon: "📲" },
+                { id: "other" as const, label: "Other", sub: "Any device", icon: "🔧" },
               ].map((d) => (
                 <button
                   key={d.id}
                   onClick={() => handleDeviceSelect(d.id)}
-                  className={`tap-spring w-full flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 cursor-pointer text-left ${
-                    d.hot
-                      ? "bg-white/10 border-2 border-[#0071e3]/40 hover:bg-white/15 hover:border-[#0071e3]/70"
-                      : "bg-white/5 border-2 border-white/10 hover:bg-white/10 hover:border-white/20"
-                  }`}
+                  className="tap-spring w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-3xl">{d.icon}</span>
                   <div className="flex-1">
@@ -604,47 +576,11 @@ export default function Home() {
                   <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                  {d.hot && (
-                    <span className="absolute right-16 text-[12px] bg-[#0071e3] text-white px-2 py-0.5 rounded-full font-medium" style={{ position: "relative", right: "auto" }}>
-                      Popular
-                    </span>
-                  )}
                 </button>
               ))}
             </div>
 
-            {/* Social proof strip */}
-            <div className="bg-[#333335] rounded-2xl p-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {["JM", "SK", "AL"].map((init, i) => (
-                      <div key={i} className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-[12px] font-bold border-2 border-[#282828]">
-                        {init}
-                      </div>
-                    ))}
-                  </div>
-                  <div>
-                    <p className="text-white text-xs font-medium">5,000+ repairs completed</p>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[#fbbf24] text-[12px] font-medium">★★★★★</span>
-                      <span className="text-[#c7c7cc] text-[12px] font-medium">4.9/5 from 2,400+ reviews</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="text-white text-xs font-bold">30-day</p>
-                  <p className="text-[#c7c7cc] text-[12px] font-medium leading-relaxed">warranty</p>
-                </div>
-              </div>
-              <p className="text-[#c7c7cc] text-[12px] text-center italic font-medium leading-relaxed">&quot;He came to my office and fixed my screen in 25 minutes. Incredible service.&quot; — Sarah K.</p>
-            </div>
-
-            {/* URGENCY SIGNALS */}
-            <div className="mt-6 flex flex-col items-center gap-1.5">
-              <p className="text-[#34c759] text-xs font-medium animate-pulse">Limited slots available today</p>
-              <p className="text-[#c7c7cc] text-[12px] font-medium leading-relaxed">Same-day appointments filling fast</p>
-            </div>
+            <p className="text-center text-[#c7c7cc] text-xs mt-6 font-medium">Same-day service · 30-day warranty · 4.9★ rating</p>
           </div>
         </section>
       )}
