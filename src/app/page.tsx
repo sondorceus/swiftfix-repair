@@ -554,7 +554,7 @@ export default function Home() {
               Fix your phone<br />at home.
             </h1>
             <p className="text-[#c7c7cc] text-lg mb-10 font-medium">
-              We come to you. Fast.
+              Premium OEM-grade parts. Expert repair at your door.
             </p>
 
             {/* Device selection — immediate action */}
@@ -715,7 +715,7 @@ export default function Home() {
                 ); })()}
               </>
             )}
-            <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">All models include fast service, premium-quality parts, and 30-day warranty</p>
+            <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">Premium parts at competitive rates. Repaired at your home, office, or anywhere in Austin.</p>
           </div>
         </section>
       )}
