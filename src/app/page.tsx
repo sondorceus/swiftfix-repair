@@ -580,23 +580,23 @@ export default function Home() {
               ))}
             </div>
 
-            {/* How it works — compact, visible without scroll */}
-            <div className="mt-8 flex items-center justify-between gap-2 text-center">
+            {/* How it works — with icons */}
+            <div className="mt-10 grid grid-cols-3 gap-4 text-center">
               {[
-                { step: "1", label: "Pick device" },
-                { step: "2", label: "Choose repair" },
-                { step: "3", label: "Book time" },
+                { icon: "📱", label: "Pick device", sub: "iPhone, Mac, Samsung" },
+                { icon: "🔧", label: "Choose repair", sub: "See price instantly" },
+                { icon: "📅", label: "Book time", sub: "We come to you" },
               ].map((s, i) => (
-                <div key={s.step} className="flex items-center gap-2">
-                  <div className="flex flex-col items-center">
-                    <div className="w-8 h-8 rounded-full bg-[#0071e3] flex items-center justify-center text-white text-xs font-bold">{s.step}</div>
-                    <p className="text-[#c7c7cc] text-[11px] font-medium mt-1">{s.label}</p>
+                <div key={i} className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-2xl bg-white/8 border border-white/10 flex items-center justify-center mb-2">
+                    <span className="text-2xl">{s.icon}</span>
                   </div>
-                  {i < 2 && <div className="w-8 h-[1px] bg-white/15 mt-[-12px]" />}
+                  <p className="text-white text-xs font-semibold">{s.label}</p>
+                  <p className="text-[#c7c7cc] text-[10px] font-medium mt-0.5">{s.sub}</p>
                 </div>
               ))}
             </div>
-            <p className="text-center text-[#c7c7cc] text-[11px] mt-3 font-medium">Takes about a minute · Same-day · 30-day warranty</p>
+            <p className="text-center text-[#c7c7cc] text-[11px] mt-4 font-medium">Takes about a minute · Same-day · 30-day warranty</p>
           </div>
         </section>
       )}
@@ -605,7 +605,7 @@ export default function Home() {
       {showModelPicker && (
         <section className="bg-[#282828] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-6 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring inline-flex items-center gap-1.5 text-[#0071e3] text-sm font-medium mb-5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -713,7 +713,7 @@ export default function Home() {
       {step === "issue" && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring inline-flex items-center gap-1.5 text-[#0071e3] text-sm font-medium mb-5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -794,7 +794,7 @@ export default function Home() {
       {step === "time" && repair && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring inline-flex items-center gap-1.5 text-[#0071e3] text-sm font-medium mb-5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -898,7 +898,7 @@ export default function Home() {
       {step === "confirm" && !submitted && repair && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring flex items-center gap-2 text-[#0071e3] text-sm mb-4 cursor-pointer">
+            <button onClick={handleBack} className="tap-spring inline-flex items-center gap-1.5 text-[#0071e3] text-sm font-medium mb-5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
