@@ -733,7 +733,7 @@ export default function Home() {
                       style={{ animationDelay: `${idx * 0.06}s` }}
                     >
                       {(s as { image?: string }).image ? (
-                        <img src={(s as { image?: string }).image} alt={s.label} className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
+                        <img src={(s as { image?: string }).image} alt={s.label} loading="lazy" className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
                       ) : (
                         <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
                           <span className="text-2xl">📱</span>
