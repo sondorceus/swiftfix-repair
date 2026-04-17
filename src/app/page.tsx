@@ -687,7 +687,7 @@ export default function Home() {
                       style={{ animationDelay: `${idx * 0.06}s` }}
                     >
                       {(s as { image?: string }).image ? (
-                        <img src={(s as { image?: string }).image} alt={s.label} className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform rounded-lg" style={{ filter: "contrast(1.15) brightness(1.05) saturate(1.1)" }} />
+                        <img src={(s as { image?: string }).image} alt={s.label} className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={{ filter: "contrast(1.15) brightness(1.05) saturate(1.1)", mixBlendMode: "multiply" }} />
                       ) : (
                         <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
                           <span className="text-2xl">📱</span>
