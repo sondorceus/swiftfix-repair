@@ -1164,6 +1164,30 @@ export default function Home() {
             </div>
           </section>
 
+          {/* QUICK FAQ */}
+          <section className="py-12 bg-[#3d3d3d]">
+            <div className="max-w-lg mx-auto px-4">
+              <h2 className="text-xl font-bold text-center mb-6">Quick questions</h2>
+              <div className="space-y-2">
+                {[
+                  { q: "How long do repairs take?", a: "Most repairs are completed in 20-45 minutes depending on the issue." },
+                  { q: "What if you can't fix it?", a: "If we can't fix your device, you pay nothing. Zero risk." },
+                  { q: "Do you use quality parts?", a: "Yes. Every part is premium OEM-grade, inspected and tested before installation." },
+                  { q: "What's your warranty?", a: "Every repair comes with a 30-day parts warranty. If anything goes wrong, we fix it free." },
+                  { q: "How do I pay?", a: "Pay after the repair is complete. We accept all major payment methods." },
+                ].map((item) => (
+                  <details key={item.q} className="group bg-[#474749] rounded-2xl border border-white/10 overflow-hidden">
+                    <summary className="px-5 py-4 cursor-pointer font-semibold text-sm flex items-center justify-between list-none">
+                      {item.q}
+                      <svg className="w-4 h-4 text-[#c7c7cc] transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                    </summary>
+                    <p className="px-5 pb-4 text-[#c7c7cc] text-sm leading-relaxed">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* BEFORE & AFTER GALLERY */}
           <section className="py-12 bg-[#3d3d3d]">
             <div className="max-w-lg mx-auto px-4">
