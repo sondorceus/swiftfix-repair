@@ -66,11 +66,10 @@ const IPHONE_SERIES = [
     ]},
 ];
 
-function makeRepairs(screen: number, battery: number) {
+function makeRepairs(screen: number, battery: number, speaker: number) {
   const port = Math.round(screen * 0.35 / 5) * 5;
   const cam = Math.round(screen * 0.45 / 5) * 5;
   const back = Math.round(screen * 0.5 / 5) * 5;
-  const spk = Math.round(screen * 0.3 / 5) * 5;
   const water = Math.round(screen * 0.55 / 5) * 5;
   return [
     { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
@@ -78,20 +77,20 @@ function makeRepairs(screen: number, battery: number) {
     { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
     { name: "Camera Repair", price: `$${cam}`, time: "30 min", icon: "📷" },
     { name: "Back Glass", price: `$${back}`, time: "40 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: `$${spk}`, time: "25 min", icon: "🔊" },
+    { name: "Speaker/Mic", price: `$${speaker}`, time: "25 min", icon: "🔊" },
     { name: "Water Damage", price: `$${water}+`, time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ];
 }
 
 const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
-  iphone16: makeRepairs(249, 119), iphone16plus: makeRepairs(259, 119), iphone16pro: makeRepairs(279, 129), iphone16promax: makeRepairs(299, 129),
-  iphone15: makeRepairs(219, 109), iphone15plus: makeRepairs(229, 109), iphone15pro: makeRepairs(249, 119), iphone15promax: makeRepairs(269, 119),
-  iphone14: makeRepairs(189, 99), iphone14plus: makeRepairs(199, 99), iphone14pro: makeRepairs(219, 109), iphone14promax: makeRepairs(229, 109),
-  iphone13: makeRepairs(179, 89), iphone13mini: makeRepairs(169, 89), iphone13pro: makeRepairs(189, 89), iphone13promax: makeRepairs(199, 99),
-  iphone12: makeRepairs(169, 79), iphone12mini: makeRepairs(159, 79), iphone12pro: makeRepairs(179, 79), iphone12promax: makeRepairs(189, 89),
-  iphone11: makeRepairs(149, 69), iphone11pro: makeRepairs(159, 69), iphone11promax: makeRepairs(169, 79),
-  iphonese3: makeRepairs(129, 59), iphonese2: makeRepairs(119, 49),
+  iphone16: makeRepairs(249, 119, 109), iphone16plus: makeRepairs(259, 119, 109), iphone16pro: makeRepairs(279, 129, 119), iphone16promax: makeRepairs(299, 129, 119),
+  iphone15: makeRepairs(219, 109, 99), iphone15plus: makeRepairs(229, 109, 99), iphone15pro: makeRepairs(249, 119, 109), iphone15promax: makeRepairs(269, 119, 109),
+  iphone14: makeRepairs(189, 99, 89), iphone14plus: makeRepairs(199, 99, 89), iphone14pro: makeRepairs(219, 109, 99), iphone14promax: makeRepairs(229, 109, 99),
+  iphone13: makeRepairs(179, 89, 79), iphone13mini: makeRepairs(169, 89, 79), iphone13pro: makeRepairs(189, 89, 89), iphone13promax: makeRepairs(199, 99, 89),
+  iphone12: makeRepairs(169, 79, 79), iphone12mini: makeRepairs(159, 79, 69), iphone12pro: makeRepairs(179, 79, 79), iphone12promax: makeRepairs(189, 89, 89),
+  iphone11: makeRepairs(149, 69, 69), iphone11pro: makeRepairs(159, 69, 69), iphone11promax: makeRepairs(169, 79, 79),
+  iphonese3: makeRepairs(129, 59, 59), iphonese2: makeRepairs(119, 49, 49),
 };
 
 const MACBOOK_SERIES = [
