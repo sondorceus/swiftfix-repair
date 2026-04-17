@@ -59,14 +59,14 @@ const IPHONE_SERIES = [
       { id: "iphone13pro", label: "iPhone 13 Pro", size: '6.1"' },
       { id: "iphone13promax", label: "iPhone 13 Pro Max", size: '6.7"' },
     ]},
-  { id: "12", label: "iPhone 12", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic", cameras: 2, edges: "flat",
+  { id: "12", label: "iPhone 12", image: "/iphone12.png?v=1", year: "2020", frame: "#636366", accent: "#30D158", notch: "classic", cameras: 2, edges: "flat",
     variants: [
       { id: "iphone12mini", label: "iPhone 12 Mini", size: '5.4"' },
       { id: "iphone12", label: "iPhone 12", size: '6.1"' },
       { id: "iphone12pro", label: "iPhone 12 Pro", size: '6.1"' },
       { id: "iphone12promax", label: "iPhone 12 Pro Max", size: '6.7"' },
     ]},
-  { id: "11", label: "iPhone 11", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic", cameras: 2, edges: "round",
+  { id: "11", label: "iPhone 11", image: "/iphone11.png?v=1", year: "2019", frame: "#8E8E93", accent: "#FF9F0A", notch: "classic", cameras: 2, edges: "round",
     variants: [
       { id: "iphone11", label: "iPhone 11", size: '6.1"' },
       { id: "iphone11pro", label: "iPhone 11 Pro", size: '5.8"' },
