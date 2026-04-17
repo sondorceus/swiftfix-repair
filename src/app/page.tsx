@@ -1085,54 +1085,20 @@ export default function Home() {
             </div>
           </section>
 
-          {/* BEFORE / AFTER GALLERY — interactive slider */}
-          <section className="py-16 bg-[#282828]">
-            <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-2xl font-bold tracking-tight text-center mb-2">See Our Work</h2>
-              <p className="text-[#c7c7cc] text-sm text-center mb-8 font-medium leading-relaxed">Drag the slider to reveal the repair</p>
-              <div className="space-y-6">
+          {/* SOCIAL PROOF — minimal */}
+          <section className="py-12 bg-[#282828]">
+            <div className="max-w-lg mx-auto px-4 text-center">
+              <BeforeAfterSlider label="iPhone 15 Pro — Screen Repair" before="Shattered display with spider-web cracks" after="Crystal-clear OLED, like-new finish" beforeColor="#1a0a0a" afterColor="#0a1a0a" icon="📱" />
+              <p className="text-white font-semibold text-lg mt-6 mb-6">Done right the first time.</p>
+              <div className="space-y-4">
                 {[
-                  { label: "iPhone 15 Pro — Screen Repair", before: "Shattered display with spider-web cracks across the entire face", after: "Crystal-clear OLED display, zero defects, like-new finish", beforeColor: "#1a0a0a", afterColor: "#0a1a0a", icon: "📱" },
-                  { label: "MacBook Pro — Battery Service", before: "Swollen battery, trackpad not clicking, 45 min battery life", after: "New OEM-spec battery, full trackpad restored, 10hr life", beforeColor: "#1a0f0a", afterColor: "#0a0f1a", icon: "💻" },
-                  { label: "Galaxy S24 — Back Glass", before: "Cracked rear panel with exposed internals near camera", after: "Seamless replacement, water resistance restored", beforeColor: "#0a0a1a", afterColor: "#0a1a14", icon: "📲" },
-                ].map((item, idx) => (
-                  <BeforeAfterSlider key={idx} {...item} />
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* REVIEW MARQUEE — auto-scrolling, infinite loop */}
-          <section className="py-12 overflow-hidden">
-            <h2 className="text-2xl font-bold tracking-tight text-center mb-2">What our customers say</h2>
-            <p className="text-[#c7c7cc] text-sm text-center mb-8 font-medium leading-relaxed">4.9★ from 2,400+ verified reviews</p>
-            <div className="relative">
-              <div className="flex animate-[marquee_30s_linear_infinite] gap-4 w-max">
-                {[
-                  { name: "Sarah K.", text: "He came to my office and fixed my screen in 25 minutes. Incredible service.", stars: 5, repair: "Screen Repair" },
-                  { name: "Marcus T.", text: "Fastest repair I've ever experienced. Technician was at my door in 20 min.", stars: 5, repair: "Battery Replace" },
-                  { name: "Jessica L.", text: "No store visit, no waiting. They came to my house and it was done before lunch.", stars: 5, repair: "Charging Port" },
-                  { name: "David R.", text: "Professional, fast, and the price was exactly what they quoted. Will use again.", stars: 5, repair: "Screen Repair" },
-                  { name: "Amanda P.", text: "My MacBook keyboard was fixed same day. The warranty gave me peace of mind.", stars: 5, repair: "Keyboard Repair" },
-                  { name: "Chris M.", text: "Showed up on time, fixed my camera in 20 minutes, and cleaned my phone too.", stars: 5, repair: "Camera Repair" },
-                  { name: "Emily W.", text: "I was skeptical about mobile repair but this was better than any Apple Store trip.", stars: 5, repair: "Back Glass" },
-                  { name: "James H.", text: "Battery was dying by noon every day. Fixed in 15 minutes at my coffee shop.", stars: 5, repair: "Battery Replace" },
-                  { name: "Sarah K.", text: "He came to my office and fixed my screen in 25 minutes. Incredible service.", stars: 5, repair: "Screen Repair" },
-                  { name: "Marcus T.", text: "Fastest repair I've ever experienced. Technician was at my door in 20 min.", stars: 5, repair: "Battery Replace" },
-                  { name: "Jessica L.", text: "No store visit, no waiting. They came to my house and it was done before lunch.", stars: 5, repair: "Charging Port" },
-                  { name: "David R.", text: "Professional, fast, and the price was exactly what they quoted. Will use again.", stars: 5, repair: "Screen Repair" },
-                  { name: "Amanda P.", text: "My MacBook keyboard was fixed same day. The warranty gave me peace of mind.", stars: 5, repair: "Keyboard Repair" },
-                  { name: "Chris M.", text: "Showed up on time, fixed my camera in 20 minutes, and cleaned my phone too.", stars: 5, repair: "Camera Repair" },
-                  { name: "Emily W.", text: "I was skeptical about mobile repair but this was better than any Apple Store trip.", stars: 5, repair: "Back Glass" },
-                  { name: "James H.", text: "Battery was dying by noon every day. Fixed in 15 minutes at my coffee shop.", stars: 5, repair: "Battery Replace" },
-                ].map((r, i) => (
-                  <div key={i} className="flex-shrink-0 w-[280px] bg-[#333335] rounded-2xl p-5 border border-white/10">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[#fbbf24] text-xs font-medium">{"★".repeat(r.stars)}</span>
-                      <span className="text-[12px] text-[#c7c7cc] bg-white/10 rounded-full px-2 py-0.5">{r.repair}</span>
-                    </div>
-                    <p className="text-sm text-white/90 leading-relaxed mb-3 font-medium">&ldquo;{r.text}&rdquo;</p>
-                    <p className="text-xs font-semibold text-[#c7c7cc]">{r.name}</p>
+                  { text: "Fixed my screen in 25 minutes at my office.", name: "Sarah K." },
+                  { text: "Better than any Apple Store trip I've had.", name: "Emily W." },
+                  { text: "Battery was dying by noon. Fixed in 15 min at my coffee shop.", name: "James H." },
+                ].map((r) => (
+                  <div key={r.name} className="text-left">
+                    <p className="text-sm text-white/80 font-medium">&ldquo;{r.text}&rdquo;</p>
+                    <p className="text-xs text-[#c7c7cc] mt-1">— {r.name}</p>
                   </div>
                 ))}
               </div>
