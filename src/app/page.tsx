@@ -588,9 +588,7 @@ export default function Home() {
                 { icon: "📅", label: "Book time", sub: "We come to you" },
               ].map((s, i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-white/8 border border-white/10 flex items-center justify-center mb-2">
-                    <span className="text-2xl">{s.icon}</span>
-                  </div>
+                  <span className="text-3xl mb-2">{s.icon}</span>
                   <p className="text-white text-xs font-semibold">{s.label}</p>
                   <p className="text-[#c7c7cc] text-[10px] font-medium mt-0.5">{s.sub}</p>
                 </div>
