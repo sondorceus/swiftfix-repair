@@ -66,30 +66,39 @@ const IPHONE_SERIES = [
     ]},
 ];
 
-function makeRepairs(screen: number, battery: number, speaker: number, camera: number, backGlass: number) {
-  const port = Math.round(screen * 0.35 / 5) * 5;
-  const water = Math.round(screen * 0.55 / 5) * 5;
+function makeRepairs(p: { screen: number; battery: number; speaker: number; frontCam: number; rearCam: number; backGlass: number }) {
+  const port = Math.round(p.screen * 0.35 / 5) * 5;
+  const water = Math.round(p.screen * 0.55 / 5) * 5;
   return [
-    { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
-    { name: "Battery Replacement", price: `$${battery}`, time: "20 min", icon: "🔋" },
-    { name: "Camera Lens", price: `$${camera}`, time: "25-30 min", icon: "📷" },
-    { name: "Back Glass", price: `$${backGlass}`, time: "40 min", icon: "🔲" },
+    { name: "Screen Repair", price: `$${p.screen}`, time: "30-45 min", icon: "📱" },
+    { name: "Battery Replacement", price: `$${p.battery}`, time: "20 min", icon: "🔋" },
+    { name: "Camera Lens", price: `from $${p.frontCam}`, time: "25-30 min", icon: "📷", _sub: [
+      { name: "Front Camera", price: `$${p.frontCam}`, icon: "🤳" },
+      { name: "Rear Camera (Full Module)", price: `$${p.rearCam}`, icon: "📷" },
+    ]},
+    { name: "Back Glass", price: `$${p.backGlass}`, time: "40 min", icon: "🔲" },
     { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
-    { name: "Speaker/Mic", price: `$${speaker}`, time: "25 min", icon: "🔊" },
+    { name: "Speaker", price: `from $${p.speaker}`, time: "25 min", icon: "🔊", _sub: [
+      { name: "Earpiece Speaker", price: `$${p.speaker}`, icon: "🔈" },
+      { name: "Bottom Speaker", price: `$${p.speaker}`, icon: "🔊" },
+    ]},
     { name: "Water Damage", price: `$${water}+`, time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
   ];
 }
 
-//                                          screen bat  spk  cam  back
+const R = (screen: number, battery: number, speaker: number, frontCam: number, rearCam: number, backGlass: number) =>
+  makeRepairs({ screen, battery, speaker, frontCam, rearCam, backGlass });
+
 const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
-  iphone16: makeRepairs(249, 119, 109, 99, 189), iphone16plus: makeRepairs(259, 119, 109, 99, 199), iphone16pro: makeRepairs(279, 129, 119, 109, 209), iphone16promax: makeRepairs(299, 129, 119, 109, 219),
-  iphone15: makeRepairs(219, 109, 99, 99, 169), iphone15plus: makeRepairs(229, 109, 99, 99, 179), iphone15pro: makeRepairs(249, 119, 109, 109, 189), iphone15promax: makeRepairs(269, 119, 109, 109, 199),
-  iphone14: makeRepairs(189, 99, 89, 89, 149), iphone14plus: makeRepairs(199, 99, 89, 89, 159), iphone14pro: makeRepairs(219, 109, 99, 99, 169), iphone14promax: makeRepairs(229, 109, 99, 99, 179),
-  iphone13: makeRepairs(179, 89, 79, 79, 139), iphone13mini: makeRepairs(169, 89, 79, 79, 129), iphone13pro: makeRepairs(189, 89, 89, 89, 149), iphone13promax: makeRepairs(199, 99, 89, 89, 159),
-  iphone12: makeRepairs(169, 79, 79, 79, 129), iphone12mini: makeRepairs(159, 79, 69, 69, 119), iphone12pro: makeRepairs(179, 79, 79, 79, 139), iphone12promax: makeRepairs(189, 89, 89, 89, 149),
-  iphone11: makeRepairs(149, 69, 69, 69, 109), iphone11pro: makeRepairs(159, 69, 69, 69, 119), iphone11promax: makeRepairs(169, 79, 79, 79, 129),
-  iphonese3: makeRepairs(129, 59, 59, 59, 89), iphonese2: makeRepairs(119, 49, 49, 49, 79),
+  //            screen bat  spk  fCam rCam back
+  iphone16: R(249, 119, 109, 139, 179, 189), iphone16plus: R(259, 119, 109, 139, 179, 199), iphone16pro: R(279, 129, 119, 149, 199, 209), iphone16promax: R(299, 129, 119, 149, 199, 219),
+  iphone15: R(219, 109, 99, 129, 159, 169), iphone15plus: R(229, 109, 99, 129, 159, 179), iphone15pro: R(249, 119, 109, 139, 179, 189), iphone15promax: R(269, 119, 109, 139, 179, 199),
+  iphone14: R(189, 99, 89, 119, 139, 149), iphone14plus: R(199, 99, 89, 119, 139, 159), iphone14pro: R(219, 109, 99, 129, 159, 169), iphone14promax: R(229, 109, 99, 129, 159, 179),
+  iphone13: R(179, 89, 79, 109, 129, 139), iphone13mini: R(169, 89, 79, 99, 119, 129), iphone13pro: R(189, 89, 89, 119, 139, 149), iphone13promax: R(199, 99, 89, 119, 139, 159),
+  iphone12: R(169, 79, 79, 99, 109, 129), iphone12mini: R(159, 79, 69, 89, 99, 119), iphone12pro: R(179, 79, 79, 109, 119, 139), iphone12promax: R(189, 89, 89, 109, 129, 149),
+  iphone11: R(149, 69, 69, 89, 99, 109), iphone11pro: R(159, 69, 69, 99, 109, 119), iphone11promax: R(169, 79, 79, 99, 109, 129),
+  iphonese3: R(129, 59, 59, 69, 79, 89), iphonese2: R(119, 49, 49, 59, 69, 79),
 };
 
 const MACBOOK_SERIES = [
@@ -335,6 +344,7 @@ export default function Home() {
     reader.readAsDataURL(file);
   };
   const [showModelPicker, setShowModelPicker] = useState(false);
+  const [expandedRepair, setExpandedRepair] = useState<string | null>(null);
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
   const addressRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
@@ -829,21 +839,38 @@ export default function Home() {
                 <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
                 <div className="grid grid-cols-2 gap-3">
-                  {currentRepairs.map((r, idx) => (
-                    <div key={r.name} style={{ animationDelay: `${idx * 0.06}s` }}>
-                      <button
-                        onClick={() => handleRepairSelect(r)}
-                        className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px] group"
-                        style={{ animationDelay: `${idx * 0.06}s` }}
-                      >
-                        <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
-                          <span className="text-2xl">{r.icon}</span>
-                        </div>
-                        <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
-                        <p className="text-[#0071e3] font-extrabold text-base mt-1">{r.price}</p>
-                      </button>
-                    </div>
-                  ))}
+                  {currentRepairs.map((r, idx) => {
+                    const hasSub = !!(r as { _sub?: unknown[] })._sub;
+                    const isExpanded = expandedRepair === r.name;
+                    const subs = (r as { _sub?: { name: string; price: string; icon: string }[] })._sub;
+                    return (
+                      <div key={r.name} className={isExpanded ? "col-span-2" : ""} style={{ animationDelay: `${idx * 0.06}s` }}>
+                        <button
+                          onClick={() => hasSub ? setExpandedRepair(isExpanded ? null : r.name) : handleRepairSelect(r)}
+                          className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px] group"
+                          style={{ animationDelay: `${idx * 0.06}s` }}
+                        >
+                          <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
+                            <span className="text-2xl">{r.icon}</span>
+                          </div>
+                          <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
+                          <p className="text-[#0071e3] font-extrabold text-base mt-1">{r.price}</p>
+                          {hasSub && <svg className={`w-3 h-3 text-[#6e6e73] mt-0.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
+                        </button>
+                        {isExpanded && subs && (
+                          <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
+                            {subs.map((sub) => (
+                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer">
+                                <span className="text-lg mb-1">{sub.icon}</span>
+                                <span className="text-xs font-semibold">{sub.name}</span>
+                                <span className="text-[#0071e3] font-bold text-sm">{sub.price}</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </>
             )}
