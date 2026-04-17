@@ -590,7 +590,7 @@ export default function Home() {
                 </div>
                 {/* Driving van */}
                 <div className="absolute top-[2px] left-[16%] z-20 animate-[driveVan_2.5s_ease-out_0.5s_forwards]" style={{ transform: "translateX(-50%)" }}>
-                  <span className="text-lg drop-shadow-lg" style={{ filter: "drop-shadow(0 0 6px rgba(0,113,227,0.5))" }}>🚐</span>
+                  <span className="text-lg drop-shadow-lg" style={{ filter: "drop-shadow(0 0 6px rgba(0,113,227,0.5))", transform: "scaleX(-1)" }}>🚐</span>
                 </div>
                 {[
                   { num: "1", label: "Pick device" },
