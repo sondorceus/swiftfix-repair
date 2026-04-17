@@ -774,19 +774,12 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[80px]"
+                          className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]"
                           style={{ animationDelay: `${i * 0.06}s` }}
                         >
-                          <div className="flex items-center gap-4">
-                            <div className="w-9 h-[56px] rounded-lg flex items-center justify-center shrink-0" style={{ background: `linear-gradient(145deg, ${series.frame}, ${series.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                              <div className="w-7 h-[46px] rounded-md bg-black overflow-hidden">
-                                <div className="w-full h-full opacity-90" style={{ background: `linear-gradient(160deg, ${series.accent}40, #000 40%, ${series.accent}20)` }} />
-                              </div>
-                            </div>
-                            <div>
-                              <p className="font-bold text-[#1a1a1a] text-[15px]">{v.label}</p>
-                              <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
-                            </div>
+                          <div>
+                            <p className="font-bold text-[#1a1a1a] text-[15px]">{v.label}</p>
+                            <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
                           </div>
                           <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
