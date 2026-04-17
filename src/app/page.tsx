@@ -38,7 +38,7 @@ const IPHONE_SERIES = [
       { id: "iphone16pro", label: "iPhone 16 Pro", size: '6.3"' },
       { id: "iphone16promax", label: "iPhone 16 Pro Max", size: '6.9"' },
     ]},
-  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone15.png?v=2",
+  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone15.png?v=3",
     variants: [
       { id: "iphone15", label: "iPhone 15", size: '6.1"' },
       { id: "iphone15plus", label: "iPhone 15 Plus", size: '6.7"' },
@@ -687,7 +687,7 @@ export default function Home() {
                       style={{ animationDelay: `${idx * 0.06}s` }}
                     >
                       {(s as { image?: string }).image ? (
-                        <img src={(s as { image?: string }).image} alt={s.label} className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "15" ? { transform: "scale(1.12)" } : s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
+                        <img src={(s as { image?: string }).image} alt={s.label} className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
                       ) : (
                         <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
                           <span className="text-2xl">📱</span>
