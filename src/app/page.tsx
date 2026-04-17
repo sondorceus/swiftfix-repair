@@ -707,57 +707,18 @@ export default function Home() {
                 <h2 className="text-2xl font-bold tracking-tight mb-1">Select your iPhone</h2>
                 <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Choose your series, then pick your exact model</p>
                 <div className="grid grid-cols-2 gap-3">
-                  {IPHONE_SERIES.map((s) => (
+                  {IPHONE_SERIES.map((s, idx) => (
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="card-3d group relative flex flex-col items-center p-4 pb-5 rounded-2xl cursor-pointer"
+                      className="card-3d group flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px]"
+                      style={{ animationDelay: `${idx * 0.06}s` }}
                     >
-                      {/* iPhone render — model-specific, fills card */}
-                      <div className="relative w-[70px] h-[135px] mb-3 group-hover:scale-105 transition-transform duration-300">
-                        <div className={`absolute inset-0 shadow-[0_4px_20px_rgba(0,0,0,0.5)] ${s.edges === "flat" ? "rounded-[11px]" : "rounded-[13px]"}`} style={{ background: `linear-gradient(145deg, ${s.frame}, ${s.frame}dd)`, border: '1px solid rgba(255,255,255,0.12)' }}>
-                          <div className="absolute -left-[2px] top-[26px] w-[2px] h-[12px] rounded-l-sm" style={{ background: s.frame }} />
-                          <div className="absolute -left-[2px] top-[44px] w-[2px] h-[18px] rounded-l-sm" style={{ background: s.frame }} />
-                          <div className="absolute -right-[2px] top-[40px] w-[2px] h-[20px] rounded-r-sm" style={{ background: s.frame }} />
-                          {/* Camera bump — model specific, larger */}
-                          <div className="absolute -top-[1px] -left-[1px]">
-                            {s.cameras === 3 ? (
-                              <div className="w-[24px] h-[24px] rounded-[6px] bg-[#1a1a1a] border border-white/10 flex flex-wrap items-center justify-center gap-[2px] p-[3px]">
-                                <div className="w-[7px] h-[7px] rounded-full bg-[#333335] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
-                                <div className="w-[7px] h-[7px] rounded-full bg-[#333335] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
-                                <div className="w-[7px] h-[7px] rounded-full bg-[#333335] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
-                              </div>
-                            ) : (
-                              <div className="w-[18px] h-[26px] rounded-[5px] bg-[#1a1a1a] border border-white/10 flex flex-col items-center justify-center gap-[3px] p-[3px]">
-                                <div className="w-[7px] h-[7px] rounded-full bg-[#333335] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
-                                <div className="w-[7px] h-[7px] rounded-full bg-[#333335] border border-white/15" style={{ boxShadow: `inset 0 0 2px ${s.accent}40` }} />
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        <div className={`absolute top-[3px] left-[3px] right-[3px] bottom-[3px] overflow-hidden bg-black ${s.edges === "flat" ? "rounded-[8px]" : "rounded-[10px]"}`}>
-                          {s.notch === "dynamic" ? (
-                            <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[26px] h-[8px] bg-[#1a1a1a] rounded-full z-10 border border-black/50" />
-                          ) : (
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[28px] h-[9px] bg-black rounded-b-lg z-10 border-x border-b border-white/5" />
-                          )}
-                          <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(160deg, ${s.accent}40, #000 40%, ${s.accent}20, #000)` }}>
-                            <p className="text-white/60 text-[8px] font-semibold text-center mt-[14px]">9:41</p>
-                            <div className="flex flex-col items-center mt-[6px] gap-[4px]">
-                              <div className="w-[28px] h-[28px] rounded-[7px]" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accent}80)` }} />
-                              <div className="w-[36px] h-[1px] bg-white/20 rounded" />
-                              <div className="w-[30px] h-[1px] bg-white/10 rounded" />
-                              <div className="w-[24px] h-[24px] rounded-[6px] mt-[2px]" style={{ background: `linear-gradient(135deg, ${s.accent}60, ${s.accent}30)` }} />
-                            </div>
-                          </div>
-                          <div className="absolute bottom-[3px] left-1/2 -translate-x-1/2 w-[18px] h-[2px] bg-white/30 rounded-full" />
-                        </div>
+                      <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
+                        <span className="text-2xl">📱</span>
                       </div>
-                      <p className="font-semibold text-[#1a1a1a] text-sm group-hover:text-[#0071e3] transition leading-relaxed">{s.label}</p>
-                      <p className="text-[#6e6e73] text-[12px] font-medium leading-relaxed">{s.year} · {s.variants.length} models</p>
-                      <svg className="w-4 h-4 text-[#6e6e73] mt-1 group-hover:text-[#0071e3] transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{s.label}</p>
+                      <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
                     </button>
                   ))}
                 </div>
