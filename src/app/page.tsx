@@ -416,9 +416,9 @@ export default function Home() {
     setOtherDeviceText("");
     setOtherIssueText("");
     if (d === "iphone" || d === "macbook" || d === "android") {
-      setShowModelPicker(true);
+      setShowModelPicker(true); pushHistory("model");
     } else if (d === "other") {
-      setStep("issue");
+      setStep("issue"); pushHistory("issue");
     }
   };
 
@@ -440,7 +440,7 @@ export default function Home() {
 
   const handleRepairSelect = (r: { name: string; price: string; time: string; icon: string }) => {
     setRepair(r);
-    setStep("time");
+    setStep("time"); pushHistory("time");
   };
 
   const handleTimeSelect = (choice: string) => {
@@ -448,7 +448,7 @@ export default function Home() {
     setSelectedDate(null);
     setSpecificSlot(null);
     if (choice === "ASAP") {
-      setStep("confirm");
+      setStep("confirm"); pushHistory("confirm");
     }
   };
 
@@ -459,7 +459,17 @@ export default function Home() {
 
   const handleSlotSelect = (slot: string) => {
     setSpecificSlot(slot);
-    setStep("confirm");
+    setStep("confirm"); pushHistory("confirm");
+  };
+
+  useEffect(() => {
+    const onPop = () => { handleBack(); };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  });
+
+  const pushHistory = (s: string) => {
+    window.history.pushState({ step: s }, "", `#${s}`);
   };
 
   const handleBack = () => {
