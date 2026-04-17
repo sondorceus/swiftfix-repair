@@ -29,6 +29,7 @@ const IPHONE_SERIES = [
       { id: "iphone17plus", label: "iPhone 17 Plus", size: '6.7"' },
       { id: "iphone17pro", label: "iPhone 17 Pro", size: '6.3"' },
       { id: "iphone17promax", label: "iPhone 17 Pro Max", size: '6.9"' },
+      { id: "iphone17air", label: "iPhone 17 Air", size: '6.6"' },
     ]},
   { id: "16", label: "iPhone 16", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic", cameras: 3, edges: "round",
     variants: [
@@ -99,7 +100,7 @@ const R = (screen: number, battery: number, speaker: number, frontCam: number, r
 
 const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
   //            screen bat  spk  fCam rCam back
-  iphone17: R(279, 139, 119, 159, 209, 219), iphone17plus: R(289, 139, 119, 159, 209, 229), iphone17pro: R(309, 149, 129, 169, 229, 239), iphone17promax: R(329, 149, 129, 169, 229, 249),
+  iphone17: R(279, 139, 119, 159, 209, 219), iphone17plus: R(289, 139, 119, 159, 209, 229), iphone17pro: R(309, 149, 129, 169, 229, 239), iphone17promax: R(329, 149, 129, 169, 229, 249), iphone17air: R(299, 139, 119, 159, 219, 229),
   iphone16: R(249, 119, 99, 139, 179, 189), iphone16plus: R(259, 119, 99, 139, 179, 199), iphone16pro: R(279, 129, 109, 149, 199, 209), iphone16promax: R(299, 129, 109, 149, 199, 219),
   iphone15: R(219, 109, 89, 129, 159, 169), iphone15plus: R(229, 109, 89, 129, 159, 179), iphone15pro: R(249, 119, 99, 139, 179, 189), iphone15promax: R(269, 119, 99, 139, 179, 199),
   iphone14: R(189, 99, 79, 119, 139, 149), iphone14plus: R(199, 99, 79, 119, 139, 159), iphone14pro: R(219, 109, 89, 129, 159, 169), iphone14promax: R(229, 109, 89, 129, 159, 179),
