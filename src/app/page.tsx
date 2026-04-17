@@ -92,13 +92,13 @@ const R = (screen: number, battery: number, speaker: number, frontCam: number, r
 
 const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
   //            screen bat  spk  fCam rCam back
-  iphone16: R(249, 119, 109, 139, 179, 189), iphone16plus: R(259, 119, 109, 139, 179, 199), iphone16pro: R(279, 129, 119, 149, 199, 209), iphone16promax: R(299, 129, 119, 149, 199, 219),
-  iphone15: R(219, 109, 99, 129, 159, 169), iphone15plus: R(229, 109, 99, 129, 159, 179), iphone15pro: R(249, 119, 109, 139, 179, 189), iphone15promax: R(269, 119, 109, 139, 179, 199),
-  iphone14: R(189, 99, 89, 119, 139, 149), iphone14plus: R(199, 99, 89, 119, 139, 159), iphone14pro: R(219, 109, 99, 129, 159, 169), iphone14promax: R(229, 109, 99, 129, 159, 179),
-  iphone13: R(179, 89, 79, 109, 129, 139), iphone13mini: R(169, 89, 79, 99, 119, 129), iphone13pro: R(189, 89, 89, 119, 139, 149), iphone13promax: R(199, 99, 89, 119, 139, 159),
-  iphone12: R(169, 79, 79, 99, 109, 129), iphone12mini: R(159, 79, 69, 89, 99, 119), iphone12pro: R(179, 79, 79, 109, 119, 139), iphone12promax: R(189, 89, 89, 109, 129, 149),
-  iphone11: R(149, 69, 69, 89, 99, 109), iphone11pro: R(159, 69, 69, 99, 109, 119), iphone11promax: R(169, 79, 79, 99, 109, 129),
-  iphonese3: R(129, 59, 59, 69, 79, 89), iphonese2: R(119, 49, 49, 59, 69, 79),
+  iphone16: R(249, 119, 99, 139, 179, 189), iphone16plus: R(259, 119, 99, 139, 179, 199), iphone16pro: R(279, 129, 109, 149, 199, 209), iphone16promax: R(299, 129, 109, 149, 199, 219),
+  iphone15: R(219, 109, 89, 129, 159, 169), iphone15plus: R(229, 109, 89, 129, 159, 179), iphone15pro: R(249, 119, 99, 139, 179, 189), iphone15promax: R(269, 119, 99, 139, 179, 199),
+  iphone14: R(189, 99, 79, 119, 139, 149), iphone14plus: R(199, 99, 79, 119, 139, 159), iphone14pro: R(219, 109, 89, 129, 159, 169), iphone14promax: R(229, 109, 89, 129, 159, 179),
+  iphone13: R(179, 89, 69, 109, 129, 139), iphone13mini: R(169, 89, 69, 99, 119, 129), iphone13pro: R(189, 89, 79, 119, 139, 149), iphone13promax: R(199, 99, 79, 119, 139, 159),
+  iphone12: R(169, 79, 69, 99, 109, 129), iphone12mini: R(159, 79, 59, 89, 99, 119), iphone12pro: R(179, 79, 69, 109, 119, 139), iphone12promax: R(189, 89, 79, 109, 129, 149),
+  iphone11: R(149, 69, 59, 89, 99, 109), iphone11pro: R(159, 69, 59, 99, 109, 119), iphone11promax: R(169, 79, 69, 99, 109, 129),
+  iphonese3: R(129, 59, 49, 69, 79, 89), iphonese2: R(119, 49, 39, 59, 69, 79),
 };
 
 const MACBOOK_SERIES = [
