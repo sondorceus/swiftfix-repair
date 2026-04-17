@@ -325,6 +325,30 @@ function TechCard() {
 export default function Home() {
   const [step, setStep] = useState<Step>("select");
   const [footerPage, setFooterPage] = useState<"about" | "faq" | "contact" | null>(null);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatMode, setChatMode] = useState<"choose" | "chat" | "call">("choose");
+  const [chatMessages, setChatMessages] = useState<{ from: "user" | "bot"; text: string }[]>([
+    { from: "bot", text: "Hey! Need a repair? I can help with pricing, timing, or any questions about our service!" }
+  ]);
+  const [chatMsg, setChatMsg] = useState("");
+  const [chatLoading, setChatLoading] = useState(false);
+
+  const sendChat = async () => {
+    if (!chatMsg.trim()) return;
+    const msg = chatMsg;
+    setChatMsg("");
+    setChatMessages(prev => [...prev, { from: "user", text: msg }]);
+    setChatLoading(true);
+    try {
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: msg }) });
+      const data = await res.json();
+      setChatMessages(prev => [...prev, { from: "bot", text: data.reply }]);
+    } catch {
+      setChatMessages(prev => [...prev, { from: "bot", text: "Sorry, something went wrong. Call us!" }]);
+    }
+    setChatLoading(false);
+  };
+
   const [deviceType, setDeviceType] = useState<"iphone" | "macbook" | "android" | "other" | null>(null);
   const [otherDeviceText, setOtherDeviceText] = useState("");
   const [otherIssueText, setOtherIssueText] = useState("");
@@ -1260,6 +1284,64 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* CHAT WIDGET */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {chatOpen && (
+          <div className="mb-3 w-[300px] bg-[#1a1a1a] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+            <div className="bg-[#0071e3] px-4 py-3 flex items-center justify-between">
+              <p className="text-white font-semibold text-sm">Austin Mobile Repair</p>
+              <button onClick={() => setChatOpen(false)} className="text-white/80 hover:text-white cursor-pointer text-lg">x</button>
+            </div>
+            <div className="p-4">
+              {chatMode === "choose" && (
+                <>
+                  <p className="text-white text-sm mb-4">Hey! How would you like to connect?</p>
+                  <div className="space-y-2">
+                    <button onClick={() => setChatMode("chat")} className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition text-left active:scale-[0.98]">
+                      <span className="text-xl">💬</span><div><p className="font-semibold text-sm text-white">Live Chat</p><p className="text-[#888] text-xs">Ask about repairs</p></div>
+                    </button>
+                    <button onClick={() => setChatMode("call")} className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition text-left active:scale-[0.98]">
+                      <span className="text-xl">📞</span><div><p className="font-semibold text-sm text-white">Talk to a Human</p><p className="text-[#888] text-xs">Call us directly</p></div>
+                    </button>
+                  </div>
+                </>
+              )}
+              {chatMode === "chat" && (
+                <>
+                  <button onClick={() => setChatMode("choose")} className="text-[#888] text-xs mb-2 cursor-pointer hover:text-white">← Back</button>
+                  <div className="h-[200px] overflow-y-auto space-y-2 mb-2 pr-1">
+                    {chatMessages.map((m, i) => (
+                      <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
+                        <div className={`max-w-[85%] px-3 py-2 rounded-xl text-xs ${m.from === "user" ? "bg-[#0071e3] text-white" : "bg-white/10 text-white/90"}`}>{m.text}</div>
+                      </div>
+                    ))}
+                    {chatLoading && <div className="flex justify-start"><div className="bg-white/10 text-white/60 px-3 py-2 rounded-xl text-xs">Typing...</div></div>}
+                  </div>
+                  <div className="flex gap-2">
+                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#555] focus:outline-none focus:border-[#0071e3]" />
+                    <button onClick={sendChat} disabled={chatLoading} className="bg-[#0071e3] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#0077ed] transition disabled:opacity-50">Send</button>
+                  </div>
+                </>
+              )}
+              {chatMode === "call" && (
+                <div className="text-center py-2">
+                  <button onClick={() => setChatMode("choose")} className="text-[#888] text-xs mb-3 cursor-pointer hover:text-white block mx-auto">← Back</button>
+                  <a href={`tel:${PHONE}`} className="block w-full bg-[#0071e3] text-white py-3 rounded-xl text-sm font-semibold hover:bg-[#0077ed] transition text-center mb-2">📞 Call {PHONE}</a>
+                  <p className="text-[#888] text-xs">Mon-Sat 8AM-8PM</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        <button onClick={() => setChatOpen(!chatOpen)} className="w-14 h-14 rounded-full bg-[#0071e3] text-white flex items-center justify-center shadow-lg hover:bg-[#0077ed] transition cursor-pointer active:scale-90">
+          {chatOpen ? (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+          )}
+        </button>
+      </div>
 
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
