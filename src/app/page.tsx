@@ -457,6 +457,7 @@ export default function Home() {
     else if (step === "time") setStep("issue");
     else if (step === "issue") {
       if (deviceType === "iphone" || deviceType === "macbook" || deviceType === "android") {
+        setStep("select");
         setShowModelPicker(true);
         setSelectedSeries(null);
         setSelectedModelSeries(null);
