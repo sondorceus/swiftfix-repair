@@ -66,30 +66,30 @@ const IPHONE_SERIES = [
     ]},
 ];
 
-function makeRepairs(screen: number, battery: number, speaker: number, camera: number, backGlass: number) {
+function makeRepairs(screen: number, battery: number, speaker: number, frontCam: number, rearCam: number, backGlass: number) {
   const port = Math.round(screen * 0.35 / 5) * 5;
   const water = Math.round(screen * 0.55 / 5) * 5;
   return [
     { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
     { name: "Battery Replacement", price: `$${battery}`, time: "20 min", icon: "🔋" },
-    { name: "Camera Lens Replacement", price: `from $${camera}`, time: "25-30 min", icon: "📷" },
+    { name: "Camera Lens Replacement", price: `from $${frontCam}`, time: "25-30 min", icon: "📷", _frontCam: frontCam, _rearCam: rearCam },
     { name: "Back Glass", price: `$${backGlass}`, time: "40 min", icon: "🔲" },
     { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
     { name: "Speaker/Mic", price: `$${speaker}`, time: "25 min", icon: "🔊" },
     { name: "Water Damage", price: `$${water}+`, time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ];
+  ] as { name: string; price: string; time: string; icon: string; _frontCam?: number; _rearCam?: number }[];
 }
 
-//                                          screen bat  spk  cam  back
-const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
-  iphone16: makeRepairs(249, 119, 109, 139, 189), iphone16plus: makeRepairs(259, 119, 109, 139, 199), iphone16pro: makeRepairs(279, 129, 119, 149, 209), iphone16promax: makeRepairs(299, 129, 119, 149, 219),
-  iphone15: makeRepairs(219, 109, 99, 129, 169), iphone15plus: makeRepairs(229, 109, 99, 129, 179), iphone15pro: makeRepairs(249, 119, 109, 139, 189), iphone15promax: makeRepairs(269, 119, 109, 139, 199),
-  iphone14: makeRepairs(189, 99, 89, 119, 149), iphone14plus: makeRepairs(199, 99, 89, 119, 159), iphone14pro: makeRepairs(219, 109, 99, 129, 169), iphone14promax: makeRepairs(229, 109, 99, 129, 179),
-  iphone13: makeRepairs(179, 89, 79, 109, 139), iphone13mini: makeRepairs(169, 89, 79, 99, 129), iphone13pro: makeRepairs(189, 89, 89, 119, 149), iphone13promax: makeRepairs(199, 99, 89, 119, 159),
-  iphone12: makeRepairs(169, 79, 79, 99, 129), iphone12mini: makeRepairs(159, 79, 69, 89, 119), iphone12pro: makeRepairs(179, 79, 79, 109, 139), iphone12promax: makeRepairs(189, 89, 89, 109, 149),
-  iphone11: makeRepairs(149, 69, 69, 89, 109), iphone11pro: makeRepairs(159, 69, 69, 99, 119), iphone11promax: makeRepairs(169, 79, 79, 99, 129),
-  iphonese3: makeRepairs(129, 59, 59, 69, 89), iphonese2: makeRepairs(119, 49, 49, 59, 79),
+//                                          screen bat  spk  fCam rCam back
+const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
+  iphone16: makeRepairs(249, 119, 109, 139, 179, 189), iphone16plus: makeRepairs(259, 119, 109, 139, 179, 199), iphone16pro: makeRepairs(279, 129, 119, 149, 199, 209), iphone16promax: makeRepairs(299, 129, 119, 149, 199, 219),
+  iphone15: makeRepairs(219, 109, 99, 129, 159, 169), iphone15plus: makeRepairs(229, 109, 99, 129, 159, 179), iphone15pro: makeRepairs(249, 119, 109, 139, 179, 189), iphone15promax: makeRepairs(269, 119, 109, 139, 179, 199),
+  iphone14: makeRepairs(189, 99, 89, 119, 139, 149), iphone14plus: makeRepairs(199, 99, 89, 119, 139, 159), iphone14pro: makeRepairs(219, 109, 99, 129, 159, 169), iphone14promax: makeRepairs(229, 109, 99, 129, 159, 179),
+  iphone13: makeRepairs(179, 89, 79, 109, 129, 139), iphone13mini: makeRepairs(169, 89, 79, 99, 119, 129), iphone13pro: makeRepairs(189, 89, 89, 119, 139, 149), iphone13promax: makeRepairs(199, 99, 89, 119, 139, 159),
+  iphone12: makeRepairs(169, 79, 79, 99, 109, 129), iphone12mini: makeRepairs(159, 79, 69, 89, 99, 119), iphone12pro: makeRepairs(179, 79, 79, 109, 119, 139), iphone12promax: makeRepairs(189, 89, 89, 109, 129, 149),
+  iphone11: makeRepairs(149, 69, 69, 89, 99, 109), iphone11pro: makeRepairs(159, 69, 69, 99, 109, 119), iphone11promax: makeRepairs(169, 79, 79, 99, 109, 129),
+  iphonese3: makeRepairs(129, 59, 59, 69, 79, 89), iphonese2: makeRepairs(119, 49, 49, 59, 69, 79),
 };
 
 const MACBOOK_SERIES = [
@@ -335,6 +335,7 @@ export default function Home() {
     reader.readAsDataURL(file);
   };
   const [showModelPicker, setShowModelPicker] = useState(false);
+  const [showCameraOptions, setShowCameraOptions] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
   const addressRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
@@ -829,22 +830,42 @@ export default function Home() {
                 <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
                 <div className="space-y-2">
-                  {currentRepairs.map((r) => (
-                    <button
-                      key={r.name}
-                      onClick={() => handleRepairSelect(r)}
-                      className="card-3d w-full flex items-center gap-4 p-4 rounded-2xl cursor-pointer text-left"
-                    >
-                      <span className="text-2xl w-10 text-center">{r.icon}</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-[#1a1a1a]">{r.name}</p>
-                        <p className="text-[#6e6e73] text-[12px] font-medium">~{r.time}</p>
+                  {currentRepairs.map((r) => {
+                    const isCamera = r.name === "Camera Lens Replacement";
+                    const rAny = r as { _frontCam?: number; _rearCam?: number };
+                    return (
+                      <div key={r.name}>
+                        <button
+                          onClick={() => isCamera ? setShowCameraOptions(!showCameraOptions) : handleRepairSelect(r)}
+                          className="card-3d w-full flex items-center gap-4 p-4 rounded-2xl cursor-pointer text-left"
+                        >
+                          <span className="text-2xl w-10 text-center">{r.icon}</span>
+                          <div className="flex-1">
+                            <p className="font-semibold text-[#1a1a1a]">{r.name}</p>
+                            <p className="text-[#6e6e73] text-[12px] font-medium">~{r.time}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
+                          </div>
+                          {isCamera && (
+                            <svg className={`w-4 h-4 text-[#6e6e73] transition-transform ${showCameraOptions ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                          )}
+                        </button>
+                        {isCamera && showCameraOptions && rAny._frontCam && rAny._rearCam && (
+                          <div className="ml-14 mt-1 space-y-1 animate-[fadeIn_0.2s_ease-out]">
+                            <button onClick={() => handleRepairSelect({ name: "Front Camera", price: `$${rAny._frontCam}`, time: "25 min", icon: "🤳" })} className="tap-spring w-full flex items-center justify-between p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer text-left">
+                              <span className="text-sm font-medium">Front Camera</span>
+                              <span className="text-[#0071e3] font-bold">${rAny._frontCam}</span>
+                            </button>
+                            <button onClick={() => handleRepairSelect({ name: "Rear Camera (Full Module)", price: `$${rAny._rearCam}`, time: "30 min", icon: "📷" })} className="tap-spring w-full flex items-center justify-between p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer text-left">
+                              <span className="text-sm font-medium">Rear Camera (Full Module)</span>
+                              <span className="text-[#0071e3] font-bold">${rAny._rearCam}</span>
+                            </button>
+                          </div>
+                        )}
                       </div>
-                      <div className="text-right">
-                        <p className="text-[#0071e3] font-bold text-lg">{r.price}</p>
-                      </div>
-                    </button>
-                  ))}
+                    );
+                  })}
                 </div>
               </>
             )}
