@@ -66,30 +66,30 @@ const IPHONE_SERIES = [
     ]},
 ];
 
-function makeRepairs(screen: number, battery: number, speaker: number, frontCam: number, rearCam: number, backGlass: number) {
+function makeRepairs(screen: number, battery: number, speaker: number, camera: number, backGlass: number) {
   const port = Math.round(screen * 0.35 / 5) * 5;
   const water = Math.round(screen * 0.55 / 5) * 5;
   return [
     { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
     { name: "Battery Replacement", price: `$${battery}`, time: "20 min", icon: "🔋" },
-    { name: "Camera Lens", price: `from $${frontCam}`, time: "25-30 min", icon: "📷", _frontCam: frontCam, _rearCam: rearCam },
+    { name: "Camera Lens", price: `$${camera}`, time: "25-30 min", icon: "📷" },
     { name: "Back Glass", price: `$${backGlass}`, time: "40 min", icon: "🔲" },
     { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
     { name: "Speaker/Mic", price: `$${speaker}`, time: "25 min", icon: "🔊" },
     { name: "Water Damage", price: `$${water}+`, time: "1-2 hrs", icon: "💧" },
     { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ] as { name: string; price: string; time: string; icon: string; _frontCam?: number; _rearCam?: number }[];
+  ];
 }
 
-//                                          screen bat  spk  fCam rCam back
+//                                          screen bat  spk  cam  back
 const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
-  iphone16: makeRepairs(249, 119, 109, 139, 179, 189), iphone16plus: makeRepairs(259, 119, 109, 139, 179, 199), iphone16pro: makeRepairs(279, 129, 119, 149, 199, 209), iphone16promax: makeRepairs(299, 129, 119, 149, 199, 219),
-  iphone15: makeRepairs(219, 109, 99, 129, 159, 169), iphone15plus: makeRepairs(229, 109, 99, 129, 159, 179), iphone15pro: makeRepairs(249, 119, 109, 139, 179, 189), iphone15promax: makeRepairs(269, 119, 109, 139, 179, 199),
-  iphone14: makeRepairs(189, 99, 89, 119, 139, 149), iphone14plus: makeRepairs(199, 99, 89, 119, 139, 159), iphone14pro: makeRepairs(219, 109, 99, 129, 159, 169), iphone14promax: makeRepairs(229, 109, 99, 129, 159, 179),
-  iphone13: makeRepairs(179, 89, 79, 109, 129, 139), iphone13mini: makeRepairs(169, 89, 79, 99, 119, 129), iphone13pro: makeRepairs(189, 89, 89, 119, 139, 149), iphone13promax: makeRepairs(199, 99, 89, 119, 139, 159),
-  iphone12: makeRepairs(169, 79, 79, 99, 109, 129), iphone12mini: makeRepairs(159, 79, 69, 89, 99, 119), iphone12pro: makeRepairs(179, 79, 79, 109, 119, 139), iphone12promax: makeRepairs(189, 89, 89, 109, 129, 149),
-  iphone11: makeRepairs(149, 69, 69, 89, 99, 109), iphone11pro: makeRepairs(159, 69, 69, 99, 109, 119), iphone11promax: makeRepairs(169, 79, 79, 99, 109, 129),
-  iphonese3: makeRepairs(129, 59, 59, 69, 79, 89), iphonese2: makeRepairs(119, 49, 49, 59, 69, 79),
+  iphone16: makeRepairs(249, 119, 109, 99, 189), iphone16plus: makeRepairs(259, 119, 109, 99, 199), iphone16pro: makeRepairs(279, 129, 119, 109, 209), iphone16promax: makeRepairs(299, 129, 119, 109, 219),
+  iphone15: makeRepairs(219, 109, 99, 99, 169), iphone15plus: makeRepairs(229, 109, 99, 99, 179), iphone15pro: makeRepairs(249, 119, 109, 109, 189), iphone15promax: makeRepairs(269, 119, 109, 109, 199),
+  iphone14: makeRepairs(189, 99, 89, 89, 149), iphone14plus: makeRepairs(199, 99, 89, 89, 159), iphone14pro: makeRepairs(219, 109, 99, 99, 169), iphone14promax: makeRepairs(229, 109, 99, 99, 179),
+  iphone13: makeRepairs(179, 89, 79, 79, 139), iphone13mini: makeRepairs(169, 89, 79, 79, 129), iphone13pro: makeRepairs(189, 89, 89, 89, 149), iphone13promax: makeRepairs(199, 99, 89, 89, 159),
+  iphone12: makeRepairs(169, 79, 79, 79, 129), iphone12mini: makeRepairs(159, 79, 69, 69, 119), iphone12pro: makeRepairs(179, 79, 79, 79, 139), iphone12promax: makeRepairs(189, 89, 89, 89, 149),
+  iphone11: makeRepairs(149, 69, 69, 69, 109), iphone11pro: makeRepairs(159, 69, 69, 69, 119), iphone11promax: makeRepairs(169, 79, 79, 79, 129),
+  iphonese3: makeRepairs(129, 59, 59, 59, 89), iphonese2: makeRepairs(119, 49, 49, 49, 79),
 };
 
 const MACBOOK_SERIES = [
@@ -830,39 +830,21 @@ export default function Home() {
                 <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
                 <div className="grid grid-cols-2 gap-3">
-                  {currentRepairs.map((r, idx) => {
-                    const isCamera = r.name === "Camera Lens";
-                    const rAny = r as { _frontCam?: number; _rearCam?: number };
-                    return (
-                      <div key={r.name} className={isCamera && showCameraOptions ? "col-span-2" : ""} style={{ animationDelay: `${idx * 0.06}s` }}>
-                        <button
-                          onClick={() => isCamera ? setShowCameraOptions(!showCameraOptions) : handleRepairSelect(r)}
-                          className="card-3d w-full flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer text-center min-h-[120px] group"
-                          style={{ animationDelay: `${idx * 0.06}s` }}
-                        >
-                          <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
-                            <span className="text-2xl">{r.icon}</span>
-                          </div>
-                          <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
-                          <p className="text-[#0071e3] font-extrabold text-base mt-1">{r.price}</p>
-                        </button>
-                        {isCamera && showCameraOptions && rAny._frontCam && rAny._rearCam && (
-                          <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
-                            <button onClick={() => handleRepairSelect({ name: "Front Camera", price: `$${rAny._frontCam}`, time: "25 min", icon: "🤳" })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer">
-                              <span className="text-lg mb-1">🤳</span>
-                              <span className="text-xs font-semibold">Front</span>
-                              <span className="text-[#0071e3] font-bold text-sm">${rAny._frontCam}</span>
-                            </button>
-                            <button onClick={() => handleRepairSelect({ name: "Rear Camera (Full Module)", price: `$${rAny._rearCam}`, time: "30 min", icon: "📷" })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#333335] border border-white/10 cursor-pointer">
-                              <span className="text-lg mb-1">📷</span>
-                              <span className="text-xs font-semibold">Rear (Full)</span>
-                              <span className="text-[#0071e3] font-bold text-sm">${rAny._rearCam}</span>
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {currentRepairs.map((r, idx) => (
+                    <div key={r.name} style={{ animationDelay: `${idx * 0.06}s` }}>
+                      <button
+                        onClick={() => handleRepairSelect(r)}
+                        className="card-3d w-full flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer text-center min-h-[120px] group"
+                        style={{ animationDelay: `${idx * 0.06}s` }}
+                      >
+                        <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
+                          <span className="text-2xl">{r.icon}</span>
+                        </div>
+                        <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
+                        <p className="text-[#0071e3] font-extrabold text-base mt-1">{r.price}</p>
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </>
             )}
