@@ -66,67 +66,33 @@ const IPHONE_SERIES = [
     ]},
 ];
 
+function makeRepairs(screen: number) {
+  const bat = Math.round(screen * 0.4 / 5) * 5;
+  const port = Math.round(screen * 0.35 / 5) * 5;
+  const cam = Math.round(screen * 0.45 / 5) * 5;
+  const back = Math.round(screen * 0.5 / 5) * 5;
+  const spk = Math.round(screen * 0.3 / 5) * 5;
+  const water = Math.round(screen * 0.55 / 5) * 5;
+  return [
+    { name: "Screen Repair", price: `$${screen}`, time: "30-45 min", icon: "📱" },
+    { name: "Battery Replacement", price: `$${bat}`, time: "20 min", icon: "🔋" },
+    { name: "Charging Port", price: `$${port}`, time: "25 min", icon: "⚡" },
+    { name: "Camera Repair", price: `$${cam}`, time: "30 min", icon: "📷" },
+    { name: "Back Glass", price: `$${back}`, time: "40 min", icon: "🔲" },
+    { name: "Speaker/Mic", price: `$${spk}`, time: "25 min", icon: "🔊" },
+    { name: "Water Damage", price: `$${water}+`, time: "1-2 hrs", icon: "💧" },
+    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
+  ];
+}
+
 const IPHONE_REPAIRS: Record<string, { name: string; price: string; time: string; icon: string }[]> = {
-  iphone16: [
-    { name: "Screen Repair", price: "$129", time: "30-45 min", icon: "📱" },
-    { name: "Battery Replacement", price: "$79", time: "20 min", icon: "🔋" },
-    { name: "Charging Port", price: "$89", time: "25 min", icon: "⚡" },
-    { name: "Camera Repair", price: "$99", time: "30 min", icon: "📷" },
-    { name: "Back Glass", price: "$109", time: "45 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: "$79", time: "25 min", icon: "🔊" },
-    { name: "Water Damage", price: "$99+", time: "1-2 hrs", icon: "💧" },
-    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ],
-  iphone15: [
-    { name: "Screen Repair", price: "$109", time: "30 min", icon: "📱" },
-    { name: "Battery Replacement", price: "$69", time: "20 min", icon: "🔋" },
-    { name: "Charging Port", price: "$79", time: "25 min", icon: "⚡" },
-    { name: "Camera Repair", price: "$89", time: "30 min", icon: "📷" },
-    { name: "Back Glass", price: "$99", time: "40 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: "$69", time: "25 min", icon: "🔊" },
-    { name: "Water Damage", price: "$89+", time: "1-2 hrs", icon: "💧" },
-    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ],
-  iphone14: [
-    { name: "Screen Repair", price: "$89", time: "30 min", icon: "📱" },
-    { name: "Battery Replacement", price: "$59", time: "20 min", icon: "🔋" },
-    { name: "Charging Port", price: "$69", time: "25 min", icon: "⚡" },
-    { name: "Camera Repair", price: "$79", time: "30 min", icon: "📷" },
-    { name: "Back Glass", price: "$89", time: "40 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: "$59", time: "25 min", icon: "🔊" },
-    { name: "Water Damage", price: "$79+", time: "1-2 hrs", icon: "💧" },
-    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ],
-  iphone13: [
-    { name: "Screen Repair", price: "$79", time: "25 min", icon: "📱" },
-    { name: "Battery Replacement", price: "$49", time: "20 min", icon: "🔋" },
-    { name: "Charging Port", price: "$59", time: "25 min", icon: "⚡" },
-    { name: "Camera Repair", price: "$69", time: "25 min", icon: "📷" },
-    { name: "Back Glass", price: "$79", time: "35 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: "$55", time: "20 min", icon: "🔊" },
-    { name: "Water Damage", price: "$69+", time: "1-2 hrs", icon: "💧" },
-    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ],
-  iphone12: [
-    { name: "Screen Repair", price: "$69", time: "25 min", icon: "📱" },
-    { name: "Battery Replacement", price: "$45", time: "15 min", icon: "🔋" },
-    { name: "Charging Port", price: "$55", time: "20 min", icon: "⚡" },
-    { name: "Camera Repair", price: "$65", time: "25 min", icon: "📷" },
-    { name: "Back Glass", price: "$69", time: "35 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: "$49", time: "20 min", icon: "🔊" },
-    { name: "Water Damage", price: "$59+", time: "1-2 hrs", icon: "💧" },
-    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ],
-  iphone11: [
-    { name: "Screen Repair", price: "$59", time: "25 min", icon: "📱" },
-    { name: "Battery Replacement", price: "$39", time: "15 min", icon: "🔋" },
-    { name: "Charging Port", price: "$49", time: "20 min", icon: "⚡" },
-    { name: "Camera Repair", price: "$55", time: "25 min", icon: "📷" },
-    { name: "Back Glass", price: "$59", time: "30 min", icon: "🔲" },
-    { name: "Speaker/Mic", price: "$45", time: "20 min", icon: "🔊" },
-    { name: "Water Damage", price: "$49+", time: "1-2 hrs", icon: "💧" },
-    { name: "Other Issue", price: "Free Quote", time: "Varies", icon: "🔧" },
-  ],
+  iphone16: makeRepairs(249), iphone16plus: makeRepairs(259), iphone16pro: makeRepairs(279), iphone16promax: makeRepairs(299),
+  iphone15: makeRepairs(219), iphone15plus: makeRepairs(229), iphone15pro: makeRepairs(249), iphone15promax: makeRepairs(269),
+  iphone14: makeRepairs(189), iphone14plus: makeRepairs(199), iphone14pro: makeRepairs(219), iphone14promax: makeRepairs(229),
+  iphone13: makeRepairs(179), iphone13mini: makeRepairs(169), iphone13pro: makeRepairs(189), iphone13promax: makeRepairs(199),
+  iphone12: makeRepairs(169), iphone12mini: makeRepairs(159), iphone12pro: makeRepairs(179), iphone12promax: makeRepairs(189),
+  iphone11: makeRepairs(149), iphone11pro: makeRepairs(159), iphone11promax: makeRepairs(169),
+  iphonese3: makeRepairs(129), iphonese2: makeRepairs(119),
 };
 
 const MACBOOK_SERIES = [
@@ -401,7 +367,7 @@ export default function Home() {
   // Map variant IDs back to their series repair key
   const getRepairKey = (model: string | null) => {
     if (!model) return null;
-    // Strip variant suffixes to get base series key
+    if (IPHONE_REPAIRS[model]) return model;
     const base = model.replace(/promax|plus|pro|mini/g, "");
     return IPHONE_REPAIRS[base] ? base : model;
   };
