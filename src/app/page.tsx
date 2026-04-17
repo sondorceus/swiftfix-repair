@@ -641,27 +641,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* PRICING ANCHOR STRIP — early visibility */}
-      {step === "select" && !showModelPicker && (
-        <section className="py-6 bg-[#282828] border-b border-white/10">
-          <div className="max-w-lg mx-auto px-4">
-            <div className="grid grid-cols-3 gap-3 text-center">
-              {[
-                { label: "Screen Repair", price: "from $89", icon: "📱" },
-                { label: "Battery Replace", price: "from $59", icon: "🔋" },
-                { label: "Diagnostics", price: "FREE", icon: "🔍" },
-              ].map((p) => (
-                <div key={p.label} className="bg-[#333335] border border-white/10 rounded-xl p-3">
-                  <span className="text-lg">{p.icon}</span>
-                  <p className="text-[#0071e3] font-bold text-sm mt-1 leading-relaxed">{p.price}</p>
-                  <p className="text-[#c7c7cc] text-[12px] font-medium leading-relaxed">{p.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* MODEL PICKER — two-step: Series → Variant (iPhone / MacBook / Samsung) */}
       {showModelPicker && (
         <section className="bg-[#282828] text-white min-h-[60vh]">
