@@ -301,6 +301,19 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [damagePhoto, setDamagePhoto] = useState<string | null>(null);
+  const [damagePhotoName, setDamagePhotoName] = useState<string | null>(null);
+  const photoInputRef = useRef<HTMLInputElement>(null);
+
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { alert("Photo must be under 10MB"); return; }
+    setDamagePhotoName(file.name);
+    const reader = new FileReader();
+    reader.onload = () => setDamagePhoto(reader.result as string);
+    reader.readAsDataURL(file);
+  };
   const [showModelPicker, setShowModelPicker] = useState(false);
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null);
   const addressRef = useRef<HTMLInputElement>(null);
@@ -448,6 +461,9 @@ export default function Home() {
           date: selectedDate,
           slot: specificSlot,
           bookingType: timeChoice === "ASAP" ? "asap" : "scheduled",
+          damagePhoto: damagePhoto ? damagePhotoName : null,
+          otherDeviceText: deviceType === "other" ? otherDeviceText : undefined,
+          otherIssueText: deviceType === "other" ? otherIssueText : undefined,
         }),
       });
     } catch {
@@ -461,6 +477,8 @@ export default function Home() {
     setIphoneModel(null);
     setRepair(null);
     setTimeChoice(null);
+    setDamagePhoto(null);
+    setDamagePhotoName(null);
     setSelectedDate(null);
     setSpecificSlot(null);
     setAddress("");
@@ -1027,6 +1045,25 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-[12px] text-[#c7c7cc] -mt-2 font-medium leading-relaxed">Provide at least one so we can reach you</p>
+
+              {/* Damage photo upload — optional */}
+              <div>
+                <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Photo of Damage <span className="normal-case text-[12px] font-medium">(optional)</span></label>
+                <input ref={photoInputRef} type="file" accept="image/*" capture="environment" onChange={handlePhotoUpload} className="hidden" />
+                {damagePhoto ? (
+                  <div className="relative rounded-xl overflow-hidden border border-white/15">
+                    <img src={damagePhoto} alt="Damage photo" className="w-full h-40 object-cover" />
+                    <button type="button" onClick={() => { setDamagePhoto(null); setDamagePhotoName(null); }} className="absolute top-2 right-2 bg-black/60 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm cursor-pointer hover:bg-black/80 transition">x</button>
+                    <p className="absolute bottom-2 left-2 bg-black/60 text-white text-[12px] px-2 py-0.5 rounded-full">{damagePhotoName}</p>
+                  </div>
+                ) : (
+                  <button type="button" onClick={() => photoInputRef.current?.click()} className="tap-spring w-full py-4 border-2 border-dashed border-white/20 rounded-xl text-[#c7c7cc] text-sm font-medium cursor-pointer hover:border-[#0071e3]/40 hover:text-white transition flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    Snap or upload a photo of the damage
+                  </button>
+                )}
+                <p className="text-[#c7c7cc] text-[12px] mt-1.5 font-medium">Helps our tech prep the right parts before arrival</p>
+              </div>
 
               <button
                 type="submit"
