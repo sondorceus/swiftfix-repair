@@ -830,16 +830,17 @@ export default function Home() {
                 <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
 
                 <div className="grid grid-cols-2 gap-3">
-                  {currentRepairs.map((r) => {
+                  {currentRepairs.map((r, idx) => {
                     const isCamera = r.name === "Camera Lens";
                     const rAny = r as { _frontCam?: number; _rearCam?: number };
                     return (
-                      <div key={r.name} className={isCamera && showCameraOptions ? "col-span-2" : ""}>
+                      <div key={r.name} className={isCamera && showCameraOptions ? "col-span-2" : ""} style={{ animationDelay: `${idx * 0.06}s` }}>
                         <button
                           onClick={() => isCamera ? setShowCameraOptions(!showCameraOptions) : handleRepairSelect(r)}
                           className="card-3d w-full flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer text-center min-h-[120px] group"
+                          style={{ animationDelay: `${idx * 0.06}s` }}
                         >
-                          <div className="w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition">
+                          <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
                             <span className="text-2xl">{r.icon}</span>
                           </div>
                           <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
