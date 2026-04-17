@@ -510,18 +510,18 @@ export default function Home() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] mb-3">
-              We Fix Your Phone<br />Wherever You Are
+              Premium Repairs.<br />Delivered to You.
             </h1>
             <p className="text-[#c7c7cc] text-sm mb-4 leading-relaxed max-w-sm font-medium">
-              Same-day service. Most repairs done in 30 minutes. A certified technician drives to you and fixes it on the spot.
+              Premium-quality parts. Certified technicians. Most repairs done in 30 minutes at your location. Every part inspected and tested before install.
             </p>
 
             {/* Trust badges — compact row */}
             <div className="flex flex-wrap gap-2 mb-8">
               {[
                 { label: "Same-Day Service", icon: "⚡" },
-                { label: "90-Day Warranty", icon: "🛡" },
-                { label: "Certified Techs", icon: "✓" },
+                { label: "30-Day Parts Warranty", icon: "🛡" },
+                { label: "Quality Parts", icon: "✓" },
                 { label: "4.9★ Rating", icon: "★" },
               ].map((b) => (
                 <span key={b.label} className="inline-flex items-center gap-1.5 bg-white/8 border border-white/15 rounded-full px-3 py-1 text-[12px] font-medium text-white">
@@ -585,7 +585,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-white text-xs font-bold">90-day</p>
+                  <p className="text-white text-xs font-bold">30-day</p>
                   <p className="text-[#c7c7cc] text-[12px] font-medium leading-relaxed">warranty</p>
                 </div>
               </div>
@@ -772,7 +772,7 @@ export default function Home() {
                 ); })()}
               </>
             )}
-            <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">All models include same-day service and 90-day warranty</p>
+            <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">All models include same-day service, premium-quality parts, and 30-day warranty</p>
           </div>
         </section>
       )}
@@ -835,8 +835,8 @@ export default function Home() {
             {/* Trust mini-bar */}
             <div className="flex items-center justify-center gap-6 mt-8 text-[#c7c7cc] text-xs">
               <span>✓ Free diagnostics</span>
-              <span>✓ No fix, no fee</span>
-              <span>✓ 90-day warranty</span>
+              <span>✓ Premium parts</span>
+              <span>✓ 30-day parts warranty</span>
             </div>
           </div>
         </section>
@@ -1037,7 +1037,7 @@ export default function Home() {
 
               <div className="flex items-center justify-center gap-4 text-[#c7c7cc] text-[12px] mt-3">
                 <span>✓ Free diagnostics</span>
-                <span>✓ No fix, no fee</span>
+                <span>✓ Premium parts</span>
                 <span>✓ Pay after repair</span>
               </div>
             </form>
@@ -1230,7 +1230,7 @@ export default function Home() {
                 <a href={`tel:${PHONE}`} className="text-sm hover:text-white transition">{PHONE}</a>
               </div>
               <p className="text-xs leading-relaxed mb-6 font-medium">
-                Fast, same-day iPhone &amp; MacBook repair at your location. Certified technicians, genuine parts, 90-day warranty. Serving all of Austin, TX.
+                Premium iPhone, MacBook &amp; Samsung repair at your door. High-quality inspected parts, certified technicians, 30-day parts warranty. Serving all of Austin, TX.
               </p>
               <div className="flex gap-6 text-xs mb-6">
                 <span>Mon-Sat: 8AM-8PM</span>
