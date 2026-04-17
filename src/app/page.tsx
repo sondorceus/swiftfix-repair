@@ -581,12 +581,16 @@ export default function Home() {
               ))}
             </div>
 
-            {/* How it works — visual step flow */}
+            {/* How it works — visual step flow with driving van */}
             <div className="mt-10">
               <div className="flex items-start justify-between relative">
-                {/* Connecting line */}
+                {/* Track line */}
                 <div className="absolute top-4 left-[16%] right-[16%] h-[2px] bg-white/10">
-                  <div className="h-full bg-[#0071e3] w-0 animate-[progressLine_2s_ease-out_0.5s_forwards]" />
+                  <div className="h-full bg-[#0071e3] w-0 animate-[progressLine_2.5s_ease-out_0.5s_forwards]" />
+                </div>
+                {/* Driving van */}
+                <div className="absolute top-[2px] left-[16%] z-20 animate-[driveVan_2.5s_ease-out_0.5s_forwards]" style={{ transform: "translateX(-50%)" }}>
+                  <span className="text-lg drop-shadow-lg" style={{ filter: "drop-shadow(0 0 6px rgba(0,113,227,0.5))" }}>🚐</span>
                 </div>
                 {[
                   { num: "1", label: "Pick device" },
@@ -1098,6 +1102,7 @@ export default function Home() {
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes progressLine { from { width: 0; } to { width: 100%; } }
+        @keyframes driveVan { 0% { left: 16%; opacity: 0; } 10% { opacity: 1; } 100% { left: 84%; opacity: 1; } }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
     </main>
