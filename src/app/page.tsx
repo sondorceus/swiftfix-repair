@@ -52,7 +52,7 @@ const IPHONE_SERIES = [
       { id: "iphone14pro", label: "iPhone 14 Pro", size: '6.1"' },
       { id: "iphone14promax", label: "iPhone 14 Pro Max", size: '6.7"' },
     ]},
-  { id: "13", label: "iPhone 13", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic", cameras: 2, edges: "flat",
+  { id: "13", label: "iPhone 13", image: "/iphone13.png?v=1", year: "2021", frame: "#48484A", accent: "#FF375F", notch: "classic", cameras: 2, edges: "flat",
     variants: [
       { id: "iphone13mini", label: "iPhone 13 Mini", size: '5.4"' },
       { id: "iphone13", label: "iPhone 13", size: '6.1"' },
