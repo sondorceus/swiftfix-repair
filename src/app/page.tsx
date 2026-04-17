@@ -184,7 +184,7 @@ const SAMSUNG_REPAIRS = [
 
 const BOOKING_OPTIONS = [
   { label: "ASAP", sub: "A technician will contact you within 30 minutes", badge: "Fastest", icon: "⚡" },
-  { label: "Schedule", sub: "Pick a date and time that works for you", badge: null, icon: "📅" },
+  { label: "Schedule", sub: "Today, tomorrow, or later this week", badge: null, icon: "📅" },
 ];
 
 const SCHEDULE_SLOTS = [
@@ -1195,36 +1195,32 @@ export default function Home() {
             </div>
           </section>
 
-          {/* BOTTOM CTA — sticky on mobile */}
-          <div className="sticky bottom-0 bg-[#282828]/90 backdrop-blur-xl border-t border-white/10 p-4 md:hidden">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="tap-spring w-full bg-[#0071e3] text-white py-3.5 rounded-2xl text-base font-semibold cursor-pointer"
-            >
-              Book Repair Now
-            </button>
-            <p className="text-center text-[12px] text-[#c7c7cc] mt-1.5 font-medium leading-relaxed">Takes less than 10 seconds &middot; Technician arrives today</p>
-          </div>
+          {/* FOOTER CTA */}
+          <section className="py-16 bg-[#282828] text-center">
+            <div className="max-w-lg mx-auto px-4">
+              <h2 className="text-2xl font-bold mb-2">Ready when you are.</h2>
+              <p className="text-[#c7c7cc] text-sm mb-6 font-medium">Book in under a minute. A tech shows up today.</p>
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring bg-[#0071e3] text-white px-10 py-4 rounded-2xl text-base font-semibold cursor-pointer hover:bg-[#0077ed] transition">
+                Start Repair
+              </button>
+            </div>
+          </section>
 
           {/* FOOTER */}
-          <footer className="bg-[#282828] text-[#c7c7cc] py-10 border-t border-black/60">
-            <div className="max-w-lg mx-auto px-4">
-              <div className="flex items-center justify-between mb-6">
-                <Logo size="sm" />
-                <a href={`tel:${PHONE}`} className="text-sm hover:text-white transition">{PHONE}</a>
-              </div>
-              <p className="text-xs leading-relaxed mb-6 font-medium">
-                Premium iPhone, MacBook &amp; Samsung repair at your door. High-quality inspected parts, certified technicians, 30-day parts warranty. Serving all of Austin, TX.
-              </p>
-              <div className="flex gap-6 text-xs mb-6">
-                <span>Mon-Sat: 8AM-8PM</span>
-                <span>Sun: 10AM-6PM</span>
-              </div>
-              <div className="border-t border-white/10 pt-6 text-center text-[12px]">
-                © 2026 {BRAND}. All rights reserved.
-              </div>
+          <footer className="bg-[#282828] text-[#c7c7cc] py-8 border-t border-white/10">
+            <div className="max-w-lg mx-auto px-4 text-center">
+              <Logo size="sm" />
+              <p className="text-xs mt-3 font-medium">{PHONE} · Austin, TX · Mon-Sat 8AM-8PM</p>
+              <p className="text-[11px] mt-4 text-[#c7c7cc]/60">© 2026 {BRAND}</p>
             </div>
           </footer>
+
+          {/* STICKY BOTTOM CTA — mobile */}
+          <div className="sticky bottom-0 bg-[#282828]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
+            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring w-full bg-[#0071e3] text-white py-3 rounded-2xl text-sm font-semibold cursor-pointer">
+              Start Repair
+            </button>
+          </div>
         </>
       )}
 
