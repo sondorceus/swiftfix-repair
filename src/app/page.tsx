@@ -31,14 +31,14 @@ const IPHONE_SERIES = [
       { id: "iphone17promax", label: "iPhone 17 Pro Max", size: '6.9"' },
       { id: "iphone17air", label: "iPhone 17 Air", size: '6.6"' },
     ]},
-  { id: "16", label: "iPhone 16", image: "/iphone16.png?v=1", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic", cameras: 3, edges: "round",
+  { id: "16", label: "iPhone 16", image: "/iphone16.png?v=2", year: "2024", frame: "#3C3C3C", accent: "#7856FF", notch: "dynamic", cameras: 3, edges: "round",
     variants: [
       { id: "iphone16", label: "iPhone 16", size: '6.1"' },
       { id: "iphone16plus", label: "iPhone 16 Plus", size: '6.7"' },
       { id: "iphone16pro", label: "iPhone 16 Pro", size: '6.3"' },
       { id: "iphone16promax", label: "iPhone 16 Pro Max", size: '6.9"' },
     ]},
-  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone15.png?v=1",
+  { id: "15", label: "iPhone 15", year: "2023", frame: "#2C2C2E", accent: "#0071e3", notch: "dynamic", cameras: 3, edges: "round", image: "/iphone15.png?v=2",
     variants: [
       { id: "iphone15", label: "iPhone 15", size: '6.1"' },
       { id: "iphone15plus", label: "iPhone 15 Plus", size: '6.7"' },
