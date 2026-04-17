@@ -1118,6 +1118,26 @@ export default function Home() {
       {/* BELOW-FOLD */}
       {step === "select" && !showModelPicker && !footerPage && (
         <>
+          {/* TRUST STATS */}
+          <section className="py-8 bg-[#3d3d3d]">
+            <div className="max-w-lg mx-auto px-4">
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div className="bg-[#474749] rounded-2xl p-4 border border-white/10">
+                  <p className="text-2xl font-bold text-[#0071e3]">4,200+</p>
+                  <p className="text-[#c7c7cc] text-xs font-medium mt-1">Repairs Done</p>
+                </div>
+                <div className="bg-[#474749] rounded-2xl p-4 border border-white/10">
+                  <p className="text-2xl font-bold text-[#0071e3]">4.9★</p>
+                  <p className="text-[#c7c7cc] text-xs font-medium mt-1">Avg Rating</p>
+                </div>
+                <div className="bg-[#474749] rounded-2xl p-4 border border-white/10">
+                  <p className="text-2xl font-bold text-[#0071e3]">30-Day</p>
+                  <p className="text-[#c7c7cc] text-xs font-medium mt-1">Warranty</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* REVIEWS MARQUEE */}
           <section className="py-10 overflow-hidden bg-[#3d3d3d]">
             <p className="text-white font-semibold text-lg text-center mb-6">Done right the first time.</p>
