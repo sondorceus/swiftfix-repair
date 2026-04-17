@@ -45,7 +45,7 @@ const IPHONE_SERIES = [
       { id: "iphone15pro", label: "iPhone 15 Pro", size: '6.1"' },
       { id: "iphone15promax", label: "iPhone 15 Pro Max", size: '6.7"' },
     ]},
-  { id: "14", label: "iPhone 14", image: "/iphone14.webp?v=1", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic", cameras: 2, edges: "flat",
+  { id: "14", label: "iPhone 14", image: "/iphone14.png?v=2", year: "2022", frame: "#1C1C1E", accent: "#5E5CE6", notch: "dynamic", cameras: 2, edges: "flat",
     variants: [
       { id: "iphone14", label: "iPhone 14", size: '6.1"' },
       { id: "iphone14plus", label: "iPhone 14 Plus", size: '6.7"' },
