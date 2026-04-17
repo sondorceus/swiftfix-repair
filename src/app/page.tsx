@@ -1241,7 +1241,7 @@ export default function Home() {
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes progressLine { from { width: 0; } to { width: 100%; } }
-        @keyframes driveVan { 0% { left: 16%; opacity: 0; } 10% { opacity: 1; } 100% { left: 84%; opacity: 1; } }
+        @keyframes driveVan { 0% { left: 16%; opacity: 0; } 10% { opacity: 1; } 85% { left: 84%; opacity: 1; } 100% { left: 84%; opacity: 0; } }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
     </main>
