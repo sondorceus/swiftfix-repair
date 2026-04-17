@@ -1062,85 +1062,9 @@ export default function Home() {
         </section>
       )}
 
-      {/* BELOW-FOLD CONTENT (only on home screen) */}
+      {/* BELOW-FOLD — minimal */}
       {step === "select" && !showModelPicker && (
         <>
-          {/* SOCIAL PROOF — minimal */}
-          <section className="py-12 bg-[#282828]">
-            <div className="max-w-lg mx-auto px-4 text-center">
-              <BeforeAfterSlider label="iPhone 15 Pro — Screen Repair" before="Shattered display with spider-web cracks" after="Crystal-clear OLED, like-new finish" beforeColor="#1a0a0a" afterColor="#0a1a0a" icon="📱" />
-              <p className="text-white font-semibold text-lg mt-6 mb-6">Done right the first time.</p>
-              <div className="space-y-4">
-                {[
-                  { text: "Fixed my screen in 25 minutes at my office.", name: "Sarah K." },
-                  { text: "Better than any Apple Store trip I've had.", name: "Emily W." },
-                  { text: "Battery was dying by noon. Fixed in 15 min at my coffee shop.", name: "James H." },
-                ].map((r) => (
-                  <div key={r.name} className="text-left">
-                    <p className="text-sm text-white/80 font-medium">&ldquo;{r.text}&rdquo;</p>
-                    <p className="text-xs text-[#c7c7cc] mt-1">— {r.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* DIFFERENTIATION STRIP — Why Us */}
-          <section className="py-10 bg-[#0071e3] text-white">
-            <div className="max-w-lg mx-auto px-4">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                {[
-                  { bold: "We come to you", sub: "Home, work, anywhere" },
-                  { bold: "No store visits", sub: "Skip the wait entirely" },
-                  { bold: "On-demand repair", sub: "A tech comes to you — fast" },
-                ].map((d) => (
-                  <div key={d.bold}>
-                    <p className="font-bold text-sm mb-1 leading-relaxed">{d.bold}</p>
-                    <p className="text-white/95 text-[12px] font-medium leading-relaxed">{d.sub}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* TRUST SECTION */}
-          <section className="py-16">
-            <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-2xl font-bold tracking-tight text-center mb-10">Why 5,000+ Austinites choose us</h2>
-              <div className="grid grid-cols-2 gap-4 mb-10">
-                {[
-                  { stat: "5,000+", label: "Devices Fixed" },
-                  { stat: "4.9★", label: "Avg Rating" },
-                  { stat: "< 30 min", label: "Most Repairs" },
-                  { stat: "90 Days", label: "Warranty" },
-                ].map((s) => (
-                  <div key={s.label} className="bg-[#333335] border border-white/10 rounded-2xl p-5 text-center">
-                    <p className="text-2xl font-bold tracking-tight mb-1">{s.stat}</p>
-                    <p className="text-[#c7c7cc] text-xs font-medium">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="space-y-4">
-                {[
-                  { title: "Free Diagnostics", desc: "Know the problem and price before you commit." },
-                  { title: "No Fix, No Fee", desc: "Can't fix it? You pay nothing. Zero risk." },
-                  { title: "We Come to You", desc: "Home, office, cafe — wherever you are in Austin." },
-                  { title: "Genuine Parts", desc: "OEM-grade components backed by our warranty." },
-                  { title: "Certified Technicians", desc: "Background-checked, 1,000+ repairs each." },
-                  { title: "Same-Day Service", desc: "Book now, get it fixed fast." },
-                ].map((s) => (
-                  <div key={s.title} className="flex items-start gap-3">
-                    <span className="text-[#0071e3] font-bold mt-0.5">✓</span>
-                    <div>
-                      <p className="font-semibold text-sm leading-relaxed">{s.title}</p>
-                      <p className="text-[#c7c7cc] text-xs font-medium">{s.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
           {/* FOOTER CTA */}
           <section className="py-16 bg-[#282828] text-center">
             <div className="max-w-lg mx-auto px-4">
