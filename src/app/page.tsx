@@ -290,7 +290,7 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
         {/* Slider handle */}
         <div className="absolute top-0 bottom-0 w-0.5 bg-white/80 z-10" style={{ left: `${pos}%` }}>
           <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center">
-            <svg className="w-4 h-4 text-[#282828]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
+            <svg className="w-4 h-4 text-[#333333]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
           </div>
         </div>
       </div>
@@ -532,14 +532,14 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#282828] text-white">
+    <main className="min-h-screen bg-[#333333] text-white">
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="lazyOnload"
         onLoad={initAutocomplete}
       />
       {/* STICKY NAV — compact, app-like */}
-      <nav className="sticky top-0 z-40 bg-[#282828]/95 backdrop-blur-xl border-b border-black/60">
+      <nav className="sticky top-0 z-40 bg-[#333333]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
           <button onClick={() => { resetAll(); setFooterPage(null); }} className="cursor-pointer"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
@@ -556,7 +556,7 @@ export default function Home() {
 
       {/* HERO — minimal, app-like */}
       {step === "select" && !showModelPicker && !footerPage && (
-        <section className="bg-[#282828] text-white">
+        <section className="bg-[#333333] text-white">
           <div className="max-w-lg mx-auto px-4 pt-12 pb-8">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-3">
               Fix your phone<br />at home.
@@ -622,7 +622,7 @@ export default function Home() {
 
       {/* MODEL PICKER — two-step: Series → Variant (iPhone / MacBook / Samsung) */}
       {showModelPicker && !footerPage && (
-        <section className="bg-[#282828] text-white min-h-[60vh]">
+        <section className="bg-[#333333] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -1084,7 +1084,7 @@ export default function Home() {
       {step === "select" && !showModelPicker && !footerPage && (
         <>
           {/* REVIEWS MARQUEE */}
-          <section className="py-10 overflow-hidden bg-[#282828]">
+          <section className="py-10 overflow-hidden bg-[#333333]">
             <p className="text-white font-semibold text-lg text-center mb-6">Done right the first time.</p>
             <div className="relative">
               <div className="flex animate-[marquee_20s_linear_infinite] gap-4 w-max">
@@ -1110,7 +1110,7 @@ export default function Home() {
           </section>
 
           {/* FOOTER CTA */}
-          <section className="py-16 bg-[#282828] text-center">
+          <section className="py-16 bg-[#333333] text-center">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold mb-2">Ready when you are.</h2>
               <p className="text-[#c7c7cc] text-sm mb-6 font-medium">Book in under a minute. A tech comes to you — fast.</p>
@@ -1153,7 +1153,7 @@ export default function Home() {
           </footer>
 
           {/* STICKY BOTTOM CTA — mobile */}
-          <div className="sticky bottom-0 bg-[#282828]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
+          <div className="sticky bottom-0 bg-[#333333]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring w-full bg-[#0071e3] text-white py-3 rounded-2xl text-sm font-semibold cursor-pointer">
               Start Repair
             </button>
@@ -1163,7 +1163,7 @@ export default function Home() {
 
       {/* FOOTER PAGES */}
       {footerPage && (
-        <section className="min-h-screen bg-[#282828] text-white">
+        <section className="min-h-screen bg-[#333333] text-white">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-16">
             <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
