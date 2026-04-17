@@ -837,11 +837,13 @@ export default function Home() {
                       <div key={r.name} className={isCamera && showCameraOptions ? "col-span-2" : ""}>
                         <button
                           onClick={() => isCamera ? setShowCameraOptions(!showCameraOptions) : handleRepairSelect(r)}
-                          className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center min-h-[110px]"
+                          className="card-3d w-full flex flex-col items-center justify-center p-5 rounded-2xl cursor-pointer text-center min-h-[120px] group"
                         >
-                          <span className="text-3xl mb-2">{r.icon}</span>
-                          <p className="font-bold text-[#1a1a1a] text-sm leading-tight">{r.name}</p>
-                          <p className="text-[#0071e3] font-bold text-base mt-1">{r.price}</p>
+                          <div className="w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition">
+                            <span className="text-2xl">{r.icon}</span>
+                          </div>
+                          <p className="font-bold text-[#1a1a1a] text-[13px] leading-tight">{r.name}</p>
+                          <p className="text-[#0071e3] font-extrabold text-base mt-1">{r.price}</p>
                         </button>
                         {isCamera && showCameraOptions && rAny._frontCam && rAny._rearCam && (
                           <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
