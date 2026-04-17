@@ -552,7 +552,7 @@ export default function Home() {
               Fix your phone<br />at home.
             </h1>
             <p className="text-[#c7c7cc] text-lg mb-10 font-medium">
-              We come to you. Same-day available.
+              We come to you. Fast.
             </p>
 
             {/* Device selection — immediate action */}
@@ -600,7 +600,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <p className="text-center text-[#c7c7cc] text-[11px] mt-5 font-medium">Takes about a minute · Same-day · 30-day warranty</p>
+              <p className="text-center text-[#c7c7cc] text-[11px] mt-5 font-medium">Takes about a minute · Fast service · 30-day warranty</p>
             </div>
           </div>
         </section>
@@ -709,7 +709,7 @@ export default function Home() {
                 ); })()}
               </>
             )}
-            <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">All models include same-day service, premium-quality parts, and 30-day warranty</p>
+            <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">All models include fast service, premium-quality parts, and 30-day warranty</p>
           </div>
         </section>
       )}
@@ -746,7 +746,7 @@ export default function Home() {
               <>
                 <h2 className="text-2xl font-bold tracking-tight mb-1">What&apos;s the issue?</h2>
                 <p className="text-[#c7c7cc] text-sm mb-2 font-medium leading-relaxed">{deviceLabel} · {deviceType === "iphone" ? "Tap to see pricing" : "All repairs quoted individually"}</p>
-                <p className="text-[#34c759] text-xs font-medium mb-6">Same-day appointments available · Technician comes to you</p>
+                <p className="text-[#34c759] text-xs font-medium mb-6">A certified technician comes to you — fast</p>
 
                 <div className="grid grid-cols-2 gap-3">
                   {currentRepairs.map((r, idx) => {
@@ -1092,7 +1092,7 @@ export default function Home() {
                 {[
                   { bold: "We come to you", sub: "Home, work, anywhere" },
                   { bold: "No store visits", sub: "Skip the wait entirely" },
-                  { bold: "On-demand repair", sub: "Fast, same-day service" },
+                  { bold: "On-demand repair", sub: "A tech comes to you — fast" },
                 ].map((d) => (
                   <div key={d.bold}>
                     <p className="font-bold text-sm mb-1 leading-relaxed">{d.bold}</p>
@@ -1127,7 +1127,7 @@ export default function Home() {
                   { title: "We Come to You", desc: "Home, office, cafe — wherever you are in Austin." },
                   { title: "Genuine Parts", desc: "OEM-grade components backed by our warranty." },
                   { title: "Certified Technicians", desc: "Background-checked, 1,000+ repairs each." },
-                  { title: "Same-Day Service", desc: "Book now, get it fixed today." },
+                  { title: "Same-Day Service", desc: "Book now, get it fixed fast." },
                 ].map((s) => (
                   <div key={s.title} className="flex items-start gap-3">
                     <span className="text-[#0071e3] font-bold mt-0.5">✓</span>
@@ -1145,7 +1145,7 @@ export default function Home() {
           <section className="py-16 bg-[#282828] text-center">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold mb-2">Ready when you are.</h2>
-              <p className="text-[#c7c7cc] text-sm mb-6 font-medium">Book in under a minute. A tech shows up today.</p>
+              <p className="text-[#c7c7cc] text-sm mb-6 font-medium">Book in under a minute. A tech comes to you — fast.</p>
               <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring bg-[#0071e3] text-white px-10 py-4 rounded-2xl text-base font-semibold cursor-pointer hover:bg-[#0077ed] transition">
                 Start Repair
               </button>
