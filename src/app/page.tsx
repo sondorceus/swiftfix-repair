@@ -592,7 +592,7 @@ export default function Home() {
             <a href="https://wa.me/15129609256" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp" className="tap-spring w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center hover:bg-[#20bd5a] transition">
               <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
-            <a href={`tel:${PHONE_TEL}`} className="tap-spring bg-[#0071e3] text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-[#0077ED] transition">
+            <a href={`tel:${PHONE_TEL}`} aria-label="Call us" className="tap-spring bg-[#0071e3] text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-[#0077ED] transition">
               Call Us
             </a>
           </div>
@@ -678,7 +678,7 @@ export default function Home() {
       {showModelPicker && !footerPage && (
         <section className="bg-[#3d3d3d] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -790,7 +790,7 @@ export default function Home() {
       {step === "issue" && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -803,7 +803,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Device</label>
-                    <input type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
+                    <input type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required aria-label="Device name" className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
                   </div>
                   <div>
                     <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
@@ -871,7 +871,7 @@ export default function Home() {
       {step === "time" && repair && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -975,7 +975,7 @@ export default function Home() {
       {step === "confirm" && !submitted && repair && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -1060,7 +1060,7 @@ export default function Home() {
                 {damagePhoto ? (
                   <div className="relative rounded-xl overflow-hidden border border-white/15">
                     <img src={damagePhoto} alt="Damage photo" className="w-full h-40 object-cover" />
-                    <button type="button" onClick={() => { setDamagePhoto(null); setDamagePhotoName(null); }} className="absolute top-2 right-2 bg-black/60 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm cursor-pointer hover:bg-black/80 transition">x</button>
+                    <button type="button" onClick={() => { setDamagePhoto(null); setDamagePhotoName(null); }} aria-label="Remove photo" className="absolute top-2 right-2 bg-black/60 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm cursor-pointer hover:bg-black/80 transition">x</button>
                     <p className="absolute bottom-2 left-2 bg-black/60 text-white text-[12px] px-2 py-0.5 rounded-full">{damagePhotoName}</p>
                   </div>
                 ) : (
@@ -1265,7 +1265,7 @@ export default function Home() {
       {footerPage && (
         <section className="min-h-screen bg-[#3d3d3d] text-white">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-16">
-            <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#0071e3] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Home
             </button>
@@ -1384,8 +1384,8 @@ export default function Home() {
                     {chatLoading && <div className="flex justify-start"><div className="bg-white/10 text-white/60 px-3 py-2 rounded-xl text-xs">Typing...</div></div>}
                   </div>
                   <div className="flex gap-2">
-                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#555] focus:outline-none focus:border-[#0071e3]" />
-                    <button onClick={sendChat} disabled={chatLoading} className="bg-[#0071e3] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#0077ed] transition disabled:opacity-50">Send</button>
+                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." aria-label="Chat message" className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#555] focus:outline-none focus:border-[#0071e3]" />
+                    <button onClick={sendChat} disabled={chatLoading} aria-label="Send message" className="bg-[#0071e3] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#0077ed] transition disabled:opacity-50">Send</button>
                   </div>
                 </>
               )}
@@ -1412,8 +1412,8 @@ export default function Home() {
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#242424]/95 backdrop-blur-sm border-t border-white/10 px-3 py-2 animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto flex items-center gap-3">
             <p className="text-white/80 text-[11px] flex-1">We use cookies to improve your experience.</p>
-            <button onClick={() => { localStorage.setItem("cookie-consent", "essential"); setCookieConsent("essential"); }} className="text-white/60 text-[11px] font-medium cursor-pointer hover:text-white transition whitespace-nowrap">Essential</button>
-            <button onClick={() => { localStorage.setItem("cookie-consent", "full"); setCookieConsent("full"); }} className="bg-[#0071e3] text-white px-3 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer hover:bg-[#0077ed] transition whitespace-nowrap">Accept All</button>
+            <button onClick={() => { localStorage.setItem("cookie-consent", "essential"); setCookieConsent("essential"); }} aria-label="Accept essential cookies only" className="text-white/60 text-[11px] font-medium cursor-pointer hover:text-white transition whitespace-nowrap">Essential</button>
+            <button onClick={() => { localStorage.setItem("cookie-consent", "full"); setCookieConsent("full"); }} aria-label="Accept all cookies" className="bg-[#0071e3] text-white px-3 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer hover:bg-[#0077ed] transition whitespace-nowrap">Accept All</button>
           </div>
         </div>
       )}
