@@ -1206,18 +1206,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* BEFORE & AFTER GALLERY */}
-          <section className="py-12 bg-[#3d3d3d]">
-            <div className="max-w-lg mx-auto px-4">
-              <h2 className="text-xl font-bold text-center mb-2">See the difference</h2>
-              <p className="text-[#c7c7cc] text-sm text-center mb-6 font-medium">Drag to compare before and after</p>
-              <div className="grid gap-4">
-                <BeforeAfterSlider label="Screen Repair" icon="📱" before="Cracked, shattered display. Touch unresponsive in spots." after="Brand new screen. Crystal clear, fully responsive." beforeColor="#4a1c1c" afterColor="#1c4a2e" />
-                <BeforeAfterSlider label="Battery Replacement" icon="🔋" before="Dies by noon. Swollen battery, slow charging." after="Full day battery life. Fast charging restored." beforeColor="#4a3a1c" afterColor="#1c4a2e" />
-                <BeforeAfterSlider label="Camera Lens Repair" icon="📸" before="Cracked lens. Blurry photos, lens flare." after="Crystal clear shots. Like-new camera quality." beforeColor="#2e1c4a" afterColor="#1c4a2e" />
-              </div>
-            </div>
-          </section>
 
           {/* FOOTER CTA */}
           <section className="py-16 bg-[#3d3d3d] text-center">
