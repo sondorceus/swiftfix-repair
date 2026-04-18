@@ -326,6 +326,12 @@ export default function Home() {
   const [step, setStep] = useState<Step>("select");
   const [footerPage, setFooterPage] = useState<"about" | "faq" | "contact" | null>(null);
   const [chatOpen, setChatOpen] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState<string | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("cookie-consent");
+    setCookieConsent(saved);
+  }, []);
   const [chatMode, setChatMode] = useState<"choose" | "chat" | "call">("choose");
   const [chatMessages, setChatMessages] = useState<{ from: "user" | "bot"; text: string }[]>([
     { from: "bot", text: "Hey! Need a repair? I can help with pricing, timing, or any questions about our service!" }
@@ -1411,6 +1417,23 @@ export default function Home() {
           )}
         </button>
       </div>
+
+      {cookieConsent === null && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#242424] border-t border-white/10 p-4 animate-[fadeIn_0.3s_ease-out]">
+          <div className="max-w-lg mx-auto">
+            <p className="text-white text-sm mb-3">We use cookies to improve your experience. Choose your preference:</p>
+            <div className="flex gap-3">
+              <button onClick={() => { localStorage.setItem("cookie-consent", "essential"); setCookieConsent("essential"); }} className="flex-1 bg-white/10 text-white py-2.5 rounded-xl text-sm font-semibold cursor-pointer hover:bg-white/15 transition border border-white/10">
+                Essential Only
+              </button>
+              <button onClick={() => { localStorage.setItem("cookie-consent", "full"); setCookieConsent("full"); }} className="flex-1 bg-[#0071e3] text-white py-2.5 rounded-xl text-sm font-semibold cursor-pointer hover:bg-[#0077ed] transition">
+                Full Access
+              </button>
+            </div>
+            <p className="text-[#c7c7cc] text-[10px] mt-2 text-center">Essential cookies are required for the site to function. Full access enables analytics and personalization.</p>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
