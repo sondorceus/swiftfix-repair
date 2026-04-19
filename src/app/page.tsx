@@ -530,9 +530,8 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
     try {
-      await fetch("/api/book", {
+      const res = await fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -548,8 +547,10 @@ export default function Home() {
           otherIssueText: deviceType === "other" ? otherIssueText : undefined,
         }),
       });
+      if (!res.ok) throw new Error('Failed');
+      setSubmitted(true);
     } catch {
-      // Booking notification failed silently — customer still sees confirmation
+      alert("Something went wrong. Please try again or call us directly.");
     }
   };
 
