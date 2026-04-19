@@ -803,12 +803,12 @@ export default function Home() {
                 <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Describe your device and the issue</p>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Device</label>
-                    <input type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required aria-label="Device name" className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
+                    <label htmlFor="other-device" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Device</label>
+                    <input id="other-device" type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required aria-label="Device name" className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition" />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
-                    <textarea placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition resize-none" />
+                    <label htmlFor="other-issue" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
+                    <textarea id="other-issue" placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 transition resize-none" />
                   </div>
                   <button onClick={() => { setRepair({ name: otherIssueText || "Custom Repair", price: "Custom Quote", time: "TBD", icon: "🔧" }); setStep("time"); }} disabled={!otherDeviceText || !otherIssueText} className="tap-spring w-full bg-[#0071e3] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                     Continue to Scheduling
@@ -1006,8 +1006,9 @@ export default function Home() {
 
             <form onSubmit={(e) => { e.preventDefault(); handleSubmit(e); }} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Location</label>
+                <label htmlFor="field-address" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Location</label>
                 <input
+                  id="field-address"
                   ref={addressRef}
                   type="text"
                   placeholder="Start typing your Austin address…"
@@ -1019,8 +1020,9 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Name</label>
+                <label htmlFor="field-name" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Name</label>
                 <input
+                  id="field-name"
                   type="text"
                   placeholder="Your name"
                   value={name}
@@ -1031,8 +1033,9 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Phone</label>
+                  <label htmlFor="field-phone" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Phone</label>
                   <input
+                    id="field-phone"
                     type="tel"
                     placeholder="(512) 555-0000"
                     value={phone}
@@ -1042,8 +1045,9 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Email <span className="normal-case text-[12px] font-medium">(optional)</span></label>
+                  <label htmlFor="field-email" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Email <span className="normal-case text-[12px] font-medium">(optional)</span></label>
                   <input
+                    id="field-email"
                     type="email"
                     placeholder="you@email.com"
                     value={email}
