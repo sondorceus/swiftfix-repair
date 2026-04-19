@@ -21,6 +21,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, phone, email, address, device, repair, time, date, slot, bookingType } = body;
+    if (!name || (!phone && !email)) return NextResponse.json({ ok: false, error: "Name and contact info required" }, { status: 400 });
     const isASAP = bookingType === "asap";
 
     const bookedAt = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
@@ -69,7 +70,7 @@ export async function POST(request: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.MC_API_KEY || "9b4dce8e03c1d2aaf86d272a2afda99a0157f49abd66450f",
+          "x-api-key": process.env.MC_API_KEY || "",
         },
         body: JSON.stringify({
           from: "swiftfix",
