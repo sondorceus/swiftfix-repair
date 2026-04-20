@@ -3,8 +3,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Script from "next/script";
 
 const BRAND = "Austin Mobile Repair";
-const PHONE = "(512) 960-9256";
-const PHONE_TEL = "+15129609256";
+const PHONE = "(877) 549-2056";
+const PHONE_TEL = "+18775492056";
 
 function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const textSize = size === "sm" ? "16px" : size === "lg" ? "28px" : "20px";

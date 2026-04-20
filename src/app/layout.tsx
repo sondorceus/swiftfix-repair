@@ -41,7 +41,7 @@ export default function RootLayout({
               "name": "ATX Gadget Fix",
               "description": "Austin's mobile repair service. iPhone, MacBook & Samsung repairs at your location. 30-day warranty. No fix, no pay.",
               "url": "https://atxgadgetfix.com",
-              "telephone": "(512) 960-9256",
+              "telephone": "(877) 549-2056",
               "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US" },
               "areaServed": { "@type": "City", "name": "Austin" },
               "priceRange": "$$",
