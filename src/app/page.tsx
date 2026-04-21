@@ -235,7 +235,7 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
         <div
           key={i}
           className={`h-1 rounded-full transition-all duration-300 ${
-            i < current ? "bg-[#00c853] w-8" : i === current ? "bg-[#00c853] w-12" : "bg-[#e8e8ed] w-8"
+            i < current ? "bg-[#00c853] w-8" : i === current ? "bg-[#00c853] w-12" : "bg-white/5 w-8"
           }`}
         />
       ))}
@@ -575,14 +575,14 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#3d3d3d] text-white">
+    <main className="min-h-screen bg-[#111] text-white">
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="lazyOnload"
         onLoad={initAutocomplete}
       />
       {/* STICKY NAV — compact, app-like */}
-      <nav className="sticky top-0 z-40 bg-[#3d3d3d]/95 backdrop-blur-xl border-b border-black/60">
+      <nav className="sticky top-0 z-40 bg-[#111]/95 backdrop-blur-xl border-b border-black/60">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
           <button onClick={() => { resetAll(); setFooterPage(null); }} className="cursor-pointer" aria-label="Go to homepage"><Logo size="sm" /></button>
           <div className="flex items-center gap-3">
@@ -602,7 +602,7 @@ export default function Home() {
 
       {/* HERO — minimal, app-like */}
       {step === "select" && !showModelPicker && !footerPage && (
-        <section className="bg-[#3d3d3d] text-white">
+        <section className="bg-[#111] text-white">
           <div className="max-w-lg mx-auto px-4 pt-12 pb-8">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-3">
               Fix your phone<br />at home.
@@ -677,7 +677,7 @@ export default function Home() {
 
       {/* MODEL PICKER — two-step: Series → Variant (iPhone / MacBook / Samsung) */}
       {showModelPicker && !footerPage && (
-        <section className="bg-[#3d3d3d] text-white min-h-[60vh]">
+        <section className="bg-[#111] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
             <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -810,7 +810,7 @@ export default function Home() {
                     <label htmlFor="other-issue" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
                     <textarea id="other-issue" placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition resize-none" />
                   </div>
-                  <button onClick={() => { setRepair({ name: otherIssueText || "Custom Repair", price: "Custom Quote", time: "TBD", icon: "🔧" }); setStep("time"); }} disabled={!otherDeviceText || !otherIssueText} className="tap-spring w-full bg-[#00c853] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                  <button onClick={() => { setRepair({ name: otherIssueText || "Custom Repair", price: "Custom Quote", time: "TBD", icon: "🔧" }); setStep("time"); }} disabled={!otherDeviceText || !otherIssueText} className="tap-spring w-full bg-[#00c853] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#00e676] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                     Continue to Scheduling
                   </button>
                 </div>
@@ -1079,7 +1079,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="tap-spring w-full bg-[#00c853] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer mt-2"
+                className="tap-spring w-full bg-[#00c853] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#00e676] transition cursor-pointer mt-2"
               >
                 Book My Repair Now
               </button>
@@ -1143,7 +1143,7 @@ export default function Home() {
       {step === "select" && !showModelPicker && !footerPage && (
         <>
           {/* TRUST STATS */}
-          <section className="py-8 bg-[#3d3d3d]">
+          <section className="py-8 bg-[#111]">
             <div className="max-w-lg mx-auto px-4">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="bg-[#1a1a2e] rounded-2xl p-4 border border-white/10">
@@ -1163,7 +1163,7 @@ export default function Home() {
           </section>
 
           {/* REVIEWS MARQUEE */}
-          <section className="py-10 overflow-hidden bg-[#3d3d3d]">
+          <section className="py-10 overflow-hidden bg-[#111]">
             <p className="text-white font-semibold text-lg text-center mb-6">Done right the first time.</p>
             <div className="relative">
               <div className="flex animate-[marquee_20s_linear_infinite] gap-4 w-max">
@@ -1189,7 +1189,7 @@ export default function Home() {
           </section>
 
           {/* QUICK FAQ */}
-          <section className="py-12 bg-[#3d3d3d]">
+          <section className="py-12 bg-[#111]">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-xl font-bold text-center mb-6">Quick questions</h2>
               <div className="space-y-2">
@@ -1214,11 +1214,11 @@ export default function Home() {
 
 
           {/* FOOTER CTA */}
-          <section className="py-16 bg-[#3d3d3d] text-center">
+          <section className="py-16 bg-[#111] text-center">
             <div className="max-w-lg mx-auto px-4">
               <h2 className="text-2xl font-bold mb-2">Ready when you are.</h2>
               <p className="text-[#c7c7cc] text-sm mb-6 font-medium">Book in under a minute. A tech comes to you — fast.</p>
-              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring bg-[#00c853] text-white px-10 py-4 rounded-2xl text-base font-semibold cursor-pointer hover:bg-[#0077ed] transition">
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring bg-[#00c853] text-white px-10 py-4 rounded-2xl text-base font-semibold cursor-pointer hover:bg-[#00e676] transition">
                 Start Repair
               </button>
             </div>
@@ -1258,7 +1258,7 @@ export default function Home() {
           </footer>
 
           {/* STICKY BOTTOM CTA — mobile */}
-          <div className="sticky bottom-0 bg-[#3d3d3d]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
+          <div className="sticky bottom-0 bg-[#111]/90 backdrop-blur-xl border-t border-white/10 p-3 md:hidden">
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="tap-spring w-full bg-[#00c853] text-white py-3 rounded-2xl text-sm font-semibold cursor-pointer">
               Start Repair
             </button>
@@ -1268,7 +1268,7 @@ export default function Home() {
 
       {/* FOOTER PAGES */}
       {footerPage && (
-        <section className="min-h-screen bg-[#3d3d3d] text-white">
+        <section className="min-h-screen bg-[#111] text-white">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-16">
             <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -1323,14 +1323,14 @@ export default function Home() {
               <div className="animate-[fadeIn_0.3s_ease-out]">
                 <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
                 <div className="space-y-4 mb-8">
-                  <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 border border-white/10 hover:bg-white/10 transition">
                     <span className="text-2xl">📞</span>
                     <div>
                       <p className="font-semibold">Call Us</p>
                       <p className="text-[#00c853] text-sm">{PHONE}</p>
                     </div>
                   </a>
-                  <a href="mailto:support@atxgadgetfix.com" className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href="mailto:support@atxgadgetfix.com" className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 border border-white/10 hover:bg-white/10 transition">
                     <span className="text-2xl">✉️</span>
                     <div>
                       <p className="font-semibold">Email</p>
@@ -1390,21 +1390,21 @@ export default function Home() {
                   </div>
                   <div className="flex gap-2">
                     <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." aria-label="Chat message" className="flex-1 px-3 py-2 bg-[#0a0a0a]/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#aaa] focus:outline-none focus:border-[#00c853]" />
-                    <button onClick={sendChat} disabled={chatLoading} aria-label="Send message" className="bg-[#00c853] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#0077ed] transition disabled:opacity-50">Send</button>
+                    <button onClick={sendChat} disabled={chatLoading} aria-label="Send message" className="bg-[#00c853] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#00e676] transition disabled:opacity-50">Send</button>
                   </div>
                 </>
               )}
               {chatMode === "call" && (
                 <div className="text-center py-2">
                   <button onClick={() => setChatMode("choose")} className="text-[#888] text-xs mb-3 cursor-pointer hover:text-white block mx-auto">← Back</button>
-                  <a href={`tel:${PHONE_TEL}`} className="block w-full bg-[#00c853] text-white py-3 rounded-xl text-sm font-semibold hover:bg-[#0077ed] transition text-center mb-2">📞 Call {PHONE}</a>
+                  <a href={`tel:${PHONE_TEL}`} className="block w-full bg-[#00c853] text-white py-3 rounded-xl text-sm font-semibold hover:bg-[#00e676] transition text-center mb-2">📞 Call {PHONE}</a>
                   <p className="text-[#888] text-xs">Mon-Sat 8AM-8PM</p>
                 </div>
               )}
             </div>
           </div>
         )}
-        <button onClick={() => setChatOpen(!chatOpen)} aria-label={chatOpen ? "Close chat" : "Open live chat"} className="w-14 h-14 rounded-full bg-[#00c853] text-white flex items-center justify-center shadow-lg hover:bg-[#0077ed] hover:opacity-100 transition-all duration-300 cursor-pointer active:scale-90 animate-[chatFade_4s_ease-out_forwards]">
+        <button onClick={() => setChatOpen(!chatOpen)} aria-label={chatOpen ? "Close chat" : "Open live chat"} className="w-14 h-14 rounded-full bg-[#00c853] text-white flex items-center justify-center shadow-lg hover:bg-[#00e676] hover:opacity-100 transition-all duration-300 cursor-pointer active:scale-90 animate-[chatFade_4s_ease-out_forwards]">
           {chatOpen ? (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           ) : (
@@ -1418,7 +1418,7 @@ export default function Home() {
           <div className="max-w-lg mx-auto flex items-center gap-3">
             <p className="text-white/80 text-[11px] flex-1">We use cookies to improve your experience.</p>
             <button onClick={() => { localStorage.setItem("cookie-consent", "essential"); setCookieConsent("essential"); }} aria-label="Accept essential cookies only" className="text-white/60 text-[11px] font-medium cursor-pointer hover:text-white transition whitespace-nowrap">Essential</button>
-            <button onClick={() => { localStorage.setItem("cookie-consent", "full"); setCookieConsent("full"); }} aria-label="Accept all cookies" className="bg-[#00c853] text-white px-3 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer hover:bg-[#0077ed] transition whitespace-nowrap">Accept All</button>
+            <button onClick={() => { localStorage.setItem("cookie-consent", "full"); setCookieConsent("full"); }} aria-label="Accept all cookies" className="bg-[#00c853] text-white px-3 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer hover:bg-[#00e676] transition whitespace-nowrap">Accept All</button>
           </div>
         </div>
       )}
