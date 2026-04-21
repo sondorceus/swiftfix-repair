@@ -968,6 +968,13 @@ export default function Home() {
                 </div>
               </div>
             )}
+
+            {/* Trust mini-bar */}
+            <div className="flex items-center justify-center gap-6 mt-8 text-[#c7c7cc] text-xs">
+              <span>✓ On-time guarantee</span>
+              <span>✓ Certified techs</span>
+              <span>✓ No hidden fees</span>
+            </div>
           </div>
         </section>
       )}
@@ -1194,11 +1201,14 @@ export default function Home() {
               <h2 className="text-xl font-bold text-center mb-6">Quick questions</h2>
               <div className="space-y-2">
                 {[
-                  { q: "How long do repairs take?", a: "Most repairs are completed in 20-45 minutes depending on the issue." },
+                  { q: "How long do repairs take?", a: "Most repairs are completed in 20-45 minutes depending on the issue. Screen replacements average 25 minutes." },
                   { q: "What if you can't fix it?", a: "If we can't fix your device, you pay nothing. Zero risk." },
                   { q: "Do you use quality parts?", a: "Yes. Every part is premium OEM-grade, inspected and tested before installation." },
                   { q: "What's your warranty?", a: "Every repair comes with a 30-day parts warranty. If anything goes wrong, we fix it free." },
-                  { q: "How do I pay?", a: "Pay after the repair is complete. We accept all major payment methods." },
+                  { q: "How do I pay?", a: "Pay after the repair is complete. We accept Cash, Venmo, Zelle, PayPal, and all major cards." },
+                  { q: "What devices do you repair?", a: "iPhones (all models), Samsung Galaxy, iPads, MacBooks, and more. If it has a screen, we probably fix it." },
+                  { q: "Do you come to me?", a: "Yes — we come to your home, office, or wherever works for you across Austin. No need to visit a store." },
+                  { q: "Will I lose my data?", a: "No. Standard repairs like screen and battery replacements don't affect your data. We never factory reset your device." },
                 ].map((item) => (
                   <details key={item.q} className="group bg-[#1a1a2e] rounded-2xl border border-white/10 overflow-hidden">
                     <summary className="px-5 py-4 cursor-pointer font-semibold text-sm flex items-center justify-between list-none">
