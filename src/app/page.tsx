@@ -256,7 +256,7 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
   };
 
   return (
-    <div className="bg-[#474749] rounded-2xl overflow-hidden border border-white/10">
+    <div className="bg-[#1a1a2e] rounded-2xl overflow-hidden border border-white/10">
       <div className="px-4 pt-4 pb-2 flex items-center gap-2">
         <span className="text-lg">{icon}</span>
         <p className="font-semibold text-sm">{label}</p>
@@ -290,9 +290,9 @@ function BeforeAfterSlider({ label, before, after, beforeColor, afterColor, icon
           <p className="text-[#c7c7cc] text-xs leading-relaxed max-w-[200px]">{after}</p>
         </div>
         {/* Slider handle */}
-        <div className="absolute top-0 bottom-0 w-0.5 bg-white/80 z-10" style={{ left: `${pos}%` }}>
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center">
-            <svg className="w-4 h-4 text-[#3d3d3d]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
+        <div className="absolute top-0 bottom-0 w-0.5 bg-[#0a0a0a]/80 z-10" style={{ left: `${pos}%` }}>
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#0a0a0a] shadow-lg flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4M8 15l4 4 4-4" /></svg>
           </div>
         </div>
       </div>
@@ -307,7 +307,7 @@ function TechCard() {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="flex items-center gap-4 bg-[#474749] rounded-2xl p-4 border border-white/15">
+    <div className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-4 border border-white/15">
       <div className="w-12 h-12 rounded-full bg-[#00c853] flex items-center justify-center text-white font-bold text-lg shrink-0">
         JM
       </div>
@@ -615,7 +615,7 @@ export default function Home() {
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                 No Fix, No Pay
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-white/5 text-[#c7c7cc] text-xs font-medium px-3 py-1.5 rounded-full border border-white/10">
+              <span className="inline-flex items-center gap-1.5 bg-[#0a0a0a]/5 text-[#c7c7cc] text-xs font-medium px-3 py-1.5 rounded-full border border-white/10">
                 30-Day Warranty
               </span>
             </div>
@@ -631,7 +631,7 @@ export default function Home() {
                 <button
                   key={d.id}
                   onClick={() => handleDeviceSelect(d.id)}
-                  className="tap-spring w-full flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-pointer text-left"
+                  className="tap-spring w-full flex items-center gap-4 p-5 rounded-2xl bg-[#0a0a0a]/5 border border-white/10 hover:bg-[#0a0a0a]/10 hover:border-white/20 transition-all duration-200 cursor-pointer text-left"
                 >
                   <span className="text-3xl">{d.icon}</span>
                   <div className="flex-1">
@@ -649,7 +649,7 @@ export default function Home() {
             <div className="mt-10">
               <div className="flex items-start justify-between relative">
                 {/* Track line */}
-                <div className="absolute top-4 left-[16%] right-[16%] h-[2px] bg-white/10">
+                <div className="absolute top-4 left-[16%] right-[16%] h-[2px] bg-[#0a0a0a]/10">
                   <div className="h-full bg-[#00c853] w-0 animate-[progressLine_2.5s_ease-out_0.5s_forwards]" />
                 </div>
                 {/* Driving van */}
@@ -679,7 +679,7 @@ export default function Home() {
       {showModelPicker && !footerPage && (
         <section className="bg-[#3d3d3d] text-white min-h-[60vh]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -698,7 +698,7 @@ export default function Home() {
                     {activeSeries.variants.map((v, i) => (
                       <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]" style={{ animationDelay: `${i * 0.06}s` }}>
                         <div>
-                          <p className="font-bold text-[#242424] text-[15px]">{v.label}</p>
+                          <p className="font-bold text-white text-[15px]">{v.label}</p>
                           <p className="text-[#6e6e73] text-xs font-medium">{v.size}</p>
                         </div>
                         <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -716,7 +716,7 @@ export default function Home() {
                     {seriesData.map((s) => (
                       <button key={s.id} onClick={() => setSelectedModelSeries(s.id)} className="card-3d w-full flex items-center justify-between p-5 rounded-2xl cursor-pointer text-left">
                         <div>
-                          <p className="font-semibold text-[#242424] text-lg">{s.label}</p>
+                          <p className="font-semibold text-white text-lg">{s.label}</p>
                           <p className="text-[#6e6e73] text-sm font-medium">{s.year} · {s.variants.length} models</p>
                         </div>
                         <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -743,11 +743,11 @@ export default function Home() {
                       {(s as { image?: string }).image ? (
                         <img src={(s as { image?: string }).image} alt={s.label} loading="lazy" className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
                       ) : (
-                        <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
+                        <div className="icon-circle w-12 h-12 rounded-full bg-[#0a0a0a]/50 flex items-center justify-center mb-2 group-active:bg-[#0a0a0a]/20 transition-colors">
                           <span className="text-2xl">📱</span>
                         </div>
                       )}
-                      <p className="font-bold text-[#242424] text-[13px] leading-tight">{s.label}</p>
+                      <p className="font-bold text-white text-[13px] leading-tight">{s.label}</p>
                       <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
                     </button>
                   ))}
@@ -769,7 +769,7 @@ export default function Home() {
                           style={{ animationDelay: `${i * 0.06}s` }}
                         >
                           <div>
-                            <p className="font-bold text-[#242424] text-[15px]">{v.label}</p>
+                            <p className="font-bold text-white text-[15px]">{v.label}</p>
                             <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
                           </div>
                           <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -791,7 +791,7 @@ export default function Home() {
       {step === "issue" && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
@@ -804,11 +804,11 @@ export default function Home() {
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="other-device" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">Device</label>
-                    <input id="other-device" type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required aria-label="Device name" className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition" />
+                    <input id="other-device" type="text" placeholder="e.g. iPad Pro, Google Pixel 8, Nintendo Switch..." value={otherDeviceText} onChange={(e) => setOtherDeviceText(e.target.value)} required aria-label="Device name" className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition" />
                   </div>
                   <div>
                     <label htmlFor="other-issue" className="block text-xs font-medium text-[#c7c7cc] mb-1.5 uppercase tracking-wider">What&apos;s wrong?</label>
-                    <textarea id="other-issue" placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition resize-none" />
+                    <textarea id="other-issue" placeholder="Describe the issue..." value={otherIssueText} onChange={(e) => setOtherIssueText(e.target.value)} required rows={3} className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition resize-none" />
                   </div>
                   <button onClick={() => { setRepair({ name: otherIssueText || "Custom Repair", price: "Custom Quote", time: "TBD", icon: "🔧" }); setStep("time"); }} disabled={!otherDeviceText || !otherIssueText} className="tap-spring w-full bg-[#00c853] text-white py-4 rounded-2xl text-base font-semibold hover:bg-[#0077ed] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                     Continue to Scheduling
@@ -833,17 +833,17 @@ export default function Home() {
                           className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px] group"
                           style={{ animationDelay: `${idx * 0.06}s` }}
                         >
-                          <div className="icon-circle w-12 h-12 rounded-full bg-white/50 flex items-center justify-center mb-2 group-active:bg-white/20 transition-colors">
+                          <div className="icon-circle w-12 h-12 rounded-full bg-[#0a0a0a]/50 flex items-center justify-center mb-2 group-active:bg-[#0a0a0a]/20 transition-colors">
                             <span className="text-2xl">{r.icon}</span>
                           </div>
-                          <p className="font-bold text-[#242424] text-[13px] leading-tight">{r.name}</p>
+                          <p className="font-bold text-white text-[13px] leading-tight">{r.name}</p>
                           <p className="text-[#00c853] font-extrabold text-base mt-1">{r.price}</p>
                           {hasSub && <svg className={`w-3 h-3 text-[#6e6e73] mt-0.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
                         </button>
                         {isExpanded && subs && (
                           <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
                             {subs.map((sub) => (
-                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#474749] border border-white/10 cursor-pointer">
+                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#1a1a2e] border border-white/10 cursor-pointer">
                                 <span className="text-lg mb-1">{sub.icon}</span>
                                 <span className="text-xs font-semibold">{sub.name}</span>
                                 <span className="text-[#00c853] font-bold text-sm">{sub.price}</span>
@@ -872,14 +872,14 @@ export default function Home() {
       {step === "time" && repair && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
             <StepIndicator current={2} total={3} />
 
             {/* Selected repair summary */}
-            <div className="bg-[#474749] border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
+            <div className="bg-[#1a1a2e] border border-white/10 rounded-2xl p-4 mb-6 flex items-center justify-between">
               <div>
                 <p className="text-xs text-[#c7c7cc] font-medium">{deviceLabel}</p>
                 <p className="font-semibold">{repair.name}</p>
@@ -914,7 +914,7 @@ export default function Home() {
                   >
                     <span className="text-2xl">{opt.icon}</span>
                     <div className="flex-1">
-                      <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-[#242424]"}`}>{opt.label}</p>
+                      <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-white"}`}>{opt.label}</p>
                       <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#6e6e73]"}`}>{opt.sub}</p>
                     </div>
                     {opt.badge && (
@@ -937,7 +937,7 @@ export default function Home() {
                       className={`flex-shrink-0 px-4 py-3 rounded-xl text-center text-sm font-medium cursor-pointer ${
                         selectedDate === d.value
                           ? "border border-[#00c853] bg-[#00c853] text-white transition"
-                          : "card-3d text-[#242424]"
+                          : "card-3d text-white"
                       }`}
                     >
                       {d.label}
@@ -959,7 +959,7 @@ export default function Home() {
                       className={`w-full p-3 rounded-xl text-center text-sm font-medium cursor-pointer ${
                         specificSlot === slot
                           ? "border border-[#00c853] bg-[#00c853] text-white transition"
-                          : "card-3d text-[#242424]"
+                          : "card-3d text-white"
                       }`}
                     >
                       {slot}
@@ -976,14 +976,14 @@ export default function Home() {
       {step === "confirm" && !submitted && repair && !footerPage && (
         <section className="animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-8">
-            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={handleBack} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Back
             </button>
             <StepIndicator current={3} total={3} />
 
             {/* Order summary — DoorDash checkout style */}
-            <div className="bg-[#474749] border border-white/10 rounded-2xl p-5 mb-6">
+            <div className="bg-[#1a1a2e] border border-white/10 rounded-2xl p-5 mb-6">
               <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium mb-3">Your repair</p>
               <div className="flex items-center justify-between mb-3">
                 <div>
@@ -1016,7 +1016,7 @@ export default function Home() {
                   onChange={(e) => setAddress(e.target.value)}
                   required
                   autoComplete="off"
-                  className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
                 />
               </div>
               <div>
@@ -1028,7 +1028,7 @@ export default function Home() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
+                  className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -1041,7 +1041,7 @@ export default function Home() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
-                    className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
                   />
                 </div>
                 <div>
@@ -1052,7 +1052,7 @@ export default function Home() {
                     placeholder="you@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-[#474749] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
+                    className="w-full px-4 py-3.5 bg-[#1a1a2e] border border-white/15 rounded-xl text-sm text-white placeholder:text-[#c7c7cc] focus:outline-none focus:border-[#00c853] focus:ring-4 focus:ring-[#00c853]/10 transition"
                   />
                 </div>
               </div>
@@ -1111,7 +1111,7 @@ export default function Home() {
             </p>
 
             {/* Fake tracking card */}
-            <div className="bg-[#474749] border border-white/10 rounded-2xl p-5 mb-6 text-left">
+            <div className="bg-[#1a1a2e] border border-white/10 rounded-2xl p-5 mb-6 text-left">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-xs text-[#c7c7cc] uppercase tracking-wider font-medium">Estimated arrival</p>
                 <p className="text-[#00c853] font-bold">~20 min</p>
@@ -1119,7 +1119,7 @@ export default function Home() {
               <TechCard />
             </div>
 
-            <div className="bg-[#474749] border border-white/10 rounded-2xl p-5 mb-8 text-left">
+            <div className="bg-[#1a1a2e] border border-white/10 rounded-2xl p-5 mb-8 text-left">
               <div className="flex items-center justify-between text-sm">
                 <div>
                   <p className="font-semibold">{repair.name}</p>
@@ -1146,15 +1146,15 @@ export default function Home() {
           <section className="py-8 bg-[#3d3d3d]">
             <div className="max-w-lg mx-auto px-4">
               <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="bg-[#474749] rounded-2xl p-4 border border-white/10">
+                <div className="bg-[#1a1a2e] rounded-2xl p-4 border border-white/10">
                   <p className="text-2xl font-bold text-[#00c853]">4,200+</p>
                   <p className="text-[#c7c7cc] text-xs font-medium mt-1">Repairs Done</p>
                 </div>
-                <div className="bg-[#474749] rounded-2xl p-4 border border-white/10">
+                <div className="bg-[#1a1a2e] rounded-2xl p-4 border border-white/10">
                   <p className="text-2xl font-bold text-[#00c853]">4.9★</p>
                   <p className="text-[#c7c7cc] text-xs font-medium mt-1">Avg Rating</p>
                 </div>
-                <div className="bg-[#474749] rounded-2xl p-4 border border-white/10">
+                <div className="bg-[#1a1a2e] rounded-2xl p-4 border border-white/10">
                   <p className="text-2xl font-bold text-[#00c853]">30-Day</p>
                   <p className="text-[#c7c7cc] text-xs font-medium mt-1">Warranty</p>
                 </div>
@@ -1179,7 +1179,7 @@ export default function Home() {
                   { text: "Professional, fast, and exactly as quoted.", name: "David R." },
                   { text: "MacBook keyboard fixed same day. Great warranty.", name: "Amanda P." },
                 ].map((r, i) => (
-                  <div key={i} className="flex-shrink-0 w-[260px] bg-[#474749] rounded-2xl p-4 border border-white/10">
+                  <div key={i} className="flex-shrink-0 w-[260px] bg-[#1a1a2e] rounded-2xl p-4 border border-white/10">
                     <p className="text-sm text-white/85 font-medium mb-2">&ldquo;{r.text}&rdquo;</p>
                     <p className="text-xs text-[#c7c7cc]">— {r.name}</p>
                   </div>
@@ -1200,7 +1200,7 @@ export default function Home() {
                   { q: "What's your warranty?", a: "Every repair comes with a 30-day parts warranty. If anything goes wrong, we fix it free." },
                   { q: "How do I pay?", a: "Pay after the repair is complete. We accept all major payment methods." },
                 ].map((item) => (
-                  <details key={item.q} className="group bg-[#474749] rounded-2xl border border-white/10 overflow-hidden">
+                  <details key={item.q} className="group bg-[#1a1a2e] rounded-2xl border border-white/10 overflow-hidden">
                     <summary className="px-5 py-4 cursor-pointer font-semibold text-sm flex items-center justify-between list-none">
                       {item.q}
                       <svg className="w-4 h-4 text-[#c7c7cc] transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -1225,7 +1225,7 @@ export default function Home() {
           </section>
 
           {/* FOOTER */}
-          <footer className="bg-[#242424] text-[#c7c7cc] py-12 border-t border-white/10">
+          <footer className="bg-[#111] text-[#c7c7cc] py-12 border-t border-white/10">
             <div className="max-w-lg mx-auto px-4">
               <div className="grid grid-cols-3 gap-6 mb-8">
                 <div>
@@ -1270,7 +1270,7 @@ export default function Home() {
       {footerPage && (
         <section className="min-h-screen bg-[#3d3d3d] text-white">
           <div className="max-w-lg mx-auto px-4 pt-6 pb-16">
-            <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-white/8 border border-white/15 hover:bg-white/15 cursor-pointer transition active:scale-95">
+            <button onClick={() => { setFooterPage(null); window.scrollTo({ top: 0 }); }} aria-label="Go back" className="tap-spring relative z-10 inline-flex items-center gap-2 text-[#00c853] text-base font-semibold mb-6 px-5 py-2.5 rounded-full bg-[#0a0a0a]/8 border border-white/15 hover:bg-[#0a0a0a]/15 cursor-pointer transition active:scale-95">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               Home
             </button>
@@ -1280,15 +1280,15 @@ export default function Home() {
                 <h1 className="text-3xl font-bold mb-4">About Us</h1>
                 <p className="text-[#c7c7cc] mb-6 leading-relaxed">Austin Mobile Repair was founded with a simple mission: bring professional device repair directly to you. No store visits. No long waits. Just fast, quality repairs at your door.</p>
                 <div className="space-y-4 mb-8">
-                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#1a1a2e] rounded-2xl p-5 border border-white/10">
                     <p className="font-semibold mb-1">Our Mission</p>
                     <p className="text-[#c7c7cc] text-sm">Make device repair as easy as ordering a ride. Premium parts, certified technicians, and a 30-day warranty on every repair.</p>
                   </div>
-                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#1a1a2e] rounded-2xl p-5 border border-white/10">
                     <p className="font-semibold mb-1">Why We&apos;re Different</p>
                     <p className="text-[#c7c7cc] text-sm">We come to your home, office, or anywhere in Austin. Every part is inspected and tested before installation. If we can&apos;t fix it, you don&apos;t pay.</p>
                   </div>
-                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#1a1a2e] rounded-2xl p-5 border border-white/10">
                     <p className="font-semibold mb-1">Serving Austin, TX</p>
                     <p className="text-[#c7c7cc] text-sm">We cover all of Austin and surrounding areas. iPhone, MacBook, Samsung — we fix them all.</p>
                   </div>
@@ -1310,7 +1310,7 @@ export default function Home() {
                     { q: "How do I pay?", a: "Pay after the repair is complete. We accept all major payment methods." },
                     { q: "Can I see pricing before I book?", a: "Yes. Our booking flow shows you the exact price for your device and repair type before you confirm." },
                   ].map((item) => (
-                    <div key={item.q} className="bg-[#474749] rounded-2xl p-5 border border-white/10">
+                    <div key={item.q} className="bg-[#1a1a2e] rounded-2xl p-5 border border-white/10">
                       <p className="font-semibold text-sm mb-1">{item.q}</p>
                       <p className="text-[#c7c7cc] text-sm">{item.a}</p>
                     </div>
@@ -1323,27 +1323,27 @@ export default function Home() {
               <div className="animate-[fadeIn_0.3s_ease-out]">
                 <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
                 <div className="space-y-4 mb-8">
-                  <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-4 bg-[#474749] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
                     <span className="text-2xl">📞</span>
                     <div>
                       <p className="font-semibold">Call Us</p>
                       <p className="text-[#00c853] text-sm">{PHONE}</p>
                     </div>
                   </a>
-                  <a href="mailto:support@atxgadgetfix.com" className="flex items-center gap-4 bg-[#474749] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
+                  <a href="mailto:support@atxgadgetfix.com" className="flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 border border-white/10 hover:bg-[#3a3a3c] transition">
                     <span className="text-2xl">✉️</span>
                     <div>
                       <p className="font-semibold">Email</p>
                       <p className="text-[#00c853] text-sm">support@atxgadgetfix.com</p>
                     </div>
                   </a>
-                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#1a1a2e] rounded-2xl p-5 border border-white/10">
                     <span className="text-2xl mb-2 block">🕐</span>
                     <p className="font-semibold">Hours</p>
                     <p className="text-[#c7c7cc] text-sm">Monday – Saturday: 8AM – 8PM</p>
                     <p className="text-[#c7c7cc] text-sm">Sunday: Closed</p>
                   </div>
-                  <div className="bg-[#474749] rounded-2xl p-5 border border-white/10">
+                  <div className="bg-[#1a1a2e] rounded-2xl p-5 border border-white/10">
                     <span className="text-2xl mb-2 block">📍</span>
                     <p className="font-semibold">Service Area</p>
                     <p className="text-[#c7c7cc] text-sm">All of Austin, TX and surrounding areas. We come to you.</p>
@@ -1358,7 +1358,7 @@ export default function Home() {
       {/* CHAT WIDGET */}
       <div className="fixed bottom-20 md:bottom-6 right-4 z-50 group/chat">
         {chatOpen && (
-          <div className="mb-3 w-[300px] bg-[#242424] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+          <div className="mb-3 w-[300px] bg-[#111] border border-white/15 rounded-2xl shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
             <div className="bg-[#00c853] px-4 py-3 flex items-center justify-between">
               <p className="text-white font-semibold text-sm">Austin Mobile Repair</p>
               <button onClick={() => setChatOpen(false)} aria-label="Close chat" className="text-white/80 hover:text-white cursor-pointer text-lg">x</button>
@@ -1368,10 +1368,10 @@ export default function Home() {
                 <>
                   <p className="text-white text-sm mb-4">Hey! How would you like to connect?</p>
                   <div className="space-y-2">
-                    <button onClick={() => setChatMode("chat")} className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition text-left active:scale-[0.98]">
+                    <button onClick={() => setChatMode("chat")} className="w-full flex items-center gap-3 p-3 rounded-xl bg-[#0a0a0a]/5 border border-white/10 hover:bg-[#0a0a0a]/10 cursor-pointer transition text-left active:scale-[0.98]">
                       <span className="text-xl">💬</span><div><p className="font-semibold text-sm text-white">Live Chat</p><p className="text-[#888] text-xs">Ask about repairs</p></div>
                     </button>
-                    <button onClick={() => setChatMode("call")} className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 cursor-pointer transition text-left active:scale-[0.98]">
+                    <button onClick={() => setChatMode("call")} className="w-full flex items-center gap-3 p-3 rounded-xl bg-[#0a0a0a]/5 border border-white/10 hover:bg-[#0a0a0a]/10 cursor-pointer transition text-left active:scale-[0.98]">
                       <span className="text-xl">📞</span><div><p className="font-semibold text-sm text-white">Talk to a Human</p><p className="text-[#888] text-xs">Call us directly</p></div>
                     </button>
                   </div>
@@ -1383,13 +1383,13 @@ export default function Home() {
                   <div className="h-[200px] overflow-y-auto space-y-2 mb-2 pr-1">
                     {chatMessages.map((m, i) => (
                       <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
-                        <div className={`max-w-[85%] px-3 py-2 rounded-xl text-xs ${m.from === "user" ? "bg-[#00c853] text-white" : "bg-white/10 text-white/90"}`}>{m.text}</div>
+                        <div className={`max-w-[85%] px-3 py-2 rounded-xl text-xs ${m.from === "user" ? "bg-[#00c853] text-white" : "bg-[#0a0a0a]/10 text-white/90"}`}>{m.text}</div>
                       </div>
                     ))}
-                    {chatLoading && <div className="flex justify-start"><div className="bg-white/10 text-white/60 px-3 py-2 rounded-xl text-xs">Typing...</div></div>}
+                    {chatLoading && <div className="flex justify-start"><div className="bg-[#0a0a0a]/10 text-white/60 px-3 py-2 rounded-xl text-xs">Typing...</div></div>}
                   </div>
                   <div className="flex gap-2">
-                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." aria-label="Chat message" className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#555] focus:outline-none focus:border-[#00c853]" />
+                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." aria-label="Chat message" className="flex-1 px-3 py-2 bg-[#0a0a0a]/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#555] focus:outline-none focus:border-[#00c853]" />
                     <button onClick={sendChat} disabled={chatLoading} aria-label="Send message" className="bg-[#00c853] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#0077ed] transition disabled:opacity-50">Send</button>
                   </div>
                 </>
@@ -1414,7 +1414,7 @@ export default function Home() {
       </div>
 
       {cookieConsent === null && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#242424]/95 backdrop-blur-sm border-t border-white/10 px-3 py-2 animate-[fadeIn_0.3s_ease-out]">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#111]/95 backdrop-blur-sm border-t border-white/10 px-3 py-2 animate-[fadeIn_0.3s_ease-out]">
           <div className="max-w-lg mx-auto flex items-center gap-3">
             <p className="text-white/80 text-[11px] flex-1">We use cookies to improve your experience.</p>
             <button onClick={() => { localStorage.setItem("cookie-consent", "essential"); setCookieConsent("essential"); }} aria-label="Accept essential cookies only" className="text-white/60 text-[11px] font-medium cursor-pointer hover:text-white transition whitespace-nowrap">Essential</button>
