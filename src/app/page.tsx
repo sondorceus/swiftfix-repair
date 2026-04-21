@@ -699,9 +699,9 @@ export default function Home() {
                       <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]" style={{ animationDelay: `${i * 0.06}s` }}>
                         <div>
                           <p className="font-bold text-white text-[15px]">{v.label}</p>
-                          <p className="text-[#6e6e73] text-xs font-medium">{v.size}</p>
+                          <p className="text-[#aaa] text-xs font-medium">{v.size}</p>
                         </div>
-                        <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        <svg className="w-5 h-5 text-[#aaa] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                       </button>
                     ))}
                   </div>
@@ -717,9 +717,9 @@ export default function Home() {
                       <button key={s.id} onClick={() => setSelectedModelSeries(s.id)} className="card-3d w-full flex items-center justify-between p-5 rounded-2xl cursor-pointer text-left">
                         <div>
                           <p className="font-semibold text-white text-lg">{s.label}</p>
-                          <p className="text-[#6e6e73] text-sm font-medium">{s.year} · {s.variants.length} models</p>
+                          <p className="text-[#aaa] text-sm font-medium">{s.year} · {s.variants.length} models</p>
                         </div>
-                        <svg className="w-5 h-5 text-[#6e6e73]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        <svg className="w-5 h-5 text-[#aaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                       </button>
                     ))}
                   </div>
@@ -748,7 +748,7 @@ export default function Home() {
                         </div>
                       )}
                       <p className="font-bold text-white text-[13px] leading-tight">{s.label}</p>
-                      <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
+                      <p className="text-[#aaa] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
                     </button>
                   ))}
                 </div>
@@ -770,9 +770,9 @@ export default function Home() {
                         >
                           <div>
                             <p className="font-bold text-white text-[15px]">{v.label}</p>
-                            <p className="text-[#6e6e73] text-xs font-medium">{v.size} display</p>
+                            <p className="text-[#aaa] text-xs font-medium">{v.size} display</p>
                           </div>
-                          <svg className="w-5 h-5 text-[#6e6e73] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-[#aaa] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
@@ -838,7 +838,7 @@ export default function Home() {
                           </div>
                           <p className="font-bold text-white text-[13px] leading-tight">{r.name}</p>
                           <p className="text-[#00c853] font-extrabold text-base mt-1">{r.price}</p>
-                          {hasSub && <svg className={`w-3 h-3 text-[#6e6e73] mt-0.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
+                          {hasSub && <svg className={`w-3 h-3 text-[#aaa] mt-0.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
                         </button>
                         {isExpanded && subs && (
                           <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
@@ -915,7 +915,7 @@ export default function Home() {
                     <span className="text-2xl">{opt.icon}</span>
                     <div className="flex-1">
                       <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-white"}`}>{opt.label}</p>
-                      <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#6e6e73]"}`}>{opt.sub}</p>
+                      <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#aaa]"}`}>{opt.sub}</p>
                     </div>
                     {opt.badge && (
                       <span className="text-[12px] bg-[#34c759] text-white px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
@@ -1389,7 +1389,7 @@ export default function Home() {
                     {chatLoading && <div className="flex justify-start"><div className="bg-[#0a0a0a]/10 text-white/60 px-3 py-2 rounded-xl text-xs">Typing...</div></div>}
                   </div>
                   <div className="flex gap-2">
-                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." aria-label="Chat message" className="flex-1 px-3 py-2 bg-[#0a0a0a]/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#555] focus:outline-none focus:border-[#00c853]" />
+                    <input value={chatMsg} onChange={(e) => setChatMsg(e.target.value)} onKeyDown={(e) => e.key === "Enter" && sendChat()} placeholder="Ask me anything..." aria-label="Chat message" className="flex-1 px-3 py-2 bg-[#0a0a0a]/5 border border-white/10 rounded-xl text-xs text-white placeholder:text-[#aaa] focus:outline-none focus:border-[#00c853]" />
                     <button onClick={sendChat} disabled={chatLoading} aria-label="Send message" className="bg-[#00c853] text-white px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:bg-[#0077ed] transition disabled:opacity-50">Send</button>
                   </div>
                 </>
