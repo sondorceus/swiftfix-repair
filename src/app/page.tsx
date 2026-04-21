@@ -6,6 +6,20 @@ const BRAND = "Austin Mobile Repair";
 const PHONE = "(877) 549-2056";
 const PHONE_TEL = "+18775492056";
 
+function TrustBadge() {
+  return (
+    <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-[#c7c7cc] text-xs">
+      <span>🛡️ No Fix, No Pay</span>
+      <span>·</span>
+      <span>⚡ Same-Day Service</span>
+      <span>·</span>
+      <span>✓ 30-Day Warranty</span>
+      <span>·</span>
+      <span>🏠 We Come To You</span>
+    </div>
+  );
+}
+
 function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const textSize = size === "sm" ? "16px" : size === "lg" ? "28px" : "20px";
   const subSize = size === "sm" ? "9px" : size === "lg" ? "14px" : "11px";
@@ -671,6 +685,7 @@ export default function Home() {
               </div>
               <p className="text-center text-[#c7c7cc] text-[11px] mt-5 font-medium">Takes about a minute · Fast service · 30-day warranty</p>
             </div>
+            <TrustBadge />
           </div>
         </section>
       )}
@@ -783,6 +798,7 @@ export default function Home() {
               </>
             )}
             <p className="text-[#c7c7cc] text-[12px] text-center mt-4 font-medium leading-relaxed">Premium parts at competitive rates. Repaired at your home, office, or anywhere in Austin.</p>
+            <TrustBadge />
           </div>
         </section>
       )}
@@ -858,12 +874,7 @@ export default function Home() {
               </>
             )}
 
-            {/* Trust mini-bar */}
-            <div className="flex items-center justify-center gap-6 mt-8 text-[#c7c7cc] text-xs">
-              <span>✓ Free diagnostics</span>
-              <span>✓ Premium parts</span>
-              <span>✓ 30-day parts warranty</span>
-            </div>
+            <TrustBadge />
           </div>
         </section>
       )}
@@ -969,12 +980,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* Trust mini-bar */}
-            <div className="flex items-center justify-center gap-6 mt-8 text-[#c7c7cc] text-xs">
-              <span>✓ On-time guarantee</span>
-              <span>✓ Certified techs</span>
-              <span>✓ No hidden fees</span>
-            </div>
+            <TrustBadge />
           </div>
         </section>
       )}
@@ -1091,11 +1097,7 @@ export default function Home() {
                 Book My Repair Now
               </button>
 
-              <div className="flex items-center justify-center gap-4 text-[#c7c7cc] text-[12px] mt-3">
-                <span>✓ Free diagnostics</span>
-                <span>✓ Premium parts</span>
-                <span>✓ Pay after repair</span>
-              </div>
+              <TrustBadge />
             </form>
           </div>
         </section>
@@ -1361,6 +1363,7 @@ export default function Home() {
                 </div>
               </div>
             )}
+            <TrustBadge />
           </div>
         </section>
       )}
