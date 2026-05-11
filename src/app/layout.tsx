@@ -1,5 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  themeColor: "#00c853",
+  // Mobile Safari renders the page at desktop width and zooms in unless
+  // we explicitly set initialScale. Same fix we did on TopCashCellular.
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Austin Mobile Repair — iPhone, MacBook & Samsung Repair | We Come to You",

@@ -589,7 +589,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#111] text-white">
+    <main className="min-h-screen bg-[#111] text-white overflow-x-hidden">
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="lazyOnload"

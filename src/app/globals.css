@@ -5,7 +5,7 @@
   --brand-gray: #888;
   --brand-light: #111;
   --brand-white: #0a0a0a;
-  --brand-blue: #00c853;
+  --brand-green: #00c853;
   --brand-silver: #1a1a2e;
 }
 
@@ -16,6 +16,90 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: 500;
 }
+
+/* === Design system ported from TopCashCellular (Nov 2026 overhaul) === */
+
+/* Glass card — primary surface for tappable funnel selections.
+   Backdrop-blur + 1px rim light at top-left + outer shadow for depth. */
+.axg-card {
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 300ms ease, background 300ms ease,
+              border-color 300ms ease, box-shadow 300ms ease;
+}
+.axg-card:hover {
+  transform: translateY(-3px);
+  background: rgba(15, 15, 15, 0.85);
+  border-color: #00c853;
+  box-shadow:
+    inset 0 0 10px rgba(0, 200, 83, 0.08),
+    0 0 8px rgba(0, 200, 83, 0.18),
+    0 14px 32px rgba(0, 0, 0, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .axg-card { transition: none; }
+  .axg-card:hover { transform: none; }
+}
+
+/* Cyber-style input field. Forces 16px on mobile so iOS Safari does NOT
+   auto-zoom on focus; drops back to 14px on desktop. */
+.axg-input {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  transition: background 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+  border-radius: 0.75rem;
+  font-size: 16px;
+}
+@media (min-width: 1024px) {
+  .axg-input { font-size: 0.875rem; }
+}
+.axg-input:hover { background: rgba(0, 0, 0, 0.5); border-bottom-color: rgba(255, 255, 255, 0.28); }
+.axg-input:focus { outline: none; border-bottom-color: #00c853; box-shadow: 0 4px 12px -4px rgba(0, 200, 83, 0.5); background: rgba(0, 0, 0, 0.55); }
+.axg-input::placeholder { color: #6a6a6a; }
+.axg-input:focus::placeholder { color: #8a8a8a; }
+
+/* Primary CTA — beveled gradient green button. Bright, tactile, and the
+   highest-contrast call-to-action on every step. */
+.axg-button-primary {
+  background: linear-gradient(180deg, #00e676 0%, #00c853 60%, #00a039 100%);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 1rem;
+  position: relative;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 15px rgba(0, 200, 83, 0.32),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: filter 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+  cursor: pointer;
+}
+.axg-button-primary:hover {
+  filter: brightness(1.08) saturate(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 22px rgba(0, 200, 83, 0.5),
+    0 6px 18px rgba(0, 0, 0, 0.4);
+}
+.axg-button-primary:active { transform: translateY(1px); }
+@media (prefers-reduced-motion: reduce) {
+  .axg-button-primary { transition: none; }
+  .axg-button-primary:active { transform: none; }
+}
+
+/* Marquee mask — for testimonial / brand tickers. */
+.axg-marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+/* === End ported design system === */
 
 .card-3d {
   background: rgba(255, 255, 255, 0.05);
