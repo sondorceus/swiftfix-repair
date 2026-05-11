@@ -21,16 +21,45 @@ function TrustBadge() {
 }
 
 function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const textSize = size === "sm" ? "16px" : size === "lg" ? "28px" : "20px";
-  const subSize = size === "sm" ? "9px" : size === "lg" ? "14px" : "11px";
+  // Logo with a beveled icon tile (matches the TopCash visual treatment).
+  // Outline + inset highlight + outer shadow give it real depth so it
+  // stops looking flat against the dark background.
+  const tileSize = size === "sm" ? 28 : size === "lg" ? 44 : 36;
+  const innerSize = size === "sm" ? 18 : size === "lg" ? 28 : 22;
+  const textSize = size === "sm" ? "14px" : size === "lg" ? "22px" : "17px";
+  const subSize = size === "sm" ? "8px" : size === "lg" ? "12px" : "10px";
   return (
-    <div className="flex flex-col leading-none">
-      <span style={{ fontSize: textSize, fontWeight: 700, letterSpacing: "-0.02em", background: "linear-gradient(90deg, #00c853, #00e676)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-        Austin Mobile
+    <div className="flex items-center gap-2">
+      <span
+        className="relative inline-flex items-center justify-center rounded-xl"
+        style={{
+          width: tileSize, height: tileSize,
+          background: "linear-gradient(135deg, #1a1a1a 0%, #050505 100%)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 12px rgba(0,0,0,0.55)",
+        }}
+      >
+        <span
+          className="inline-flex items-center justify-center rounded-lg"
+          style={{
+            width: innerSize, height: innerSize,
+            background: "linear-gradient(135deg, #00e676 0%, #00a039 100%)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -2px 4px rgba(0,0,0,0.28)",
+          }}
+        >
+          <svg viewBox="0 0 24 24" width={innerSize * 0.55} height={innerSize * 0.55} fill="none" stroke="#0a0a0a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+          </svg>
+        </span>
       </span>
-      <span style={{ fontSize: subSize, fontWeight: 500, letterSpacing: "0.08em", color: "#c7c7cc", textTransform: "uppercase" as const, marginTop: "2px" }}>
-        Repair
-      </span>
+      <div className="flex flex-col leading-none">
+        <span style={{ fontSize: textSize, fontWeight: 800, letterSpacing: "-0.02em", background: "linear-gradient(180deg, #ffffff 0%, #bdbdbd 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+          ATX Gadget Fix
+        </span>
+        <span style={{ fontSize: subSize, fontWeight: 700, letterSpacing: "0.18em", color: "#00c853", textTransform: "uppercase" as const, marginTop: "3px" }}>
+          Austin Mobile Repair
+        </span>
+      </div>
     </div>
   );
 }
@@ -637,46 +666,39 @@ export default function Home() {
             {/* Device selection — immediate action */}
             <div className="space-y-3">
               {[
-                { id: "iphone" as const, label: "iPhone", sub: "From $69", icon: "📱" },
-                { id: "macbook" as const, label: "MacBook", sub: "Custom quote", icon: "💻" },
-                { id: "android" as const, label: "Samsung", sub: "Custom quote", icon: "📲" },
-                { id: "other" as const, label: "Other", sub: "Any device", icon: "🔧" },
+                { id: "iphone" as const, label: "iPhone", sub: "From $69" },
+                { id: "macbook" as const, label: "MacBook", sub: "Custom quote" },
+                { id: "android" as const, label: "Samsung", sub: "Custom quote" },
+                { id: "other" as const, label: "Other", sub: "Any device" },
               ].map((d) => (
                 <button
                   key={d.id}
                   onClick={() => handleDeviceSelect(d.id)}
-                  className="tap-spring w-full flex items-center gap-4 p-5 rounded-2xl bg-[#0a0a0a]/5 border border-white/10 hover:bg-[#0a0a0a]/10 hover:border-white/20 transition-all duration-200 cursor-pointer text-left"
+                  className="tap-spring axg-card w-full flex items-center gap-4 p-5 rounded-2xl cursor-pointer text-left"
                 >
-                  <span className="text-3xl">{d.icon}</span>
                   <div className="flex-1">
-                    <p className="font-semibold text-white text-lg">{d.label}</p>
-                    <p className="text-[#c7c7cc] text-sm">{d.sub}</p>
+                    <p className="font-extrabold text-white text-lg">{d.label}</p>
+                    <p className="text-[#bdbdbd] text-sm">{d.sub}</p>
                   </div>
-                  <svg className="w-5 h-5 text-[#c7c7cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 text-[#00c853]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
               ))}
             </div>
 
-            {/* How it works — visual step flow with driving van */}
+            {/* How it works — clean three-step indicator (no van animation) */}
             <div className="mt-10">
               <div className="flex items-start justify-between relative">
-                {/* Track line */}
-                <div className="absolute top-4 left-[16%] right-[16%] h-[2px] bg-[#0a0a0a]/10">
-                  <div className="h-full bg-[#00c853] w-0 animate-[progressLine_2.5s_ease-out_0.5s_forwards]" />
-                </div>
-                {/* Driving van */}
-                <div className="absolute top-[2px] left-[16%] z-20 animate-[driveVan_2.5s_ease-out_0.5s_forwards]" style={{ transform: "translateX(-50%)" }}>
-                  <svg width="32" height="18" viewBox="0 0 32 18" fill="none" style={{ filter: "drop-shadow(0 0 8px rgba(0,113,227,0.6))" }}><path d="M4 12V8l2-4h7l4-2h6l3 4h2v4a1 1 0 01-1 1h-1.1a3 3 0 00-5.8 0h-6.2a3 3 0 00-5.8 0H4a1 1 0 01-1-1z" fill="#00c853"/><path d="M13 4l4-2h6l2.5 3H12.5z" fill="#4da6ff" opacity="0.6"/><path d="M6 4h5v4H5l1-4z" fill="#4da6ff" opacity="0.4"/><line x1="13" y1="4" x2="13" y2="8" stroke="#005bb5" strokeWidth="0.5" opacity="0.4"/><circle cx="8" cy="14" r="2.5" fill="#333" stroke="#555" strokeWidth="0.5"/><circle cx="8" cy="14" r="1" fill="#888"/><circle cx="23" cy="14" r="2.5" fill="#333" stroke="#555" strokeWidth="0.5"/><circle cx="23" cy="14" r="1" fill="#888"/><rect x="27" y="7" width="2" height="1" rx="0.5" fill="#ff4444" opacity="0.8"/><rect x="3" y="7" width="1.5" height="1" rx="0.5" fill="#ffcc00" opacity="0.8"/></svg>
-                </div>
+                {/* Static green connecting line */}
+                <div className="absolute top-4 left-[16%] right-[16%] h-[2px]" style={{ background: "linear-gradient(90deg, rgba(0,200,83,0.3), rgba(0,200,83,0.8), rgba(0,200,83,0.3))" }} />
                 {[
                   { num: "1", label: "Pick device" },
                   { num: "2", label: "Choose repair" },
                   { num: "3", label: "Book time" },
                 ].map((s, i) => (
                   <div key={i} className="flex flex-col items-center relative z-10 w-1/3">
-                    <div className="w-8 h-8 rounded-full bg-[#00c853] flex items-center justify-center text-white text-sm font-bold shadow-[0_0_12px_rgba(0,113,227,0.3)]">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#0a0a0a] text-sm font-extrabold" style={{ background: "linear-gradient(180deg, #00e676 0%, #00c853 60%, #00a039 100%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.4), 0 0 12px rgba(0,200,83,0.45)" }}>
                       {s.num}
                     </div>
                     <p className="text-white text-xs font-semibold mt-2">{s.label}</p>
@@ -846,23 +868,20 @@ export default function Home() {
                       <div key={r.name} className={isExpanded ? "col-span-2" : ""} style={{ animationDelay: `${idx * 0.06}s` }}>
                         <button
                           onClick={() => hasSub ? setExpandedRepair(isExpanded ? null : r.name) : handleRepairSelect(r)}
-                          className="card-3d w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px] group"
+                          className="axg-card w-full flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[120px] group"
                           style={{ animationDelay: `${idx * 0.06}s` }}
                         >
-                          <div className="icon-circle w-12 h-12 rounded-full bg-[#0a0a0a]/50 flex items-center justify-center mb-2 group-active:bg-[#0a0a0a]/20 transition-colors">
-                            <span className="text-2xl">{r.icon}</span>
-                          </div>
-                          <p className="font-bold text-white text-[13px] leading-tight">{r.name}</p>
-                          <p className="text-[#00c853] font-extrabold text-base mt-1">{r.price}</p>
-                          {hasSub && <svg className={`w-3 h-3 text-[#aaa] mt-0.5 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
+                          <p className="font-bold text-white text-[14px] leading-tight">{r.name}</p>
+                          <p className="text-[#00c853] font-extrabold text-lg mt-2" style={{ textShadow: "0 0 10px rgba(0,200,83,0.25)" }}>{r.price}</p>
+                          <p className="text-[#888] text-[11px] mt-0.5">{r.time}</p>
+                          {hasSub && <svg className={`w-3 h-3 text-[#aaa] mt-1 transition-transform ${isExpanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>}
                         </button>
                         {isExpanded && subs && (
                           <div className="grid grid-cols-2 gap-2 mt-2 animate-[fadeIn_0.2s_ease-out]">
                             {subs.map((sub) => (
-                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring flex flex-col items-center p-3 rounded-xl bg-[#1a1a2e] border border-white/10 cursor-pointer">
-                                <span className="text-lg mb-1">{sub.icon}</span>
-                                <span className="text-xs font-semibold">{sub.name}</span>
-                                <span className="text-[#00c853] font-bold text-sm">{sub.price}</span>
+                              <button key={sub.name} onClick={() => handleRepairSelect({ ...sub, time: r.time })} className="tap-spring axg-card flex flex-col items-center p-3 rounded-xl cursor-pointer">
+                                <span className="text-xs font-semibold text-white">{sub.name}</span>
+                                <span className="text-[#00c853] font-bold text-sm mt-1">{sub.price}</span>
                               </button>
                             ))}
                           </div>
@@ -919,14 +938,13 @@ export default function Home() {
                     onClick={() => handleTimeSelect(opt.label)}
                     className={`w-full flex items-center gap-4 p-5 rounded-2xl cursor-pointer text-left ${
                       isSelected
-                        ? "border-2 border-[#00c853] bg-[#00c853]/10 transition-all duration-200"
-                        : "card-3d"
+                        ? "border-2 border-[#00c853] bg-[#00c853]/10 shadow-[0_0_18px_rgba(0,200,83,0.18)] transition-all duration-200"
+                        : "axg-card"
                     }`}
                   >
-                    <span className="text-2xl">{opt.icon}</span>
                     <div className="flex-1">
-                      <p className={`font-semibold text-lg ${isSelected ? "text-white" : "text-white"}`}>{opt.label}</p>
-                      <p className={`text-xs font-medium ${isSelected ? "text-[#c7c7cc]" : "text-[#aaa]"}`}>{opt.sub}</p>
+                      <p className="font-extrabold text-white text-lg">{opt.label}</p>
+                      <p className={`text-xs font-medium ${isSelected ? "text-[#bdbdbd]" : "text-[#a0a0a0]"}`}>{opt.sub}</p>
                     </div>
                     {opt.badge && (
                       <span className="text-[12px] bg-[#34c759] text-white px-2 py-0.5 rounded-full font-medium">{opt.badge}</span>
@@ -1438,9 +1456,7 @@ export default function Home() {
 
       <style jsx>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes progressLine { from { width: 0; } to { width: 100%; } }
         @keyframes chatFade { 0% { opacity: 1; } 60% { opacity: 1; } 100% { opacity: 0.35; } }
-        @keyframes driveVan { 0% { left: 16%; opacity: 0; } 10% { opacity: 1; } 85% { left: 84%; opacity: 1; } 100% { left: 84%; opacity: 0; } }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       `}</style>
     </main>
