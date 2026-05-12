@@ -155,30 +155,30 @@ const IPHONE_REPAIRS: Record<string, ReturnType<typeof makeRepairs>> = {
 };
 
 const MACBOOK_SERIES = [
-  { id: "mbair", label: "MacBook Air", year: "M1–M4", variants: [
+  { id: "mbair", label: "MacBook Air", year: "M1–M4", image: "/macbook-air-series.webp", variants: [
     { id: "mbair-m4", label: "MacBook Air M4", size: '13"/15"' },
     { id: "mbair-m3", label: "MacBook Air M3", size: '13"/15"' },
     { id: "mbair-m2", label: "MacBook Air M2", size: '13"/15"' },
     { id: "mbair-m1", label: "MacBook Air M1", size: '13"' },
   ]},
-  { id: "mbpro14", label: "MacBook Pro 14\"", year: "M1–M4", variants: [
+  { id: "mbpro14", label: "MacBook Pro 14\"", year: "M1–M4", image: "/macbook-pro-series.webp", variants: [
     { id: "mbpro14-m4", label: "MacBook Pro 14\" M4", size: '14"' },
     { id: "mbpro14-m3", label: "MacBook Pro 14\" M3", size: '14"' },
     { id: "mbpro14-m2", label: "MacBook Pro 14\" M2", size: '14"' },
     { id: "mbpro14-m1", label: "MacBook Pro 14\" M1", size: '14"' },
   ]},
-  { id: "mbpro16", label: "MacBook Pro 16\"", year: "M1–M4", variants: [
+  { id: "mbpro16", label: "MacBook Pro 16\"", year: "M1–M4", image: "/macbook-pro-series.webp", variants: [
     { id: "mbpro16-m4", label: "MacBook Pro 16\" M4", size: '16"' },
     { id: "mbpro16-m3", label: "MacBook Pro 16\" M3", size: '16"' },
     { id: "mbpro16-m2", label: "MacBook Pro 16\" M2", size: '16"' },
     { id: "mbpro16-m1", label: "MacBook Pro 16\" M1", size: '16"' },
   ]},
-  { id: "mbpro13", label: "MacBook Pro 13\"", year: "M1–M2/Intel", variants: [
+  { id: "mbpro13", label: "MacBook Pro 13\"", year: "M1–M2/Intel", image: "/macbook-pro-series.webp", variants: [
     { id: "mbpro13-m2", label: "MacBook Pro 13\" M2", size: '13"' },
     { id: "mbpro13-m1", label: "MacBook Pro 13\" M1", size: '13"' },
     { id: "mbpro13-intel", label: "MacBook Pro 13\" Intel", size: '13"' },
   ]},
-  { id: "mbolder", label: "Older MacBook", year: "2015–2019", variants: [
+  { id: "mbolder", label: "Older MacBook", year: "2015–2019", image: "/macbook-pro-series.webp", variants: [
     { id: "mbolder-pro15", label: "MacBook Pro 15\" (2015-2019)", size: '15"' },
     { id: "mbolder-air13", label: "MacBook Air (2017-2020)", size: '13"' },
     { id: "mbolder-12", label: "MacBook 12\" Retina", size: '12"' },
@@ -197,7 +197,7 @@ const MACBOOK_REPAIRS = [
 ];
 
 const SAMSUNG_SERIES = [
-  { id: "galaxys", label: "Galaxy S Series", year: "S21–S24", variants: [
+  { id: "galaxys", label: "Galaxy S Series", year: "S21–S24", image: "/s-series.png", variants: [
     { id: "gs24ultra", label: "Galaxy S24 Ultra", size: '6.8"' },
     { id: "gs24plus", label: "Galaxy S24+", size: '6.7"' },
     { id: "gs24", label: "Galaxy S24", size: '6.2"' },
@@ -207,19 +207,19 @@ const SAMSUNG_SERIES = [
     { id: "gs22", label: "Galaxy S22 Series", size: '6.1"-6.8"' },
     { id: "gs21", label: "Galaxy S21 Series", size: '6.2"-6.8"' },
   ]},
-  { id: "galaxyz", label: "Galaxy Z Fold/Flip", year: "Foldables", variants: [
+  { id: "galaxyz", label: "Galaxy Z Fold/Flip", year: "Foldables", image: "/fold-series.webp", variants: [
     { id: "gzfold5", label: "Galaxy Z Fold 5", size: '7.6"' },
     { id: "gzfold4", label: "Galaxy Z Fold 4", size: '7.6"' },
     { id: "gzflip5", label: "Galaxy Z Flip 5", size: '6.7"' },
     { id: "gzflip4", label: "Galaxy Z Flip 4", size: '6.7"' },
   ]},
-  { id: "galaxya", label: "Galaxy A Series", year: "Budget", variants: [
+  { id: "galaxya", label: "Galaxy A Series", year: "Budget", image: "/s-series.png", variants: [
     { id: "ga54", label: "Galaxy A54", size: '6.4"' },
     { id: "ga34", label: "Galaxy A34", size: '6.6"' },
     { id: "ga15", label: "Galaxy A15", size: '6.5"' },
     { id: "ga14", label: "Galaxy A14", size: '6.6"' },
   ]},
-  { id: "galaxynote", label: "Galaxy Note", year: "Note Series", variants: [
+  { id: "galaxynote", label: "Galaxy Note", year: "Note Series", image: "/s-series.png", variants: [
     { id: "gnote20", label: "Galaxy Note 20 / Ultra", size: '6.7"/6.9"' },
     { id: "gnote10", label: "Galaxy Note 10 / 10+", size: '6.3"/6.8"' },
   ]},
@@ -721,7 +721,7 @@ export default function Home() {
               Back
             </button>
 
-            {/* MacBook / Samsung — simple list picker */}
+            {/* MacBook / Samsung — picture menu (series grid with renders, then variant list) */}
             {(deviceType === "macbook" || deviceType === "android") && (() => {
               const seriesData = deviceType === "macbook" ? MACBOOK_SERIES : SAMSUNG_SERIES;
               const activeSeries = selectedModelSeries ? seriesData.find(s => s.id === selectedModelSeries) : null;
@@ -733,12 +733,15 @@ export default function Home() {
                   <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Pick your exact model</p>
                   <div className="space-y-3">
                     {activeSeries.variants.map((v, i) => (
-                      <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]" style={{ animationDelay: `${i * 0.06}s` }}>
-                        <div>
+                      <button key={v.id} onClick={() => handleVariantSelect(v.id)} className="axg-card w-full flex items-center gap-3 px-4 rounded-2xl cursor-pointer text-left h-[72px]" style={{ animationDelay: `${i * 0.06}s` }}>
+                        {(activeSeries as { image?: string }).image && (
+                          <img src={(activeSeries as { image?: string }).image} alt="" loading="lazy" className="w-12 h-12 object-contain shrink-0" />
+                        )}
+                        <div className="flex-1 min-w-0">
                           <p className="font-bold text-white text-[15px]">{v.label}</p>
-                          <p className="text-[#aaa] text-xs font-medium">{v.size}</p>
+                          <p className="text-[#a0a0a0] text-xs font-medium">{v.size}</p>
                         </div>
-                        <svg className="w-5 h-5 text-[#aaa] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        <svg className="w-5 h-5 text-[#00c853] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                       </button>
                     ))}
                   </div>
@@ -748,15 +751,22 @@ export default function Home() {
               return (
                 <>
                   <h2 className="text-2xl font-bold tracking-tight mb-1">{title}</h2>
-                  <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Choose your series, then pick your model</p>
-                  <div className="space-y-2">
-                    {seriesData.map((s) => (
-                      <button key={s.id} onClick={() => setSelectedModelSeries(s.id)} className="card-3d w-full flex items-center justify-between p-5 rounded-2xl cursor-pointer text-left">
-                        <div>
-                          <p className="font-semibold text-white text-lg">{s.label}</p>
-                          <p className="text-[#aaa] text-sm font-medium">{s.year} · {s.variants.length} models</p>
-                        </div>
-                        <svg className="w-5 h-5 text-[#aaa]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  <p className="text-[#c7c7cc] text-sm mb-6 font-medium leading-relaxed">Choose your series, then pick your exact model</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {seriesData.map((s, idx) => (
+                      <button
+                        key={s.id}
+                        onClick={() => setSelectedModelSeries(s.id)}
+                        className="axg-card group flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[150px]"
+                        style={{ animationDelay: `${idx * 0.06}s` }}
+                      >
+                        {(s as { image?: string }).image ? (
+                          <img src={(s as { image?: string }).image} alt={s.label} loading="lazy" className="w-20 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" />
+                        ) : (
+                          <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 mb-2" />
+                        )}
+                        <p className="font-bold text-white text-[13px] leading-tight">{s.label}</p>
+                        <p className="text-[#a0a0a0] text-[11px] font-medium mt-0.5">{s.year}</p>
                       </button>
                     ))}
                   </div>
@@ -774,18 +784,16 @@ export default function Home() {
                     <button
                       key={s.id}
                       onClick={() => handleSeriesSelect(s.id)}
-                      className="card-3d group flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[130px]"
+                      className="axg-card group flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer text-center h-[150px]"
                       style={{ animationDelay: `${idx * 0.06}s` }}
                     >
                       {(s as { image?: string }).image ? (
-                        <img src={(s as { image?: string }).image} alt={s.label} loading="lazy" className="w-16 h-16 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
+                        <img src={(s as { image?: string }).image} alt={s.label} loading="lazy" className="w-20 h-20 object-contain mb-2 group-hover:scale-110 transition-transform" style={s.id === "16" ? { transform: "scale(1.07)" } : undefined} />
                       ) : (
-                        <div className="icon-circle w-12 h-12 rounded-full bg-[#0a0a0a]/50 flex items-center justify-center mb-2 group-active:bg-[#0a0a0a]/20 transition-colors">
-                          <span className="text-2xl">📱</span>
-                        </div>
+                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 mb-2" />
                       )}
                       <p className="font-bold text-white text-[13px] leading-tight">{s.label}</p>
-                      <p className="text-[#aaa] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
+                      <p className="text-[#a0a0a0] text-[11px] font-medium mt-0.5">{s.year} · {s.variants.length} models</p>
                     </button>
                   ))}
                 </div>
@@ -802,14 +810,17 @@ export default function Home() {
                         <button
                           key={v.id}
                           onClick={() => handleVariantSelect(v.id)}
-                          className="card-3d w-full flex items-center justify-between px-5 rounded-2xl cursor-pointer text-left h-[70px]"
+                          className="axg-card w-full flex items-center gap-3 px-4 rounded-2xl cursor-pointer text-left h-[72px]"
                           style={{ animationDelay: `${i * 0.06}s` }}
                         >
-                          <div>
+                          {(series as { image?: string }).image && (
+                            <img src={(series as { image?: string }).image} alt="" loading="lazy" className="w-12 h-12 object-contain shrink-0" />
+                          )}
+                          <div className="flex-1 min-w-0">
                             <p className="font-bold text-white text-[15px]">{v.label}</p>
-                            <p className="text-[#aaa] text-xs font-medium">{v.size} display</p>
+                            <p className="text-[#a0a0a0] text-xs font-medium">{v.size} display</p>
                           </div>
-                          <svg className="w-5 h-5 text-[#aaa] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-[#00c853] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
